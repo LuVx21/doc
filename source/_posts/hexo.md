@@ -6,7 +6,6 @@ tags:
 - node.js
 ---
 
-
 ```
 npm install -g hexo-cli
 hexo init <folder>
