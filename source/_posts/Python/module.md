@@ -8,33 +8,35 @@ tags:
 
 1. module目录结构
 
-```
-├── setup.py
-├── dir1
-│   ├── aa.py
-│   └── __init__.py
-└── dir2
-    ├── bb.py
-    └── __init__.py
-```
+    ```
+    ├── setup.py
+    ├── dir1
+    │   ├── aa.py
+    │   └── __init__.py
+    └── dir2
+        ├── bb.py
+        └── __init__.py
+    ```
+
 2. setup.py
 
-```python
-from distutils.core import setup
+    ```python
+    from distutils.core import setup
 
-setup(name="LuVx", version="1.0", description="this is description", author="F.LuVx", py_modules=['dir1.aa', 'dir2.bb'])
-```
+    setup(name="LuVx", version="1.0", description="this is description", author="F.LuVx", py_modules=['dir1.aa', 'dir2.bb'])
+    ```
+
 3. 构建模块
 
-```
-python setup.py build
-```
+    ```
+    python setup.py build
+    ```
 
 4. 打包压缩
 
-```
-python setup.py sdist
-```
+    ```
+    python setup.py sdist
+    ```
 
 最终生成文件`LuVx-1.0.tar.gz`
 
