@@ -4,7 +4,7 @@ tags:
 - Python
 ---
 
-# 模块发布
+# module发布
 
 1. module目录结构
 
@@ -40,10 +40,10 @@ tags:
 
 最终生成文件`LuVx-1.0.tar.gz`
 
-# 模块安装
+# module install
 
 解压,进入
 ```
 # 可以指定安装目录
-python setup.py install [--prefix=安装路径]
+python setup.py install [--prefix=path]
 ```
