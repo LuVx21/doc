@@ -7,8 +7,7 @@ title: F.LuVx
 subtitle: 查阅用
 description:
 author: Ren Xie
-# language: zh-Hans
-language: zh-CN
+language: zh-Hans
 timezone:
 
 # URL
@@ -39,8 +38,8 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false
-  line_number: false
+  enable: true
+  line_number: true
   auto_detect: false
   tab_replace:
   
@@ -76,8 +75,7 @@ pagination_dir: page
 # theme: landscape
 # theme: jacman
 # theme: maupassant
-# theme: next
-theme: material
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
