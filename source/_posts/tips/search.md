@@ -2,6 +2,7 @@
 title: Google搜索
 tags:
 - tips
+thumbnail: img/imgtomd/google.png
 ---
 
 # OR
