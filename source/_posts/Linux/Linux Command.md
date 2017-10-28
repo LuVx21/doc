@@ -24,6 +24,7 @@ tags:
 
 –help:Linux命令自带帮助信息.如:ls –help
 man:Linux提供的一个手册,包含绝大部分的命令,函数使用说明.如:man ls
+
 |功能键|说明|
 |:-|:-|
 |space|下一屏|
@@ -44,7 +45,11 @@ Linux中文件夹也是文件的一种,网络连接,硬件等也是文件
 |:-|:-|
 |-c|显示进程打开的文件|
 |-p|显示某进程号的进程打开的文件|
-|-i|[46][TCP|UDP][@hostname|hostaddr][:service|port] 显示符合条件的进程情况|
+|-i|`*1`|
+
+
+> `*1`:[46][TCP|UDP][@hostname|hostaddr][:service|port] 显示符合条件的进程情况
+
 
 ```
 该命令的作用类似于netstat -anp | grep 5000，可以根据端口号，查看是哪个进程占用了5000端口。
