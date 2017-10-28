@@ -1,7 +1,9 @@
 ---
 title: Git
 date: 2017-10-17 22:08:29
-tags: Linux
+tags:
+- Linux
+- Git
 ---
 
 # Git
@@ -145,3 +147,8 @@ git config commit.template xx.xx
 git config -–global commit.template xx.xx
 git config –-global core.editor vim
 ```
+
+
+> 参考:
+
+[Pro Git Ed1](http://iissnan.com/progit/)
