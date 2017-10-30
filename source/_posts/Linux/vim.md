@@ -1,5 +1,6 @@
 ---
 title: vim
+date: 2017-07-07
 tags:
 - Linux
 - vim

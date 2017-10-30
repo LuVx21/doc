@@ -1,5 +1,6 @@
 ---
 title: awk
+date: 2017-09-01
 tags:
 - Linux
 - Shell
