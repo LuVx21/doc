@@ -1,5 +1,6 @@
 ---
 title: MySQL 函数
+date: 2016-07-04
 tags:
 - MySQL
 ---

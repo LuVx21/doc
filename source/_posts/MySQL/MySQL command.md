@@ -1,5 +1,6 @@
 ---
 title: MySQL常用命令
+date: 2016-07-04
 tags:
 - MySQL
 ---

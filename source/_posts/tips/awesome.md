@@ -1,3 +1,7 @@
+---
+title: awesome list
+---
+
 # awesome list
 
 收集各种awesome。

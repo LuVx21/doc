@@ -1,6 +1,6 @@
 ---
 title: MySQL 存储过程
-data: 2016-07-04
+date: 2016-07-04
 tags:
 - MySQL
 ---

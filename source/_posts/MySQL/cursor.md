@@ -1,6 +1,6 @@
 ---
 title: MySQL 游标
-data: 2016-07-04
+date: 2016-07-04
 tags:
 - MySQL
 ---
