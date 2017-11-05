@@ -4,20 +4,27 @@ date: 2017-10-27
 tags:
 - Java
 - Web
+- Ajax
 ---
 
+# 关于
 
-案例1-使用原生的ajax判断用户名是否占用(了解)
 需求:
 	当我们在注册页面上输入用户名之后,点击下一个地方,去数据库中查询有无该用户名,最后提示信息
 技术分析:
 	ajax
-ajax
+
+
+**ajax:**
+
 	异步JavaScript和XML,
 	AJAX 是一种用于创建快速动态网页的技术。
 	通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
 	传统的网页（不使用 AJAX）如果需要更新内容，必须重载整个网页页面。
-/////////////////
+
+# 使用
+
+## 原生Ajax
 ajax入门程序:
 	步骤:
 		1.创建一个核心对象 XMLHttpRequest
@@ -55,7 +62,7 @@ ajax-api详解
 		  `hobby` VARCHAR(50) DEFAULT NULL,
 		  PRIMARY KEY (`id`)
 		) ENGINE=INNODB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-		INSERT 
+		INSERT
 		INTO `user`(`id`,`username`,`password`,`email`,`name`,`sex`,`birthday`,`hobby`)
 		VALUES
 		(1,'bbb','123','123@163.com','张三','男','1992-01-02','篮球, 足球, 排球'),
@@ -76,11 +83,9 @@ ajax-api详解
 		判断一下,
 			若为0,则提示用户名已被占用 表单不可用提交 提交按钮禁用
 				document.getElementById("sub").disabled=true;
-//////////////////////////////////////////////////////////////
-案例2-使用jquery的ajax判断用户是否被占用
-技术分析:
-	jquery中的ajax
-///////////////////////////
+
+## jquery中的ajax
+
 四种:
 	了解:jquery对象.load(url,params,function(数据){});
 	★: $.get(url,params,function(数据){},type);
@@ -89,11 +94,11 @@ ajax-api详解
 			params:请求的参数 参数为key\value的形式 key=value  {"":"","":""}
 			fn:回调函数 参数就是服务器发送回来的数据
 			type:返回内容格式，xml, html, script, json, text, _default。    以后用"json"
- 
+
 	★: $.post(url,params,function(数据){},type);
 		发送post请求的ajax
-		
-		若结果为json格式,  打印返回值的时候是一个对象 
+
+		若结果为json格式,  打印返回值的时候是一个对象
 			例如若json为 {"result":"success","msg":"成功"}
 			获取msg 只需要	参数.msg
 	理解:
@@ -116,9 +121,9 @@ ajax-api详解
 					},
 					error:function(){},
 					dataType:"json"
-					
+
 				});
-	
+
 //////////////////////
 步骤分析:
 	将js原生ajax修改成jquery的ajax
@@ -156,10 +161,10 @@ ajax-api详解
 	jsonlib工具类,可以使对象转换成json数据
 		1.导入jar包
 		2.使用api
-			JSONArray.fromObject(对象)  数组和list  
-			JSONObject.fromObject(对象) bean和map	
-	
-/////////////////////////////////////////////////////////	
+			JSONArray.fromObject(对象)  数组和list
+			JSONObject.fromObject(对象) bean和map
+
+/////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////
 上午回顾:
 原生ajax:
@@ -182,7 +187,7 @@ jquery中ajax
 		$.get(url,params,fn,type);
 			type:"json"
 		$.post(url,params,fn,type);
-	
+
 	理解:
 		$.ajax(选项);
 			选项:
@@ -209,7 +214,7 @@ jsonlib:
 jquery对象>>dom对象
 	方式1:
 		jquery对象.get(index);
-		
+
 	方式2:
 		jquery对象[index]
 dom对象>>jquery对象
@@ -230,14 +235,14 @@ dom对象>>jquery对象
 属性和css:
 	prop|attr
 	css
-	
+
 文本 标签体
 	val()
 	html() text()
 
 文档处理
 	内部插入
-		append prepend 
+		append prepend
 	外部插入
 		after before
 	删除
@@ -253,30 +258,3 @@ dom对象>>jquery对象
 遍历
 	jquery对象.each(function(){
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	

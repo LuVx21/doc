@@ -34,7 +34,7 @@ tags:
 |类型|模式名称|学习难度|使用频率|
 |:--|:--|:--|:--|
 |创建型模式(Creational)|[单例模式(Singleton)](单例模式.md)|2|8|
-||[简单工厂模式(Simple Factory)](简单工厂模式.md)|4|6|
+||[简单工厂模式(Simple Factory)*](简单工厂模式.md)|4|6|
 ||[工厂方法模式(Factory Method)](工厂方法模式.md)|4|10|
 ||[抽象工厂模式(Abstract Factory)](抽象工厂模式.md)|8|10|
 ||[原型模式(Prototype)](原型模式.md)|6|6|
