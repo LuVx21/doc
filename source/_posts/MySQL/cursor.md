@@ -75,6 +75,6 @@ set @sqlStr='select * from table where condition1 = ?';
 prepare s1 for @sqlStr;
 --如果有多个参数用逗号分隔
 execute s1 using @condition1;
---手工释放，或者是 connection 关闭时， server 自动回收
+--手工释放,或者是 connection 关闭时, server 自动回收
 deallocate prepare s1;
 ```

@@ -38,24 +38,24 @@ hexo deploy
 ```
 
 
-清除缓存文件 (db.json) 和已生成的静态文件 (public)。
+清除缓存文件 (db.json) 和已生成的静态文件 (public).
 ```
 hexo clean
 ```
 
-列出网站资料。
+列出网站资料.
 ```
 hexo list <type>
 ```
 
-显示 Hexo 版本。
+显示 Hexo 版本.
 ```
 hexo version
 ```
 
 ## draft
 
-这种布局在建立时会被保存到 `source/_drafts` 文件夹，您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹
+这种布局在建立时会被保存到 `source/_drafts` 文件夹,您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹
 ```
 hexo publish [layout] filename
 ```

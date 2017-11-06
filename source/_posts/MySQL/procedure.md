@@ -23,7 +23,7 @@ call proc_adder(2,@b,@s);
 select @s as sum;
 ```
 
-> delimiter:mysql默认的delimiter是`;`,告诉mysql解释器，该段命令是否已经结束了，mysql是否可以执行了。
+> delimiter:mysql默认的delimiter是`;`,告诉mysql解释器,该段命令是否已经结束了,mysql是否可以执行了.
 > 这里使用delimiter重定义结束符的作用是不让存储过程中的语句在定义的时候输出
 
 # 在过程中使用条件语句

@@ -52,12 +52,12 @@ NOTE: 命令行参数可以由位置或关键字指定
 后一种情况的一个示例是
 'sqlldr userid=scott/tiger control=foo'
 
-位置指定参数的时间必须早于但不可迟于由关键字指定的参数。
+位置指定参数的时间必须早于但不可迟于由关键字指定的参数.
 例如
 允许'sqlldr scott/tiger control=foo logfile=log',
 但是
 不允许'sqlldr scott/tiger control=foo log',
-即使参数'log'的位置正确。
+即使参数'log'的位置正确.
 
 # 例
 

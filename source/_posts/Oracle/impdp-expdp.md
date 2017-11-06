@@ -5,22 +5,22 @@ tags:
 ---
 # impdp_expdp
 
-1、exp和imp是客户端工具程序，它们既可以在客户端使用，也可以在服务端使用。
-2、expdp和impdp是服务端的工具程序，他们只能在oracle服务端使用，不能在客户端使用。
-3、imp只适用于exp导出的文件，不适用于expdp导出文件；impdp只适用于expdp导出的文件，而不适用于exp导出文件。
-4、对于10g以上的服务器，使用exp通常不能导出0行数据的空表，而此时必须使用expdp导出。
+1、exp和imp是客户端工具程序,它们既可以在客户端使用,也可以在服务端使用.
+2、expdp和impdp是服务端的工具程序,他们只能在oracle服务端使用,不能在客户端使用.
+3、imp只适用于exp导出的文件,不适用于expdp导出文件；impdp只适用于expdp导出的文件,而不适用于exp导出文件.
+4、对于10g以上的服务器,使用exp通常不能导出0行数据的空表,而此时必须使用expdp导出.
 
 ## backup dir
 
-一、创建逻辑目录，该命令不会在操作系统创建真正的目录，最好以system等管理员创建。
+一、创建逻辑目录,该命令不会在操作系统创建真正的目录,最好以system等管理员创建.
 ```
 create directory dpdata1 as 'd:\test\dump';
 ```
-二、查看管理理员目录（同时查看操作系统是否存在，因为oracle并不关心该目录是否存在，如果不存在，则出错）
+二、查看管理理员目录（同时查看操作系统是否存在,因为oracle并不关心该目录是否存在,如果不存在,则出错）
 ```
 select * from dba_directories;
 ```
-三、给scott用户赋予在指定目录的操作权限，最好以system等管理员赋予。
+三、给scott用户赋予在指定目录的操作权限,最好以system等管理员赋予.
 ```
 grant read,write on directory dpdata1 to scott;
 ```
@@ -43,7 +43,7 @@ expdp scott/tiger key=value
 |full=y|整个数据库|
 
 
-> parallel 参数为导出使用一个以上的线程来显著地加速作业。每个线程创建一个单独的转储文件，因此参数 dumpfile 应当拥有和并行度一样多的项目。您可以指定通配符作为文件名
+> parallel 参数为导出使用一个以上的线程来显著地加速作业.每个线程创建一个单独的转储文件,因此参数 dumpfile 应当拥有和并行度一样多的项目.您可以指定通配符作为文件名
 
 ```
 expdp scott/tiger tables=cases directory=dpdata1 dumpfile=expcases_%u.dmp parallel=4 job_name=cases_export

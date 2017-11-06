@@ -88,7 +88,7 @@ sed 's/text/replace_text/' <filename>
 __全局替换__
 
 ```shell
-# 默认替换后，输出替换后的内容，如果需要直接替换原文件,使用`-i`
+# 默认替换后,输出替换后的内容,如果需要直接替换原文件,使用`-i`
 sed 's/text/replace_text/g' <filename>
 ```
 

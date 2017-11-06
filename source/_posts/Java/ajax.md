@@ -18,9 +18,9 @@ tags:
 **ajax:**
 
 	异步JavaScript和XML,
-	AJAX 是一种用于创建快速动态网页的技术。
-	通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
-	传统的网页（不使用 AJAX）如果需要更新内容，必须重载整个网页页面。
+	AJAX 是一种用于创建快速动态网页的技术.
+	通过在后台与服务器进行少量数据交换,AJAX 可以使网页实现异步更新.这意味着可以在不重新加载整个网页的情况下,对网页的某部分进行更新.
+	传统的网页（不使用 AJAX）如果需要更新内容,必须重载整个网页页面.
 
 # 使用
 
@@ -93,7 +93,7 @@ ajax-api详解
 			url:请求的路径
 			params:请求的参数 参数为key\value的形式 key=value  {"":"","":""}
 			fn:回调函数 参数就是服务器发送回来的数据
-			type:返回内容格式，xml, html, script, json, text, _default。    以后用"json"
+			type:返回内容格式,xml, html, script, json, text, _default.    以后用"json"
 
 	★: $.post(url,params,function(数据){},type);
 		发送post请求的ajax
@@ -152,7 +152,7 @@ ajax-api详解
 	//////////////////////
 技术分析:
 	json
-		JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。
+		JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式.它基于ECMAScript的一个子集.
 	json格式:
 		格式1:value可以为任意值
 			{"key":value,"key1":value1}

@@ -47,19 +47,19 @@ git clean -d
 git rm
 ```
 从Working Tree和Index中移除
-必须进行up-to-date检查，如果文件或目录在Working Tree或Index中的状态与HEAD不一致，则执行失败
+必须进行up-to-date检查,如果文件或目录在Working Tree或Index中的状态与HEAD不一致,则执行失败
 
 
 ```
 git rm -f
 ```
-强制从Working Tree和Index中移除，不进行up-to-date检查
+强制从Working Tree和Index中移除,不进行up-to-date检查
 
 ```
 git rm –cached
 ```
 
-只从Index中移除，保留Working Tree中的文件状态
+只从Index中移除,保留Working Tree中的文件状态
 
 ## 移动:git mv
 
@@ -123,12 +123,12 @@ git commit --amend -m 'messgae'
 
 ### 撤销Index
 
-> `git reset HEAD` == `git reset --mixed HEAD`，用HEAD覆盖Index
+> `git reset HEAD` == `git reset --mixed HEAD`,用HEAD覆盖Index
 
 
 ### 撤销Working Tree
 
-> `git checkout --`，用Index覆盖Working Tree
+> `git checkout --`,用Index覆盖Working Tree
 
 ### 撤销Index和Working Tree
 
@@ -136,7 +136,7 @@ git commit --amend -m 'messgae'
 > * git reset --hard HEAD
 > * git checkout HEAD [filename]
 > 
-> 危险操作，将会丢失上次Commit后的所有修改，用HEAD覆盖Index和Working Tree
+> 危险操作,将会丢失上次Commit后的所有修改,用HEAD覆盖Index和Working Tree
 
 
 ### 配置提交模板
