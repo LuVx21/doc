@@ -1,5 +1,6 @@
 ---
 title: Q&A
+date: 2017-11-06
 ---
 
 1. 将前3个commit合并为1个commit怎么处理?
@@ -17,6 +18,7 @@ title: Q&A
     selfAdd(a_list)
     print(a_list) # [1, 2]
     ```
+
     为什么没有改变?
 
 5. shell提取文件的信息,如时间,作者等?
