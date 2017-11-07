@@ -43,23 +43,25 @@ git clean -d
 常搭配reset以回退状态
 
 ## 删除:git rm
+
 ```
 git rm
 ```
-从Working Tree和Index中移除
-必须进行up-to-date检查,如果文件或目录在Working Tree或Index中的状态与HEAD不一致,则执行失败
-
+直接删除,不在工作空间留下文件
+如果有处于工作空间或暂存区的修改(未commit更改),则会执行失败
 
 ```
 git rm -f
 ```
-强制从Working Tree和Index中移除,不进行up-to-date检查
+不对是否有未commit更改做检查,
+直接删除,不在工作空间留下文件
 
 ```
-git rm –cached
+git rm --cached <filename>
 ```
-
-只从Index中移除,保留Working Tree中的文件状态
+直接删除,但会在工作空间留下文件
+若同时有工作空间和暂存区的修改时,执行失败
+仅有一种时,正常结束
 
 ## 移动:git mv
 
@@ -108,6 +110,48 @@ git log --oneline --decorate --graph --grep=C --author=zhongmingmao --committer=
 
 ## 撤销
 
+`checkout`:
+
+* 撤销修改
+
+`reset`:
+
+* 撤销修改
+* 版本回退
+
+> 撤销还是版本回退和`HEAD`有关
+
+### 撤销修改
+
+#### 撤销工作区
+
+```
+git checkout -- <file>
+```
+撤销工作区的修改
+
+#### 撤销暂存区
+
+```
+git reset HEAD <file>
+```
+撤销已经提交至暂存区的修改(撤销git add)
+
+#### 撤销暂存区和工作区
+
+1.
+```
+git checkout HEAD .
+```
+2.
+```
+git reset --hard HEAD
+```
+撤销处于工作区和暂存区的所有修改
+会强制覆盖暂存区和工作目录中的所有修改
+
+> 危险操作
+
 ### 撤销Commit
 
 > git commit --amend会重新生成新的Commit对象
@@ -121,25 +165,21 @@ git commit --amend -m 'messgae'
 
 > 不同在于work tree 是否存在可提交内容
 
-### 撤销Index
+### 版本回退
 
-> `git reset HEAD` == `git reset --mixed HEAD`,用HEAD覆盖Index
+```
+git reset head^
+git reset --mixed head^
+```
+版本回退,上2个命令等价,其实`--mixed`是默认参数
+会把暂存区的修改退回到工作目录(相当于撤销git add操作)
 
-
-### 撤销Working Tree
-
-> `git checkout --`,用Index覆盖Working Tree
-
-### 撤销Index和Working Tree
-
-
-> * git reset --hard HEAD
-> * git checkout HEAD [filename]
-> 
-> 危险操作,将会丢失上次Commit后的所有修改,用HEAD覆盖Index和Working Tree
+`--mixed`:会撤销`git add`
+`--hard`:直接覆盖更改
 
 
 ### 配置提交模板
+
 ```
 当前分支的提交模板
 git config commit.template xx.xx
