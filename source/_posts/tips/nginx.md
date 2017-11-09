@@ -1,3 +1,11 @@
+---
+title: Nginx
+date: 2017-07-10
+tags:
+- Nginx
+- Web
+---
+
 # nginx
 
 @(Java)[nginx][server]
