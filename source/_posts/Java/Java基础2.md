@@ -57,12 +57,8 @@ filter(★)
 			REQUEST:只过滤从浏览器发送过来的请求 (默认) 一旦显式的写出来disparcher 默认的就不起作用了
 			FORWARD::只过滤请求转发过来的请求
 
-////////////////////////////////////////////////////////////////////
-注解:了解注解,可以使用注解
-servlet3.0:体验下注解,完成文件上传
-类加载器(了解)
-动态代理(★):加强方法
-////////////////////////////////////////////////////////////////////
+# 注解:了解注解,可以使用注解
+
 案例1-模拟junit测试
 需求:
 	在一个类的方法中添加一个@MyTest,在另一个类的main方法中,就可以执行带有@MyTest的方法
@@ -155,10 +151,12 @@ servlet3.0:体验下注解,完成文件上传
 		commons-fileupload
 		框架
 ////////////////////////////
+
+# servlet3.0:体验下注解,完成文件上传
+
 servlet3.0
 	3.0支持注解开发,没有web.xml这个文件了
 	内嵌了文件上传功能
-	/////////////////////////
 	例如:
 		创建servlet
 			在类上面添加 @WebServlet(urlPatterns={ "/demo2", "/demo21" },loadOnStartup=2)
@@ -166,7 +164,33 @@ servlet3.0
 			在类上添加 @WebListener
 		创建filter
 			在类上添加 @WebFilter(urlPatterns="/*")
-	/////////////////////
+
+	文件上传
+		浏览器端的要求:
+			表单的提交方式必须是post
+			表单必须有文件上传组件
+			表单的enctype属性值为 multipart/form-data
+
+		服务器获取的时候
+			servlet3.0要求
+				添加一个@MultipartConfig
+				获取普通的组件
+					request.getParameter(name属性的值)
+				获取文件上传组件
+					Part part=request.getPart("name属性的值")
+
+					//获取文件的名称
+					Stirng sss=part.getHeader("content-disposition")
+					//然后截取才能获取文件名称
+					sss.substring(sss.indexof("filename=")+10,sss.length-1);
+
+					//获取文件流
+					part.getInputStream();
+
+					//删除临时文件
+					part.delete()
+
+
 文件上传
 	浏览器端的要求:
 		表单的提交方法必须是post
@@ -200,8 +224,10 @@ servlet3.0
 		方式3:文件个数
 		方式4:随机目录
 			mkdirs
-	///////////////////////////////////
-类加载器:(了解)
+
+
+# 类加载器(了解)
+
 	类加载:
 		我们编写的.java文件,jvm会将变成.class文件.该文件要想运行,必须加载内存中,然后会生成一个对象.Class对象
 	类加载器层次结构
@@ -288,49 +314,11 @@ servlet3.0
 		@interface 注解名{
 
 		}
-	///////////////////////////////////
-	///////////////////////////////////
-servlet3.0
-	注解开发
-		@WebServlet(urlPatterns="/demo1")
-		@WebListener
-		@WebFilter(urlPatterns="/demo2")
 
-	文件上传
-		浏览器端的要求:
-			表单的提交方式必须是post
-			表单必须有文件上传组件
-			表单的enctype属性值为 multipart/form-data
 
-		服务器获取的时候
-			servlet3.0要求
-				添加一个@MultipartConfig
-				获取普通的组件
-					request.getParameter(name属性的值)
-				获取文件上传组件
-					Part part=request.getPart("name属性的值")
 
-					//获取文件的名称
-					Stirng sss=part.getHeader("content-disposition")
-					//然后截取才能获取文件名称
-					sss.substring(sss.indexof("filename=")+10,sss.length-1);
+# 动态代理(★):加强方法
 
-					//获取文件流
-					part.getInputStream();
-
-					//删除临时文件
-					part.delete()
-
-		上传时候需要注意的问题:
-			文件重名 随机名称
-			文件安全 重要的文件放在 web-inf meta-inf  服务器磁盘
-			目录分离
-				时间
-				用户
-				文件个数
-				随机目录
-
-//////////////////////////////////////////
 动态代理(★)
 	jdk中proxy
 		前提:实现接口
