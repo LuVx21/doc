@@ -3,7 +3,28 @@ title: Pyhton 基础手册
 tags:
 - Python
 ---
+<!-- TOC -->
 
+- [Python基础](#python基础)
+    - [注释](#注释)
+    - [表达式](#表达式)
+    - [位运算：](#位运算)
+                - [break](#break)
+                - [continute](#continute)
+    - [list列表](#list列表)
+        - [列表的读取](#列表的读取)
+        - [删除列表中的值](#删除列表中的值)
+        - [Python列表脚本操作符](#python列表脚本操作符)
+        - [Python列表函数&方法](#python列表函数方法)
+            - [Python 包含以下函数：](#python-包含以下函数)
+            - [Python 包含以下方法：](#python-包含以下方法)
+    - [Tuple元组](#tuple元组)
+        - [访问元组](#访问元组)
+        - [元组运算符](#元组运算符)
+        - [元组索引&截取](#元组索引截取)
+        - [无关闭分割符](#无关闭分割符)
+
+<!-- /TOC -->
 #Python基础
 
 @(Python)

@@ -3,7 +3,12 @@ title: module
 tags:
 - Python
 ---
+<!-- TOC -->
 
+- [module发布](#module发布)
+- [module install](#module-install)
+
+<!-- /TOC -->
 # module发布
 
 1. module目录结构

@@ -3,6 +3,17 @@ title: impdp_expdp
 date: 2017-10-18 22:08:29
 tags:
 ---
+
+<!-- TOC -->
+
+- [impdp_expdp](#impdp_expdp)
+    - [backup dir](#backup-dir)
+    - [expdp](#expdp)
+    - [impdp](#impdp)
+    - [parfile](#parfile)
+
+<!-- /TOC -->
+
 # impdp_expdp
 
 1、exp和imp是客户端工具程序,它们既可以在客户端使用,也可以在服务端使用.

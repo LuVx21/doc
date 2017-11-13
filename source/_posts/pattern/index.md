@@ -4,7 +4,13 @@ date: 2017-07-01
 tags:
 - 设计模式
 ---
+<!-- TOC -->
 
+- [[面向对象设计原则](Principle.md)](#面向对象设计原则principlemd)
+- [Pattern](#pattern)
+- [参考:](#参考)
+
+<!-- /TOC -->
 
 # [面向对象设计原则](Principle.md)
 

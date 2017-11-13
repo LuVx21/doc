@@ -5,6 +5,11 @@ tags:
 - hexo
 - node.js
 ---
+<!-- TOC -->
+
+- [draft](#draft)
+
+<!-- /TOC -->
 
 ```
 npm install -g hexo-cli

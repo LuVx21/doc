@@ -3,7 +3,11 @@ title: nodejs
 tags:
 - nodejs
 ---
+<!-- TOC -->
 
+- [install](#install)
+
+<!-- /TOC -->
 # install
 
 ```

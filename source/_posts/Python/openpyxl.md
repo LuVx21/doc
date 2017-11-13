@@ -4,7 +4,20 @@ tags:
 - Python
 - openpyxl
 ---
+<!-- TOC -->
 
+- [openpyxl中cell数据类型](#openpyxl中cell数据类型)
+- [import module](#import-module)
+- [obj of workbook](#obj-of-workbook)
+- [obj of sheet](#obj-of-sheet)
+    - [new sheet](#new-sheet)
+    - [sheet](#sheet)
+- [cell](#cell)
+    - [读取多个cell](#读取多个cell)
+- [遍历](#遍历)
+- [参考](#参考)
+
+<!-- /TOC -->
 # openpyxl中cell数据类型
 
 * NULL

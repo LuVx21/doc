@@ -6,7 +6,32 @@ tags:
 - NoSQL
 - Database
 ---
+<!-- TOC -->
 
+- [MongoDB 基础](#mongodb-基础)
+    - [MongoDB 概念](#mongodb-概念)
+        - [document](#document)
+        - [数据类型](#数据类型)
+    - [安装](#安装)
+    - [数据目录](#数据目录)
+    - [运行MongoDB服务](#运行mongodb服务)
+        - [MongoDB Shell](#mongodb-shell)
+    - [基本命令](#基本命令)
+        - [数据库](#数据库)
+        - [集合](#集合)
+        - [基本操作](#基本操作)
+            - [插入(增)](#插入增)
+            - [删除(删)](#删除删)
+            - [更新(改)](#更新改)
+            - [查询(查)](#查询查)
+    - [关系符](#关系符)
+    - [limit() skip()](#limit-skip)
+    - [sort()](#sort)
+    - [ensureIndex()](#ensureindex)
+    - [aggregate()](#aggregate)
+    - [备份&恢复](#备份恢复)
+
+<!-- /TOC -->
 # MongoDB 基础
 
 @(Database)

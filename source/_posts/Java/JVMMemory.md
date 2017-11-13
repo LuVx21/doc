@@ -5,7 +5,18 @@ tags:
 - Java
 - JVM
 ---
+<!-- TOC -->
 
+- [内存结构](#内存结构)
+    - [堆内存（Heap）](#堆内存heap)
+    - [方法区（Method Area）](#方法区method-area)
+    - [程序计数器（Program Counter Register）](#程序计数器program-counter-register)
+    - [JVM栈（JVM Stacks）](#jvm栈jvm-stacks)
+    - [本地方法栈（Native Method Stacks）](#本地方法栈native-method-stacks)
+- [内存溢出的地点](#内存溢出的地点)
+- [参考](#参考)
+
+<!-- /TOC -->
 
 # 内存结构
 

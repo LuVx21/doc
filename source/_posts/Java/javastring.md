@@ -1,6 +1,8 @@
 ---
-title: String
+title: Java String
 tags:
+- Java
+categories:
 - Java
 ---
 

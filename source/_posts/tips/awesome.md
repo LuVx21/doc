@@ -1,7 +1,17 @@
 ---
 title: awesome list
 ---
+<!-- TOC -->
 
+- [awesome list](#awesome-list)
+    - [目录](#目录)
+    - [语言](#语言)
+    - [书籍](#书籍)
+    - [前端](#前端)
+    - [后端](#后端)
+    - [其它](#其它)
+
+<!-- /TOC -->
 # awesome list
 
 收集各种awesome.

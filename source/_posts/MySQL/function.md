@@ -4,7 +4,10 @@ date: 2016-07-04
 tags:
 - MySQL
 ---
+<!-- TOC -->
 
+
+<!-- /TOC -->
 
 ```sql
 drop function if exists `deletebyid`;

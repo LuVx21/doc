@@ -5,7 +5,17 @@ tags:
 - Nginx
 - Web
 ---
+<!-- TOC -->
 
+- [nginx](#nginx)
+    - [关于](#关于)
+    - [模块](#模块)
+    - [命令及配置](#命令及配置)
+    - [搭建集群](#搭建集群)
+        - [windows](#windows)
+        - [Linux](#linux)
+
+<!-- /TOC -->
 # nginx
 
 @(Java)[nginx][server]

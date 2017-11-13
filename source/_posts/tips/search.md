@@ -4,7 +4,17 @@ tags:
 - tips
 thumbnail: img/imgtomd/google.png
 ---
+<!-- TOC -->
 
+- [OR](#or)
+- [-](#-)
+- [site:](#site)
+- [filetype](#filetype)
+- [intitle 和 allintitle](#intitle-和-allintitle)
+- [intext 和 allintext](#intext-和-allintext)
+- [inurl 和 allinurl](#inurl-和-allinurl)
+
+<!-- /TOC -->
 # OR
 
 `word OR word`
