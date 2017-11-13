@@ -6,6 +6,14 @@ tags:
 - Web
 - Ajax
 ---
+<!-- TOC -->
+
+- [关于](#关于)
+- [使用](#使用)
+	- [原生Ajax](#原生ajax)
+	- [jquery中的ajax](#jquery中的ajax)
+
+<!-- /TOC -->
 
 # 关于
 

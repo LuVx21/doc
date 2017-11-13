@@ -3,7 +3,11 @@ title: log4j2
 tags:
 - Java
 ---
+<!-- TOC -->
 
+- [log4j2 使用详解](#log4j2-使用详解)
+
+<!-- /TOC -->
 # log4j2 使用详解
 
 @(JavaEE)

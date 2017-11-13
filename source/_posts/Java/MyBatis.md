@@ -8,25 +8,25 @@ tags:
 
 <!-- TOC -->
 
-- [1. jdbc开发](#1-jdbc开发)
-- [2. 回顾hibernate单表开发](#2-回顾hibernate单表开发)
-- [3. 关于MyBatis](#3-关于mybatis)
-- [4. MyBatis-Demo](#4-mybatis-demo)
-- [5. MyBatis基础详解](#5-mybatis基础详解)
-	- [5.1. MyBatis工作流程](#51-mybatis工作流程)
-	- [5.2. 2个XML文件](#52-2个xml文件)
-		- [5.2.1. 实体映射文件](#521-实体映射文件)
-		- [5.2.2. MyBatis配置文件](#522-mybatis配置文件)
-	- [5.3. 分页查询](#53-分页查询)
-	- [5.4. 动态查询](#54-动态查询)
-	- [5.5. 查询](#55-查询)
-	- [5.6. 更新](#56-更新)
-	- [5.7. 删除](#57-删除)
-	- [5.8. 插入](#58-插入)
+- [jdbc开发](#jdbc开发)
+- [回顾hibernate单表开发](#回顾hibernate单表开发)
+- [关于MyBatis](#关于mybatis)
+- [MyBatis-Demo](#mybatis-demo)
+- [MyBatis基础详解](#mybatis基础详解)
+	- [MyBatis工作流程](#mybatis工作流程)
+	- [2个XML文件](#2个xml文件)
+		- [实体映射文件](#实体映射文件)
+		- [MyBatis配置文件](#mybatis配置文件)
+	- [分页查询](#分页查询)
+	- [动态查询](#动态查询)
+	- [查询](#查询)
+	- [更新](#更新)
+	- [删除](#删除)
+	- [插入](#插入)
 
 <!-- /TOC -->
 
-# 1. jdbc开发
+# jdbc开发
 
 1. 优点：简单易学,上手快,非常灵活构建SQL，效率高
 2. 缺点：代码繁琐，难以写出高质量的代码（例如：资源的释放，SQL注入安全性等）
@@ -34,20 +34,20 @@ tags:
     （例如：分页）。
 3. 适合于超大批量数据的操作，速度快
 
-# 2. 回顾hibernate单表开发
+# 回顾hibernate单表开发
 
 1. 优点：不用写SQL，完全以面向对象的方式设计和访问，不用管底层具体数据库的语法，（例如：分页）便于理解。
 2. 缺点：处理复杂业务时，灵活度差, 复杂的HQL难写难理解，例如多表查询的HQL语句
 3. 适合于中小批量数据的操作，速度慢
 
-# 3. 关于MyBatis
+# 关于MyBatis
 
 1. 基于JDBC&hibernate二种支持，我们需要在中间找到一个平衡点呢？结合它们的优点，摒弃它们的缺点，
 2. MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。
 3. iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAO）
 4. jdbc/dbutils/springdao，hibernate/springorm，mybaits同属于ORM解决方案之一
 
-# 4. MyBatis-Demo
+# MyBatis-Demo
 
 创建一个mybatis-day01这么一个javaweb工程或java工程
 导入mybatis和数据库的jar包到/WEB-INF/lib目录下
@@ -270,11 +270,11 @@ public class StudentDao {
 }
 ```
 
-# 5. MyBatis基础详解
+# MyBatis基础详解
 
 上面的demo即是MyBatis入门级写法,下面对基础知识进行详解,可参看上面demo中代码.
 
-## 5.1. MyBatis工作流程
+## MyBatis工作流程
 
 1. 通过Reader对象读取src目录下的mybatis.xml配置文件(该文本的位置和名字可任意)
 2. 通过SqlSessionFactoryBuilder对象创建SqlSessionFactory对象
@@ -284,17 +284,17 @@ public class StudentDao {
 6. 事务提交，必写
 7. 关闭SqlSession对象，并且分开当前线程与SqlSession对象，让GC尽早回收
 
-## 5.2. 2个XML文件
+## 2个XML文件
 
-### 5.2.1. 实体映射文件
+### 实体映射文件
 
 参看上面在entity目录下创建StudentMapper.xml配置文件
 
-### 5.2.2. MyBatis配置文件
+### MyBatis配置文件
 
 参看上面在src目录下创建mybatis.xml配置文件
 
-## 5.3. 分页查询
+## 分页查询
 
 ```
 /**
@@ -358,11 +358,11 @@ public List<Student> findAllByNameWithFy(String name,int start,int size) throws 
 </mapper>
 ```
 
-## 5.4. 动态查询
+## 动态查询
 
 查询条件不确定，需要根据情况产生SQL语法，这种情况叫动态SQL
 
-## 5.5. 查询
+## 查询
 
 ```
 /**
@@ -405,7 +405,7 @@ public List<Student> dynaSQLwithSelect(String name,Double sal) throws Exception{
 </mapper>
 ```
 
-## 5.6. 更新
+## 更新
 
 ```
 /**
@@ -445,7 +445,7 @@ public void dynaSQLwithUpdate(Student student) throws Exception{
     </update>
 </mapper>
 ```
-## 5.7. 删除
+## 删除
 ```
 /**
  * 动态SQL--删除
@@ -494,7 +494,7 @@ public void dynaSQLwithDelete(int... ids) throws Exception{
 </mapper>
 ```
 
-## 5.8. 插入
+## 插入
 
 ```
 /**

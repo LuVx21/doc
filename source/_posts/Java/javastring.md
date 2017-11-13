@@ -8,7 +8,11 @@ tags:
 
 @(Java)
 
-> [TOC]
+<!-- TOC -->
+
+- [String](#string)
+
+<!-- /TOC -->
 
 String vs StringBuilder:
 StringBuilder是可变的,这就意味你在创建对象之后还可以去修改它的值.

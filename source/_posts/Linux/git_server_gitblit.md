@@ -4,7 +4,12 @@ tags:
 - Linux
 - Git
 ---
+<!-- TOC -->
 
+- [搭建git服务器](#搭建git服务器)
+	- [windows下](#windows下)
+
+<!-- /TOC -->
 # 搭建git服务器
 
 ## windows下

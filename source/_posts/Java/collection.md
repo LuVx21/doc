@@ -10,7 +10,18 @@ tags:
 
 
 [TOC]
+<!-- TOC -->
 
+- [java collection](#java-collection)
+	- [map](#map)
+		- [hashmap](#hashmap)
+	- [List](#list)
+	- [Set](#set)
+		- [HashSet](#hashset)
+		- [TreeSet](#treeset)
+		- [LinkedHashSet](#linkedhashset)
+
+<!-- /TOC -->
 
 ## map
 
