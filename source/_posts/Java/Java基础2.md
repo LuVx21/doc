@@ -6,6 +6,7 @@ tags:
 - Fileter
 - Web
 ---
+
 <!-- TOC -->
 
 - [注解:了解注解,可以使用注解](#注解了解注解可以使用注解)
@@ -13,7 +14,7 @@ tags:
     - [文件上传功能](#文件上传功能)
         - [上传注意的问题:](#上传注意的问题)
 - [类加载器(了解)](#类加载器了解)
-- [动态代理(★):加强方法](#动态代理★加强方法)
+- [动态代理](#动态代理)
 
 <!-- /TOC -->
 
@@ -251,45 +252,58 @@ __全盘负责委托机制__
 
 
 
-案例3-统一编码
-技术分析:
-	动态代理
-/////////////////////
+# 动态代理
+
+动态代理:在项目运行的时候才创建一个代理对象,对方法进行增强(控制)
+
+方式:
+
+* jdk中Proxy类,前提:实现接口
+* spring中cglib,前提:继承类
+
+动态的在内存中创建一个代理对象:
+
+```java
+Object Proxy.newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)
+```
+
+参数说明:
+
+> * ClassLoader:代理对象类加载器,一般我们使用的是被代理对象的类加载器
+> * Class[]:代理对象需要实现接口,一般我们使用的是被代理对象所实现的所有接口
+> * InvocationHandler:执行处理类.在这里面对方法进行加强
+
+invocationHandler中只有一个方法
+
+```java
+Object invoke(Object proxy, Method method, Object[] args)
+```
+
+参数说明:
+
+> * proxy:代理对象
+> * method:当前执行的方法
+> * args:当前方法执行的时候所需要的参数
+> * 返回值:就是当前method对象执行的返回值
+
+__使用例__
+
+```java
+Proxy.newProxyInstance(被代理对象.getClass().getClassLoader(),被代理对象.getClass().getInterfaces(),new InvocationHandler(){
+	invoke(代理对象,当前执行的方法,需要的参数){
+	}
+});
+```
+
 静态代理书写步骤:
-	1.要求被装饰者和装饰者实现同一个接口或者继承同一个类
-	2.在装饰者中要有被装饰者的引用
-	3.对需要加强的方法进行加强
-	4.对不需要加强的方法调用原来的方法
-////////////////////////////
-动态代理:
-	在项目运行的时候才创建一个代理对象,对方法进行增强(控制)
-	方式1:
-		jdk中Proxy类,前提:实现接口
-	方式2:
-		spring中cglib,前提:继承类
 
-	动态的在内存中创建一个代理对象
-		Object Proxy.newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)
-			参数说明:
-				ClassLoader:代理对象类加载器 一般我们使用的是被代理对象的类加载器
-				Class[]:代理对象需要实现接口 一般我们使用的是被搭理对象所实现的所有接口
-				InvocationHandler:执行处理类.在这里面对方法进行加强
+1. 要求被装饰者和装饰者实现同一个接口或者继承同一个类
+2. 在装饰者中要有被装饰者的引用
+3. 对需要加强的方法进行加强
+4. 对不需要加强的方法调用原来的方法
 
-			invocationHandler中只有一个方法
-				Object invoke(Object proxy, Method method, Object[] args)
-					参数说明:
-						proxy:代理对象
-						method:当前执行的方法
-						args:当前方法执行的时候所需要的参数
-						返回值:就是当前method对象执行的返回值
- //////////////////////////////////////////////////
- 步骤分析:
-	过滤器
-		doFilter(Request request,Response response)
 
-		将代理request传递过去
-		doFilter(Request requestPrxoy,Response response)
-	////////////////////////////////////////////////
+////////////////////////////////////////////////
 上午回顾:
 注解:
 	注释:给程序员看的
@@ -324,18 +338,3 @@ __全盘负责委托机制__
 		@interface 注解名{
 
 		}
-
-
-
-# 动态代理(★):加强方法
-
-动态代理(★)
-	jdk中proxy
-		前提:实现接口
-
-		Proxy.newProxyInstance(被代理对象.getClass().getClassLoader(),被代理对象.getClass().getInterfaces(),new InvocationHandler(){
-			invoke(代理对象,当前执行的方法,需要的参数){
-
-
-			}
-		});
