@@ -9,11 +9,14 @@ tags:
 <!-- TOC -->
 
 - [注解:了解注解,可以使用注解](#注解了解注解可以使用注解)
-- [servlet3.0:体验下注解,完成文件上传](#servlet30体验下注解完成文件上传)
+- [Servlet3.0](#servlet30)
+    - [文件上传功能](#文件上传功能)
+        - [上传注意的问题:](#上传注意的问题)
 - [类加载器(了解)](#类加载器了解)
 - [动态代理(★):加强方法](#动态代理★加强方法)
 
 <!-- /TOC -->
+
 回顾:
 listener(了解)
 	监听器,监听javaweb中三个域对象
@@ -159,95 +162,95 @@ filter(★)
 		框架
 ////////////////////////////
 
-# servlet3.0:体验下注解,完成文件上传
+# Servlet3.0
 
-servlet3.0
-	3.0支持注解开发,没有web.xml这个文件了
-	内嵌了文件上传功能
-	例如:
-		创建servlet
-			在类上面添加 @WebServlet(urlPatterns={ "/demo2", "/demo21" },loadOnStartup=2)
-		创建listener
-			在类上添加 @WebListener
-		创建filter
-			在类上添加 @WebFilter(urlPatterns="/*")
+* 支持注解开发
+* 没有web.xml这个文件了
+* 内嵌了文件上传功能
 
-	文件上传
-		浏览器端的要求:
-			表单的提交方式必须是post
-			表单必须有文件上传组件
-			表单的enctype属性值为 multipart/form-data
+使用:
 
-		服务器获取的时候
-			servlet3.0要求
-				添加一个@MultipartConfig
-				获取普通的组件
-					request.getParameter(name属性的值)
-				获取文件上传组件
-					Part part=request.getPart("name属性的值")
+servlet:
+```
+@WebServlet(urlPatterns={ "/demo2", "/demo21" },loadOnStartup=2)
+```
+listener:
+```
+@WebListener
+```
+filter:
+```
+@WebFilter(urlPatterns="/*")
+```
 
-					//获取文件的名称
-					Stirng sss=part.getHeader("content-disposition")
-					//然后截取才能获取文件名称
-					sss.substring(sss.indexof("filename=")+10,sss.length-1);
+## 文件上传功能
 
-					//获取文件流
-					part.getInputStream();
+浏览器端的要求:
 
-					//删除临时文件
-					part.delete()
+* 表单的提交方式必须是`post`
+* 表单必须有文件上传组件:`<input type="file" name="f">`
+* form表单属性需设置为:`enctype="multipart/form-data"`
 
+服务器获取时:
 
-文件上传
-	浏览器端的要求:
-		表单的提交方法必须是post
-		必须有一个文件上传组件  <input type="file" name=""/>
-		必须设置表单的enctype=multipart/form-data
-	服务器端的要求:
-		servlet3.0中
-			需要在servlet中添加注解
-				@MultipartConfig
-			接受普通上传组件 (除了文件上传组件):request.getParameter(name属性的值)
-			接受文件上传组件 request.getPart(name属性的值);
-				getName():获取的name的属性值
-			获取文件名:
-				 part.getHeader("Content-Disposition"):获取头信息 然后截取
-//////////
-上传注意的问题:
-	名字重复 随机名称
-		在数据库中提供两个字段,
-			一个字段用来存放文件的真实名称  1.jpg
-			另一个字段用来存放文件存放路径  g:/sdfasdf.jpg
-		随机名称:
-			uuid
-			时间戳
-	文件安全
-		重要的文件存放在 web-inf 或者 meta-inf 或者 服务器创建一个路径
-		不是很重要的文件 项目下
+1. 添加一个`@MultipartConfig`
+2. 获取普通的组件
 
-	文件存放目录
-		方式1:日期
-		方式2:用户
-		方式3:文件个数
-		方式4:随机目录
-			mkdirs
+```java
+request.getParameter("name属性的值")
+```
+3. 获取文件上传组件
+
+```java
+// 设置编码
+request,setCharacterEncoding("UTF-8");
+// 获取上传组件
+Part part = request.getPart("name属性的值")
+//获取文件的名称
+Stirng sss=part.getHeader("Content-Disposition")
+//然后截取才能获取文件名称
+sss.substring(sss.indexof("filename=")+10,sss.length-1);
+//获取文件流
+part.getInputStream();
+//删除临时文件
+part.delete()
+```
+
+### 上传注意的问题:
+
+__多次上传时名字重复问题__
+
+解决方案:
+
+方案1:在数据库中提供两个字段,
+	一个字段用来存放文件的真实名称如:1.jpg
+	另一个字段用来存放文件存放路径如:g:/sdfasdf.jpg
+方案2:随机名称:
+	uuid
+	时间戳
+
+__文件安全问题__
+
+重要的文件存放在`web-inf`或者`meta-inf`或者`服务器创建一个路径`
+
+大量文件的情况下,可以分目录存放
 
 
 # 类加载器(了解)
 
-	类加载:
-		我们编写的.java文件,jvm会将变成.class文件.该文件要想运行,必须加载内存中,然后会生成一个对象.Class对象
-	类加载器层次结构
-		引导类加载器	rt.jar
-		扩展类加载器	ext/*.jar
-		应用类加载器	我们自己编写类
-	全盘负责委托机制:
-		当一个类运行的时候,有可能有其他类,应用类加载器询问扩展类加载器:你加载过这些类吗?
-		扩展类加载器在向上问(引导类加载器):你加载过这些类吗?
-		引导类加载器:我查查,有一个是我负责,我加载.
-		扩展类加载器:接下来我来查,有几个是我负责,我加载,还有几个类我已经加载完成了,你可以直接使用
-		应用类加载器:收到了 剩下的我来
-////////////////////////
+__类加载__
+	编写的.java文件,jvm会将变成.class文件.该文件要想运行,必须加载到内存中,然后会生成一个对象.Class对象
+
+__类加载器层次结构__
+
+* 引导类加载器	rt.jar
+* 扩展类加载器	ext/*.jar
+* 应用类加载器	自己编写类
+
+__全盘负责委托机制__
+
+
+
 案例3-统一编码
 技术分析:
 	动态代理
