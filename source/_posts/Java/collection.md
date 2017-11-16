@@ -77,7 +77,7 @@ clear()
 Collection <-- Set <-- TreeSet
 
 同样,TreeSet就是利用TreeMap来实现的
-TreeSet是里面的内容有序（按照一定规则排序）,但不是指元素的添加顺序
+TreeSet是里面的内容有序(按照一定规则排序),但不是指元素的添加顺序
 
 TreeSet构造函数:
 ```Java

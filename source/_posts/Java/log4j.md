@@ -28,19 +28,19 @@ DEBUG 为程序的调试信息
 ## 日志输出目的地
 
 log4j.appender.appenderName = fully.qualified.name.of.appender.class
-1. org.apache.log4j.ConsoleAppender（控制台）
-2. org.apache.log4j.FileAppender（文件）
-3. org.apache.log4j.DailyRollingFileAppender（每天产生一个日志文件）
-4. org.apache.log4j.RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件）
-5. org.apache.log4j.WriterAppender（将日志信息以流格式发送到任意指定的地方）
+1. org.apache.log4j.ConsoleAppender(控制台)
+2. org.apache.log4j.FileAppender(文件)
+3. org.apache.log4j.DailyRollingFileAppender(每天产生一个日志文件)
+4. org.apache.log4j.RollingFileAppender(文件大小到达指定尺寸的时候产生一个新的文件)
+5. org.apache.log4j.WriterAppender(将日志信息以流格式发送到任意指定的地方)
 
 ## 日志信息的格式
 
 log4j.appender.appenderName.layout = fully.qualified.name.of.layout.class
-1. org.apache.log4j.HTMLLayout（以HTML表格形式布局）,
-2. org.apache.log4j.PatternLayout（可以灵活地指定布局模式）,
-3. org.apache.log4j.SimpleLayout（包含日志信息的级别和信息字符串）,
-4. org.apache.log4j.TTCCLayout（包含日志产生的时间、线程、类别等等信息）
+1. org.apache.log4j.HTMLLayout(以HTML表格形式布局),
+2. org.apache.log4j.PatternLayout(可以灵活地指定布局模式),
+3. org.apache.log4j.SimpleLayout(包含日志信息的级别和信息字符串),
+4. org.apache.log4j.TTCCLayout(包含日志产生的时间、线程、类别等等信息)
 
 ## 日志信息格式说明
 

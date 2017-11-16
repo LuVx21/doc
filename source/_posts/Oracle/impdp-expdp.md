@@ -27,7 +27,7 @@ tags:
 ```
 create directory dpdata1 as 'd:\test\dump';
 ```
-二、查看管理理员目录（同时查看操作系统是否存在,因为oracle并不关心该目录是否存在,如果不存在,则出错）
+二、查看管理理员目录(同时查看操作系统是否存在,因为oracle并不关心该目录是否存在,如果不存在,则出错)
 ```
 select * from dba_directories;
 ```

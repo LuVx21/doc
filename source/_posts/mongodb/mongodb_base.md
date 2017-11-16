@@ -164,7 +164,7 @@ db.collection.drop()
 document=({age:26})
 db.collectionName.insert(document)
 ```
-集合不在该数据库中， MongoDB 会自动创建该集合并插入文档
+集合不在该数据库中, MongoDB 会自动创建该集合并插入文档
 
 ```
 db.col.save(document)
@@ -215,11 +215,11 @@ db.collection.update(
 ```
 
 参数说明：
-* query : update的查询条件，类似sql update查询内where后面的。
-* update : update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查询内set后面的
-* upsert : 可选，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。
-* multi : 可选，默认是false,只更新找到的第一条记录,如果为true,就把按条件查出来多条记录全部更新。
-* writeConcern :可选，抛出异常的级别
+* query : update的查询条件,类似sql update查询内where后面的。
+* update : update的对象和一些更新的操作符(如$,$inc...)等,也可以理解为sql update查询内set后面的
+* upsert : 可选,如果不存在update的记录,是否插入objNew,true为插入,默认是false,不插入。
+* multi : 可选,默认是false,只更新找到的第一条记录,如果为true,就把按条件查出来多条记录全部更新。
+* writeConcern :可选,抛出异常的级别
 
 
 ```
@@ -261,7 +261,7 @@ db.col.find().pretty()
 db.col.findOne()
 ```
 
-* projection ：可选，使用投影操作符指定返回的键。(0表示不显示 1表示显示).如`{"age":1,_id:0}` 显示age内容,不显示_id内容
+* projection ：可选,使用投影操作符指定返回的键。(0表示不显示 1表示显示).如`{"age":1,_id:0}` 显示age内容,不显示_id内容
 
 
 
@@ -284,7 +284,7 @@ db.col.find({"age":{$lt:40,$gt:18}})
 
 ## limit() skip()
 
-limit()方法接受一个数字参数，指定从MongoDB中读取的记录条数
+limit()方法接受一个数字参数,指定从MongoDB中读取的记录条数
 
 
 ```
@@ -299,7 +299,7 @@ db.colName.find().skip(NUMBER)
 ```
 
 * 默认参数为 0
-* 当查询时同时使用sort,skip,limit，无论位置先后，最先执行顺序 sort再skip再limit。
+* 当查询时同时使用sort,skip,limit,无论位置先后,最先执行顺序 sort再skip再limit。
 
 
 > mysql中limit(10,1000)
@@ -315,7 +315,7 @@ db.col.find().sort({key:1})
 
 ## ensureIndex()
 
-索引是特殊的数据结构，索引存储在一个易于遍历读取的数据集合中，索引是对数据库表中一列或多列的值进行排序的一种结构
+索引是特殊的数据结构,索引存储在一个易于遍历读取的数据集合中,索引是对数据库表中一列或多列的值进行排序的一种结构
 
 使用 ensureIndex() 方法来创建索引
 
@@ -328,16 +328,16 @@ db.colName.ensureIndex({key:1},{option:value})
 
 |参数|类型|说明|
 |:-|:-|:-|
-|background|Boolean|建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 "background" 可选参数。 "background" 默认值为false。|
+|background|Boolean|建索引过程会阻塞其它数据库操作,background可指定以后台方式创建索引,即增加 "background" 可选参数。 "background" 默认值为false。|
 |unique|Boolean|建立的索引是否唯一。指定为true创建唯一索引。默认值为false.|
-|name|string|索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。|
+|name|string|索引的名称。如果未指定,MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。|
 |dropDups|Boolean|在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为 false.|
-|sparse|Boolean|对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 false.|
-|expireAfterSeconds|integer|指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。|
+|sparse|Boolean|对文档中不存在的字段数据不启用索引；这个参数需要特别注意,如果设置为true的话,在索引字段中不会查询出不包含对应字段的文档.。默认值为 false.|
+|expireAfterSeconds|integer|指定一个以秒为单位的数值,完成 TTL设定,设定集合的生存时间。|
 |v|index version|索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。|
-|weights|document|索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。|
-|default_language|string|对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语|
-|language_override|string|对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.|
+|weights|document|索引权重值,数值在 1 到 99,999 之间,表示该索引相对于其他索引字段的得分权重。|
+|default_language|string|对于文本索引,该参数决定了停用词及词干和词器的规则的列表。 默认为英语|
+|language_override|string|对于文本索引,该参数指定了包含在文档中的字段名,语言覆盖默认的language,默认值为 language.|
 
 ```
 db.col.ensureIndex({key1:1,key1:1}, {background: true})
@@ -364,19 +364,19 @@ db.mycol.aggregate([
 |	参数	|	说明	|	例	|
 |	:-	|	:-	|	:-	|
 |	$push	|	在结果文档中插入值到一个数组中。	|	db.col.aggregate([{$group : {_id : "$by_user", url : {$push: "$url"}}}])	|
-|	$addToSet	|	在结果文档中插入值到一个数组中，但不创建副本。	|	db.col.aggregate([{$group : {_id : "$by_user", url : {$addToSet : "$url"}}}])	|
+|	$addToSet	|	在结果文档中插入值到一个数组中,但不创建副本。	|	db.col.aggregate([{$group : {_id : "$by_user", url : {$addToSet : "$url"}}}])	|
 |	$first	|	根据资源文档的排序获取第一个文档数据。	|	db.col.aggregate([{$group : {_id : "$by_user", first_url : {$first : "$url"}}}])	|
 |	$last	|	根据资源文档的排序获取最后一个文档数据	|	db.col.aggregate([{$group : {_id : "$by_user", last_url : {$last : "$url"}}}])	|
 
 
 ## 管道
 
-* $project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。
-* $match：用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。
+* $project：修改输入文档的结构。可以用来重命名、增加或删除域,也可以用于创建计算结果以及嵌套文档。
+* $match：用于过滤数据,只输出符合条件的文档。$match使用MongoDB的标准查询操作。
 * $limit：用来限制MongoDB聚合管道返回的文档数。
-* $skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。
-* $unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。
-* $group：将集合中的文档分组，可用于统计结果。
+* $skip：在聚合管道中跳过指定数量的文档,并返回余下的文档。
+* $unwind：将文档中的某一个数组类型字段拆分成多条,每条包含数组中的一个值。
+* $group：将集合中的文档分组,可用于统计结果。
 * $sort：将输入文档排序后输出。
 * $geoNear：输出接近某一地理位置的有序文档。
 
@@ -409,7 +409,7 @@ mongorestore -h <hostname><:port> -d <dbname> <path>
 ```
 
 --drop：
-恢复的时候，先删除当前数据，然后恢复备份的数据
+恢复的时候,先删除当前数据,然后恢复备份的数据
 
 --dir：
 指定备份的目录
