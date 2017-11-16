@@ -1,3 +1,18 @@
+---
+title: Struts
+date: 2017-11-11
+tag:
+- Java
+- Struts
+---
+
+<!-- TOC -->
+
+- [Struts2第三天](#struts2第三天)
+	- [案例一：使用Struts2框架查询所有的客户功能](#案例一使用struts2框架查询所有的客户功能)
+
+<!-- /TOC -->
+
 ## Struts2第三天 ##
 	
 ----------

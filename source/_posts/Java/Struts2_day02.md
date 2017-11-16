@@ -1,3 +1,18 @@
+---
+title: Struts
+date: 2017-11-11
+tag:
+- Java
+- Struts
+---
+
+<!-- TOC -->
+
+- [Struts2的第二天](#struts2的第二天)
+	- [案例一：使用Struts2作为WEB层完成客户的新增功能](#案例一使用struts2作为web层完成客户的新增功能)
+
+<!-- /TOC -->
+
 ## Struts2的第二天 ##
 	
 ----------

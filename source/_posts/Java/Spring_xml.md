@@ -3,16 +3,16 @@ title: Spring IOC XML
 date: 2017-11-11
 tag:
 - Java
-_ SPring
+- Spring
 ---
 
 <!-- TOC -->
 
 - [今天课程：Spring框架第一天](#今天课程spring框架第一天)
-    - [案例一：使用Spring的IOC技术完成客户的保存功能](#案例一使用spring的ioc技术完成客户的保存功能)
-    - [技术分析之Spring框架的概述和入门](#技术分析之spring框架的概述和入门)
-    - [技术分析之Spring框架的Bean管理的配置文件方式](#技术分析之spring框架的bean管理的配置文件方式)
-    - [Spring框架整合WEB](#spring框架整合web)
+	- [案例一：使用Spring的IOC技术完成客户的保存功能](#案例一使用spring的ioc技术完成客户的保存功能)
+	- [技术分析之Spring框架的概述和入门](#技术分析之spring框架的概述和入门)
+	- [技术分析之Spring框架的Bean管理的配置文件方式](#技术分析之spring框架的bean管理的配置文件方式)
+	- [Spring框架整合WEB](#spring框架整合web)
 
 <!-- /TOC -->
 
