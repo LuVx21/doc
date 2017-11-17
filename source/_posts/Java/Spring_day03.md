@@ -9,8 +9,8 @@ tag:
 <!-- TOC -->
 
 - [Spring框架的第三天](#spring框架的第三天)
-	- [案例一：使用Spring框架的AOP技术对DAO层的功能进行增强](#案例一使用spring框架的aop技术对dao层的功能进行增强)
-	- [案例二：Spring框架的事务管理完成转账的案例](#案例二spring框架的事务管理完成转账的案例)
+	- [案例一:使用Spring框架的AOP技术对DAO层的功能进行增强](#案例一使用spring框架的aop技术对dao层的功能进行增强)
+	- [案例二:Spring框架的事务管理完成转账的案例](#案例二spring框架的事务管理完成转账的案例)
 	- [Spring框架的JDBC模板技术](#spring框架的jdbc模板技术)
 	- [技术分析之Spring框架的事务管理](#技术分析之spring框架的事务管理)
 
@@ -20,7 +20,7 @@ tag:
 	
 ----------
 	
-**课程回顾：Spring框架第二天**
+**课程回顾:Spring框架第二天**
 	
 	1. IOC的注解方式
 		* @Value
@@ -31,7 +31,7 @@ tag:
 		* 导入spring-test.jar包
 	
 	3. Spring的AOP技术(XML的方式)	
-		* 什么是AOP：面向切面编程
+		* 什么是AOP:面向切面编程
 		* 采用代理技术完成(默认采用JDK接口方式,CGLIB技术代理对象)
 		* AOP的入门
 			* 编写切面类(编写通知的方法)
@@ -48,19 +48,19 @@ tag:
 	
 ----------
 	
-### 案例一：使用Spring框架的AOP技术对DAO层的功能进行增强 ###
+### 案例一:使用Spring框架的AOP技术对DAO层的功能进行增强 ###
 	
 ----------
 	
-**案例一：使用Spring框架的AOP技术对DAO层的功能进行增强**
+**案例一:使用Spring框架的AOP技术对DAO层的功能进行增强**
 	
 	1. 使用Spring框架的AOP技术对DAO层的功能进行增强
 	
 ----------
 	
-**技术分析之：Spring框架的AOP技术(注解方式)**
+**技术分析之:Spring框架的AOP技术(注解方式)**
 	
-	1. 步骤一：创建JavaWEB项目,引入具体的开发的jar包
+	1. 步骤一:创建JavaWEB项目,引入具体的开发的jar包
 		* 先引入Spring框架开发的基本开发包
 		* 再引入Spring框架的AOP的开发包
 			* spring的传统AOP的开发的包
@@ -71,7 +71,7 @@ tag:
 				* com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar
 				* spring-aspects-4.2.4.RELEASE.jar
 	
-	2. 步骤二：创建Spring的配置文件,引入具体的AOP的schema约束
+	2. 步骤二:创建Spring的配置文件,引入具体的AOP的schema约束
 		<beans xmlns="http://www.springframework.org/schema/beans"
 		       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		       xmlns:aop="http://www.springframework.org/schema/aop"
@@ -81,15 +81,15 @@ tag:
 			
 		</beans>
 	
-	3. 步骤三：创建包结构,编写具体的接口和实现类
+	3. 步骤三:创建包结构,编写具体的接口和实现类
 		* com.itheima.demo1
 			* CustomerDao			-- 接口
 			* CustomerDaoImpl		-- 实现类
 	
-	4. 步骤四：将目标类配置到Spring中
+	4. 步骤四:将目标类配置到Spring中
 		<bean id="customerDao" class="com.itheima.demo1.CustomerDaoImpl"/>
 	
-	5. 步骤五：定义切面类
+	5. 步骤五:定义切面类
 		* 添加切面和通知的注解
 			* @Aspect					-- 定义切面类的注解
 			
@@ -109,10 +109,10 @@ tag:
 				}
 			}
 	
-	6. 步骤六：在配置文件中定义切面类
+	6. 步骤六:在配置文件中定义切面类
 		<bean id="myAspectAnno" class="com.itheima.demo1.MyAspectAnno"/>
 	
-	7. 步骤七：在配置文件中开启自动代理
+	7. 步骤七:在配置文件中开启自动代理
 		<aop:aspectj-autoproxy/>
 	
 	8. 完成测试
@@ -156,7 +156,7 @@ tag:
 	
 ----------
 	
-### 案例二：Spring框架的事务管理完成转账的案例 ###
+### 案例二:Spring框架的事务管理完成转账的案例 ###
 	
 ----------
 
@@ -183,7 +183,7 @@ tag:
 	
 **技术分析之演示JDBC的模板类**
 	
-	1. 步骤一：创建数据库的表结构
+	1. 步骤一:创建数据库的表结构
 		create database spring_day03;
 		use spring_day03;
 		create table t_account(
@@ -219,9 +219,9 @@ tag:
 	
 **技术分析之使用Spring框架来管理模板类**
 	
-	1. 刚才编写的代码使用的是new的方式,应该把这些类交给Spring框架来管理。
+	1. 刚才编写的代码使用的是new的方式,应该把这些类交给Spring框架来管理.
 	2. 修改的步骤如下
-		* 步骤一：Spring管理内置的连接池
+		* 步骤一:Spring管理内置的连接池
 			<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		    	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		    	<property name="url" value="jdbc:mysql:///spring_day03"/>
@@ -229,12 +229,12 @@ tag:
 		    	<property name="password" value="root"/>
 		    </bean>
 		
-		* 步骤二：Spring管理模板类
+		* 步骤二:Spring管理模板类
 			<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		    	<property name="dataSource" ref="dataSource"/>
 		    </bean>
 		
-		* 步骤三：编写测试程序
+		* 步骤三:编写测试程序
 			@RunWith(SpringJUnit4ClassRunner.class)
 			@ContextConfiguration("classpath:applicationContext.xml")
 			public class Demo2 {
@@ -342,7 +342,7 @@ tag:
 	
 **技术分析之事务的回顾**
 	
-	1. 事务：指的是逻辑上一组操作,组成这个事务的各个执行单元,要么一起成功,要么一起失败！
+	1. 事务:指的是逻辑上一组操作,组成这个事务的各个执行单元,要么一起成功,要么一起失败！
 	2. 事务的特性
 		* 原子性
 		* 一致性
@@ -366,11 +366,11 @@ tag:
 	
 **技术分析之Spring框架的事务管理相关的类和API**
 	
-	1. PlatformTransactionManager接口		-- 平台事务管理器.(真正管理事务的类)。该接口有具体的实现类,根据不同的持久层框架,需要选择不同的实现类！
+	1. PlatformTransactionManager接口		-- 平台事务管理器.(真正管理事务的类).该接口有具体的实现类,根据不同的持久层框架,需要选择不同的实现类！
 	2. TransactionDefinition接口			-- 事务定义信息.(事务的隔离级别,传播行为,超时,只读)
 	3. TransactionStatus接口				-- 事务的状态
 	
-	4. 总结：上述对象之间的关系：平台事务管理器真正管理事务对象.根据事务定义的信息TransactionDefinition 进行事务管理,在管理事务中产生一些状态.将状态记录到TransactionStatus中
+	4. 总结:上述对象之间的关系:平台事务管理器真正管理事务对象.根据事务定义的信息TransactionDefinition 进行事务管理,在管理事务中产生一些状态.将状态记录到TransactionStatus中
 	
 	5. PlatformTransactionManager接口中实现类和常用的方法
 		1. 接口的实现类
@@ -391,7 +391,7 @@ tag:
 			* static int ISOLATION_SERIALIZABLE 
  		
 		2. 事务的传播行为常量(不用设置,使用默认值)
-			* 先解释什么是事务的传播行为：解决的是业务层之间的方法调用！！
+			* 先解释什么是事务的传播行为:解决的是业务层之间的方法调用！！
 			
 			* PROPAGATION_REQUIRED(默认值)	-- A中有事务,使用A中的事务.如果没有,B就会开启一个新的事务,将A包含进来.(保证A,B在同一个事务中),默认值！！
 			* PROPAGATION_SUPPORTS			-- A中有事务,使用A中的事务.如果A中没有事务.那么B也不使用事务.
@@ -405,9 +405,9 @@ tag:
 	
 ----------
 	
-**技术分析之搭建事务管理转账案例的环境(强调：简化开发,以后DAO可以继承JdbcDaoSupport类)**
+**技术分析之搭建事务管理转账案例的环境(强调:简化开发,以后DAO可以继承JdbcDaoSupport类)**
 	
-	1. 步骤一：创建WEB工程,引入需要的jar包
+	1. 步骤一:创建WEB工程,引入需要的jar包
 		* IOC的6个包
 		* AOP的4个包
 		* C3P0的1个包
@@ -415,7 +415,7 @@ tag:
 		* JDBC目标2个包
 		* 整合JUnit测试包
 	
-	2. 步骤二：引入配置文件
+	2. 步骤二:引入配置文件
 		* 引入配置文件
 			* 引入log4j.properties
 			
@@ -427,7 +427,7 @@ tag:
 			    	<property name="password" value="root"/>
 			    </bean>
 	
-	3. 步骤三：创建对应的包结构和类
+	3. 步骤三:创建对应的包结构和类
 		* com.itheima.demo1
 			* AccountService
 			* AccountServlceImpl
@@ -441,7 +441,7 @@ tag:
 		<bean id="accountDao" class="com.itheima.demo1.AccountDaoImpl">
 		</bean>
 	
-	5. 步骤五：在业务层注入DAO ,在DAO中注入JDBC模板(强调：简化开发,以后DAO可以继承JdbcDaoSupport类)
+	5. 步骤五:在业务层注入DAO ,在DAO中注入JDBC模板(强调:简化开发,以后DAO可以继承JdbcDaoSupport类)
 		<bean id="accountService" class="com.itheima.demo1.AccountServiceImpl">
 			<property name="accountDao" ref="accountDao"/>
 		</bean>
@@ -450,7 +450,7 @@ tag:
 			<property name="dataSource" ref="dataSource"/>
 		</bean>
 	
-	6. 步骤六：编写DAO和Service中的方法
+	6. 步骤六:编写DAO和Service中的方法
 		public class AccountDaoImpl extends JdbcDaoSupport implements AccountDao {
 			public void outMoney(String out, double money) {
 				this.getJdbcTemplate().update("update t_account set money = money = ? where name = ?", money,out);
@@ -460,7 +460,7 @@ tag:
 			}
 		}
 	
-	7. 步骤七：编写测试程序.
+	7. 步骤七:编写测试程序.
 		@RunWith(SpringJUnit4ClassRunner.class)
 		@ContextConfiguration("classpath:applicationContext.xml")
 		public class Demo1 {
@@ -491,9 +491,9 @@ tag:
 	
 **技术分析之Spring框架的事务管理之编程式的事务管理(了解)**
 	
-	1. 说明：Spring为了简化事务管理的代码:提供了模板类 TransactionTemplate,所以手动编程的方式来管理事务,只需要使用该模板类即可！！
+	1. 说明:Spring为了简化事务管理的代码:提供了模板类 TransactionTemplate,所以手动编程的方式来管理事务,只需要使用该模板类即可！！
 	
-	2. 手动编程方式的具体步骤如下：
+	2. 手动编程方式的具体步骤如下:
 		1. 步骤一:配置一个事务管理器,Spring使用PlatformTransactionManager接口来管理事务,所以咱们需要使用到他的实现类！！
 			<!-- 配置事务管理器 -->
 			<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -561,13 +561,13 @@ tag:
 		<tx:advice id="txAdvice" transaction-manager="transactionManager">
 			<tx:attributes>
 				<!--
-					name		：绑定事务的方法名,可以使用通配符,可以配置多个。
-					propagation	：传播行为
-					isolation	：隔离级别
-					read-only	：是否只读
-					timeout		：超时信息
-					rollback-for：发生哪些异常回滚.
-					no-rollback-for：发生哪些异常不回滚.
+					name		:绑定事务的方法名,可以使用通配符,可以配置多个.
+					propagation	:传播行为
+					isolation	:隔离级别
+					read-only	:是否只读
+					timeout		:超时信息
+					rollback-for:发生哪些异常回滚.
+					no-rollback-for:发生哪些异常不回滚.
 				 -->
 				<!-- 哪些方法加事务 -->
 				<tx:method name="pay" propagation="REQUIRED"/>
@@ -580,7 +580,7 @@ tag:
 	    	<aop:advisor advice-ref="myAdvice" pointcut="execution(* com.itheima.demo2.AccountServiceImpl.pay(..))"/>
 	    </aop:config>
 		
-		* 注意：如果是自己编写的切面,使用<aop:aspect>标签,如果是系统制作的,使用<aop:advisor>标签。
+		* 注意:如果是自己编写的切面,使用<aop:aspect>标签,如果是系统制作的,使用<aop:advisor>标签.
 	
 	6. 步骤六:编写测试类
 		@RunWith(SpringJUnit4ClassRunner.class)

@@ -128,7 +128,7 @@ chmod 755 /data/repositories
 ```
 [查找 git-shell 所在目录] , 编辑 /etc/passwd 文件,将最后一行关于 gituser 的登录 shell 配置改为 git-shell 的目录[?]如下
 
-示例代码：/etc/passwd
+示例代码:/etc/passwd
 ```
 gituser:x:500:500::/home/gituser:/usr/local/git/bin/git-shell
 ```

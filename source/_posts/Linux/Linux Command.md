@@ -919,7 +919,7 @@ paste -s -d ':' file1 file2
 cut -c2-6 <filename>
 # 截取文件2,4域
 cut -f2,4 <filename>
-# 去文件除第3域的所有列：
+# 去文件除第3域的所有列:
 cut -f3 --complement <filename>
 # -d 指定定界符
 cat -f2 -d";" <filename>

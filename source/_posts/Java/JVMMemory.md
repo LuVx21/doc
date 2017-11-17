@@ -74,10 +74,10 @@ Java虚拟机规范对这个区域的限制非常宽松,除了和Java堆一样�
 
 线程私有,生命周期与线程相同
 
-虚拟机栈描述的是Java方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧(Stack Frame)用于存储局部变量表、操作栈、动态链接、方法出口等信息.
+虚拟机栈描述的是Java方法执行的内存模型:每个方法被执行的时候都会同时创建一个栈帧(Stack Frame)用于存储局部变量表、操作栈、动态链接、方法出口等信息.
 每一个方法被调用直至执行完成的过程,就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程.
 
-对这个区域规定了两种异常状况：
+对这个区域规定了两种异常状况:
 如果线程请求的栈深度大于虚拟机所允许的深度,将抛出StackOverflowError异常；
 如果虚拟机栈可以动态扩展(当前大部分的Java虚拟机都可动态扩展,只不过Java虚拟机规范中也允许固定长度的虚拟机栈),当扩展时无法申请到足够的内存时会抛出OutOfMemoryError异常.
 
@@ -93,23 +93,23 @@ Java虚拟机规范对这个区域的限制非常宽松,除了和Java堆一样�
 
 `Exception in thread “main”: java.lang.OutOfMemoryError: Java heap space`
 
-原因：对象不能被分配到堆内存中
+原因:对象不能被分配到堆内存中
 
 `Exception in thread “main”: java.lang.OutOfMemoryError: PermGen space`
 
-原因：类或者方法不能被加载到持久代.它可能出现在一个程序加载很多类的时候,比如引用了很多第三方的库；
+原因:类或者方法不能被加载到持久代.它可能出现在一个程序加载很多类的时候,比如引用了很多第三方的库；
 
 `Exception in thread “main”: java.lang.OutOfMemoryError: Requested array size exceeds VM limit`
 
-原因：创建的数组大于堆内存的空间
+原因:创建的数组大于堆内存的空间
 
 `Exception in thread “main”: java.lang.OutOfMemoryError: request <size> bytes for <reason>. Out of swap space?`
 
-原因：分配本地分配失败.JNI、本地库或者Java虚拟机都会从本地堆中分配内存空间.
+原因:分配本地分配失败.JNI、本地库或者Java虚拟机都会从本地堆中分配内存空间.
 
 `Exception in thread “main”: java.lang.OutOfMemoryError: <reason> <stack trace>(Native method)`
 
-原因：同样是本地方法内存分配失败,只不过是JNI或者本地方法或者Java虚拟机发现
+原因:同样是本地方法内存分配失败,只不过是JNI或者本地方法或者Java虚拟机发现
 
 # 参考
 

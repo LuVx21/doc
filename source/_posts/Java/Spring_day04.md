@@ -9,7 +9,7 @@ tag:
 <!-- TOC -->
 
 - [Spring框架的第四天](#spring框架的第四天)
-	- [案例一：SSH框架整合保存客户](#案例一ssh框架整合保存客户)
+	- [案例一:SSH框架整合保存客户](#案例一ssh框架整合保存客户)
 	- [技术分析之SSH框架的整合](#技术分析之ssh框架的整合)
 
 <!-- /TOC -->
@@ -18,7 +18,7 @@ tag:
 
 ----------
 
-**课程回顾：Spring框架第三天**
+**课程回顾:Spring框架第三天**
 	
 	1. AOP注解方式
 		* 编写切面类(包含通知和切入点)
@@ -39,13 +39,13 @@ tag:
 	
 ----------
 	
-### 案例一：SSH框架整合保存客户 ###
+### 案例一:SSH框架整合保存客户 ###
 	
 ----------
 	
 **需求分析**
 	
-	1. 案例一：SSH框架整合保存客户
+	1. 案例一:SSH框架整合保存客户
 	
 ----------
 	
@@ -135,7 +135,7 @@ tag:
 			* struts.objectFactory.spring.autoWire = name,该常量是可以让Action的类来自动装配Bean对象！！
 	
 	5. Spring整合Struts2框架的第二种方式(Action由Spring框架来创建)(推荐大家来使用的)
-		* 把具体的Action类配置文件applicatonContext.xml的配置文件中,但是注意：struts.xml需要做修改
+		* 把具体的Action类配置文件applicatonContext.xml的配置文件中,但是注意:struts.xml需要做修改
 		* applicationContext.xml
 			* <bean id="customerAction" class="com.itheima.web.action.CustomerAction" scope="prototype">
 		
@@ -143,12 +143,12 @@ tag:
 			* <action name="customer_*" class="customerAction" method="{1}">
 		
 		* 第二种方式需要有两个注意的地方
-			* Spring框架默认生成CustomerAction是单例的,而Struts2框架是多例的。所以需要配置 scope="prototype"
+			* Spring框架默认生成CustomerAction是单例的,而Struts2框架是多例的.所以需要配置 scope="prototype"
 			* CustomerService现在必须自己手动注入了
 	
 ----------
 	
-**技术分析之Spring框架整合Hibernate框架(带有hibernate.cfg.xml的配置文件。强调：不能加绑定当前线程的配置)**
+**技术分析之Spring框架整合Hibernate框架(带有hibernate.cfg.xml的配置文件.强调:不能加绑定当前线程的配置)**
 
 	1. 编写CustomerDaoImpl的代码,加入配置并且在CustomerServiceImpl中完成注入
 	2. 编写映射的配置文件,并且在hibernate.cfg.xml的配置文件中引入映射的配置文件
@@ -250,10 +250,10 @@ tag:
 	1. 使用延迟加载的时候,再WEB层查询对象的时候程序会抛出异常！
 		* 原因是延迟加载还没有发生SQL语句,在业务层session对象就已经销毁了,所以查询到的JavaBean对象已经变成了托管态对象！
 		
-		* 注意：一定要先删除javassist-3.11.0.GA.jar包(jar包冲突了)
+		* 注意:一定要先删除javassist-3.11.0.GA.jar包(jar包冲突了)
 	
-	2. 解决办法非常简单,Spring框架提供了一个过滤器,让session对象在WEB层就创建,在WEB层销毁。只需要配置该过滤器即可
-		* 但是：要注意需要在struts2的核心过滤器之前进行配置
+	2. 解决办法非常简单,Spring框架提供了一个过滤器,让session对象在WEB层就创建,在WEB层销毁.只需要配置该过滤器即可
+		* 但是:要注意需要在struts2的核心过滤器之前进行配置
 			<filter>
 				<filter-name>OpenSessionInViewFilter</filter-name>
 				<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>

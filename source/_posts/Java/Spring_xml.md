@@ -8,164 +8,131 @@ tag:
 
 <!-- TOC -->
 
-- [Spring IOC](#spring-ioc)
-    - [今天课程：Spring框架第一天](#今天课程spring框架第一天)
-        - [案例一：使用Spring的IOC技术完成客户的保存功能](#案例一使用spring的ioc技术完成客户的保存功能)
-        - [技术分析之Spring框架的概述和入门](#技术分析之spring框架的概述和入门)
-        - [Bean管理的配置文件方式](#bean管理的配置文件方式)
-    - [依赖注入(DI)](#依赖注入di)
-        - [属性注入](#属性注入)
-        - [p名称空间的注入(了解)](#p名称空间的注入了解)
-        - [SpEL注入方式(了解)](#spel注入方式了解)
-        - [数组,集合(List,Set,Map),Properties等的注入](#数组集合listsetmapproperties等的注入)
-    - [配置文件分开管理(了解)](#配置文件分开管理了解)
-    - [Spring框架整合WEB](#spring框架整合web)
+- [关于Spring框架](#关于spring框架)
+    - [什么是Spring框架](#什么是spring框架)
+    - [Spring框架的特点](#spring框架的特点)
+- [IOC功能(xml方式)](#ioc功能xml方式)
+    - [核心容器](#核心容器)
+    - [Spring中的工厂(了解)](#spring中的工厂了解)
+    - [Bean管理的配置文件方式](#bean管理的配置文件方式)
+- [依赖注入(DI)](#依赖注入di)
+    - [属性注入](#属性注入)
+    - [p名称空间的注入(了解)](#p名称空间的注入了解)
+    - [SpEL注入方式(了解)](#spel注入方式了解)
+    - [数组,集合(List,Set,Map),Properties等的注入](#数组集合listsetmapproperties等的注入)
+- [配置文件分开管理(了解)](#配置文件分开管理了解)
+- [Spring框架整合WEB](#spring框架整合web)
 
 <!-- /TOC -->
 
-# Spring IOC
+# 关于Spring框架
 
-## 今天课程：Spring框架第一天
 
-----------
+## 什么是Spring框架
 
-**Spring框架的学习路线**
+* Spring是于2003 年兴起的一个轻量级开源Java开发框架
+* 为了解决企业应用开发的复杂性而创建的.框架的主要优势之一就是其分层架构,分层架构允许使用者选择使用哪一个组件,同时为 J2EE 应用程序开发提供集成的框架.
+* Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情.然而,Spring的用途不仅限于服务器端的开发.从简单性、可测试性和松耦合的角度而言,任何Java应用都可以	从Spring中受益.
+* Spring的核心是控制反转(`IOC`)和面向切面(`AOP`).简单来说,Spring是一个分层的JavaSE/EEfull-stack(一站式) 轻量级开源框架.
 
-	1. Spring第一天：Spring的IOC容器之XML的方式,Spring框架与Web项目整合
-	2. Spring第二天：Spring的IOC容器之注解的方式,Spring的AOP技术
-	3. Spring第三天：Spring的事务管理、Spring框架的JDBC模板
-	4. Spring第四天：SSH三大框架的整合
+自身组件:
 
-----------
+* WEB层:Spring MVC
+* 业务层:Bean管理:(IOC)
+* 持久层:Spring的JDBC模板.ORM模板用于整合其他的持久层框架
 
-**今天内容概述**
 
-	1. Spring框架的概述
-	2. SpringIOC的快速入门
-	3. IOC容器XML的方式
-	4. 在web项目中集成Spring
+官网(http://spring.io/)
+下载地址:
+	http://repo.springsource.org/libs-release-local/org/springframework/spring
+	http://maven.springframework.org/release/org/springframework/spring/
 
-----------
+Spring目录结构:
 
-### 案例一：使用Spring的IOC技术完成客户的保存功能
+* docs:API和开发规范
+* libs:jar包和源码
+* schema:约束
 
-----------
+## Spring框架的特点
 
-**需求分析**
+* 方便解耦,简化开发
+	* Spring就是一个大工厂,可以将所有对象创建和依赖关系维护,交给Spring管理
+* AOP编程的支持
+	* Spring提供面向切面编程,可以方便的实现对程序进行权限拦截、运行监控等功能
+* 声明式事务的支持
+	* 只需要通过配置就可以完成对事务的管理,而无需手动编程
+* 方便程序的测试
+	* Spring对Junit4支持,可以通过注解方便的测试Spring程序
+* 方便集成各种优秀框架
+	* Spring不排斥各种优秀的开源框架,其内部提供了对各种优秀框架(如:Struts2、Hibernate、MyBatis、Quartz等)的直接支持
+* 降低JavaEE API的使用难度
+	* Spring 对JavaEE开发中非常难用的一些API(JDBC、JavaMail、远程调用等),都提供了封装,使这些API应用难度大大降低
 
-	1. 使用Spring的IOC技术完成客户的保存功能
+# IOC功能(xml方式)
 
-----------
+![](./img/spring-overview.png)
 
-### 技术分析之Spring框架的概述和入门
+* IoC(Inverse of Control):控制反转,将对象的创建权反转给Spring
+* 使用IOC可以解决的程序耦合性高的问题(解耦)
 
-----------
+## 核心容器
 
-**技术分析之什么是Spring框架**
+* Beans
+* Core
+* Context
+* Expression Language
 
-	1. Spring框架的概述
-		* Spring是一个开源框架
-		* Spring是于2003 年兴起的一个轻量级的Java开发框架,由Rod Johnson在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。
-		* 它是为了解决企业应用开发的复杂性而创建的。框架的主要优势之一就是其分层架构,分层架构允许使用者选择使用哪一个组件,同时为 J2EE 应用程序开发提供集成的框架。
-		* Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情。然而,Spring的用途不仅限于服务器端的开发。从简单性、可测试性和松耦合的角度而言,任何Java应用都可以	从Spring中受益。
-		* Spring的核心是控制反转(`IOC`)和面向切面(AOP)。简单来说,Spring是一个分层的JavaSE/EEfull-stack(一站式) 轻量级开源框架。
+Spring框架也需要引入日志相关的jar包
+在`spring-framework-3.0.2.RELEASE-dependencies/org.apache.commons/com.springsource.org.apache.commons.logging/1.1.1`下:
 
-		* EE开发分成三层结构
-			* WEB层		-- Spring MVC
-			* 业务层	-- Bean管理:(IOC)
-			* 持久层	-- Spring的JDBC模板.ORM模板用于整合其他的持久层框架
+`com.springsource.org.apache.commons.logging-1.1.1.jar`
 
-----------
+还需要引入log4j的jar包,在`spring-framework-3.0.2.RELEASE-dependencies\org.apache.log4j\com.springsource.org.apache.log4j\1.2.15`下:
+`com.springsource.org.apache.log4j-1.2.15.jar`
 
-**技术分析之Spring框架的特点**
+编写Java代码,如:
 
-	1. 为什么要学习Spring的框架
-		* 方便解耦,简化开发
-			* Spring就是一个大工厂,可以将所有对象创建和依赖关系维护,交给Spring管理
-		* AOP编程的支持
-			* Spring提供面向切面编程,可以方便的实现对程序进行权限拦截、运行监控等功能
-		* 声明式事务的支持
-			* 只需要通过配置就可以完成对事务的管理,而无需手动编程
-		* 方便程序的测试
-			* Spring对Junit4支持,可以通过注解方便的测试Spring程序
-		* 方便集成各种优秀框架
-			* Spring不排斥各种优秀的开源框架,其内部提供了对各种优秀框架(如：Struts2、Hibernate、MyBatis、Quartz等)的直接支持
-		* 降低JavaEE API的使用难度
-			* Spring 对JavaEE开发中非常难用的一些API(JDBC、JavaMail、远程调用等),都提供了封装,使这些API应用难度大大降低
+* UserService.java			-- 接口
+* UserServiceImpl.java		-- 具体的实现类
 
-	2. Spring框架的版本
-		* Spring3.x和Spring4.x的版本
+想把UserServiceImpl实现类的创建交给Spring框架来管理,需要创建Spring框架的配置文件,完成配置
 
-----------
+在src目录下创建`applicationContext.xml`的配置文件,名称是可以任意的,但是一般都会使用默认名称
 
-**技术分析之Spring框架的IOC核心功能快速入门**
+该配置文件的约束可以参看文件:
+`spring-framework-3.2.0.RELEASE\docs\spring-framework-reference\html\xsd-config.html`
 
-	1. 什么是IOC的功能？
-		* IoC(Inverse of Control):控制反转,将对象的创建权反转给Spring
-		* 使用IOC可以解决的程序耦合性高的问题
+具体的约束如下:
 
-![](./img/01-IOC.bmp)
+```xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+</beans>
+```
+完成UserService的配置
 
-	2. 步骤一：下载Spring框架的开发包
-		* 官网：http://spring.io/
-		* 下载地址：
-			http://repo.springsource.org/libs-release-local/org/springframework/spring
-			http://maven.springframework.org/release/org/springframework/spring/
-		 解压:(Spring目录结构:)
-			* docs		-- API和开发规范
-			* libs		-- jar包和源码
-			* schema	-- 约束
+```xml
+<!-- Spring的快速入门 -->
+<bean id="userService" class="com.itcast.demo1.UserServiceImpl"/>
+```
 
-	3. 步骤二：创建JavaWEB项目,引入Spring的开发包
-		* 引入Spring框架IOC核心功能需要的具体的jar包
-			* Spring框架的IOC的功能,那么根据Spring框架的体系结构图能看到,只需要引入如下的jar包
-				* Beans
-				* Core
-				* Context
-				* Expression Language
+编写测试程序,采用Spring框架的工厂方式来获取到UserService接口的具体实现类
+```java
+public void demo2(){
+	// 使用Spring的工厂:
+	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+	// 通过工厂获得类:
+	UserService userService = (UserService) applicationContext.getBean("userService");
+	userService.sayHello();
+}
+```
 
-			* Spring框架也需要引入日志相关的jar包
-				* 在spring-framework-3.0.2.RELEASE-dependencies/org.apache.commons/com.springsource.org.apache.commons.logging/1.1.1
-					* com.springsource.org.apache.commons.logging-1.1.1.jar
 
-				* 还需要引入log4j的jar包 spring-framework-3.0.2.RELEASE-dependencies\org.apache.log4j\com.springsource.org.apache.log4j\1.2.15
-					* com.springsource.org.apache.log4j-1.2.15.jar
+## Spring中的工厂(了解)
 
-	4. 步骤三：创建对应的包结构,编写Java的类,要注意：以后使用Spring框架做开发,都需要来编写接口与实现类！！
-		* com.itcast.demo1
-			* UserService			-- 接口
-			* UserServiceImpl		-- 具体的实现类
-
-	5. 步骤四：想把UserServiceImpl实现类的创建交给Spring框架来管理,需要创建Spring框架的配置文件,完成配置
-		* 在src目录下创建applicationContext.xml的配置文件,名称是可以任意的,但是一般都会使用默认名称！！
-
-		* 引入spring的约束,需要先找到具体的约束头信息！！
-			* spring-framework-3.2.0.RELEASE\docs\spring-framework-reference\html\xsd-config.html
-			* 具体的约束如下：
-				<beans xmlns="http://www.springframework.org/schema/beans"
-				    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				    xsi:schemaLocation="
-				        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-				</beans>
-
-		* 完成UserService的配置
-			<!-- Spring的快速入门 -->
-			<bean id="userService" class="com.itcast.demo1.UserServiceImpl"/>
-
-	6. 步骤五：编写测试程序,采用Spring框架的工厂方式来获取到UserService接口的具体实现类！！
-		public void demo2(){
-			// 使用Spring的工厂:
-			ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-			// 通过工厂获得类:
-			UserService userService = (UserService) applicationContext.getBean("userService");
-			userService.sayHello();
-		}
-
-----------
-
-**入门总结之Spring框架中的工厂(了解)**
-
-ApplicationContext接口
+**ApplicationContext**
 
 使用ApplicationContext工厂的接口,使用该接口可以获取到具体的Bean对象
 该接口下有两个具体的实现类
@@ -174,7 +141,7 @@ ApplicationContext接口
 * FileSystemXmlApplicationContext -- 加载本地磁盘下的Spring配置文件
 
 
-BeanFactory工厂
+**BeanFactory**
 
 Spring框架早期的创建Bean对象的工厂接口
 
@@ -198,30 +165,28 @@ public void run(){
 
 ----------
 
-**入门总结之配置Spring框架编写XML的提示**
+**配置Spring框架编写XML的提示**
 
-	1. 步骤一：先复制, http://www.springframework.org/schema/beans/spring-beans.xsd
-	2. 步骤二：搜索XML Catalog,点击Add按钮
-	3. 步骤三：先选择Location的schema的约束地址
-		* E:\class\2016\JavaEE28\day35_Spring框架第一天\资料\spring-framework-4.2.4.RELEASE-schema\beans\spring-beans-4.2.xsd
-	4. 步骤四：注意：Key type要选择：Schema location
-	5. 步骤五：Key把http://www.springframework.org/schema/beans/spring-beans.xsd复制上
+1. 步骤一:先复制, http://www.springframework.org/schema/beans/spring-beans.xsd
+2. 步骤二:搜索XML Catalog,点击Add按钮
+3. 步骤三:先选择Location的schema的约束地址
+	* E:\class\2016\JavaEE28\day35_Spring框架第一天\资料\spring-framework-4.2.4.RELEASE-schema\beans\spring-beans-4.2.xsd
+4. 步骤四:注意:Key type要选择:Schema location
+5. 步骤五:Key把http://www.springframework.org/schema/beans/spring-beans.xsd复制上
 
-----------
 
-### Bean管理的配置文件方式
+## Bean管理的配置文件方式
 
-----------
 
 **技术分析之Spring框架中<bean>标签的配置**
 
 1. id属性和name属性的区别
 	* id		-- Bean起个名字,在约束中采用ID的约束,唯一
-		* 取值要求：必须以字母开始,可以使用字母、数字、连字符、下划线、句话、冒号	id:不能出现特殊字符
+		* 取值要求:必须以字母开始,可以使用字母、数字、连字符、下划线、句话、冒号	id:不能出现特殊字符
 
 	* name		-- Bean起个名字,没有采用ID的约束(了解)
-		* 取值要求：name:出现特殊字符.如果<bean>没有id的话 , name可以当做id使用
-		* Spring框架在整合Struts1的框架的时候,Struts1的框架的访问路径是以/开头的,例如：/bookAction
+		* 取值要求:name:出现特殊字符.如果<bean>没有id的话 , name可以当做id使用
+		* Spring框架在整合Struts1的框架的时候,Struts1的框架的访问路径是以/开头的,例如:/bookAction
 
 2. class属性:Bean对象的全路径
 
@@ -234,7 +199,8 @@ public void run(){
 * globalsession:应用在Web项目中,多服务器间的session
 
 4. Bean对象的创建和销毁的两个属性配置(了解)
-* 说明：Spring初始化bean或销毁bean时,有时需要作一些处理工作,因此spring可以在创建和拆卸bean的时候调用bean的两个生命周期方法
+
+* 说明:Spring初始化bean或销毁bean时,有时需要作一些处理工作,因此spring可以在创建和拆卸bean的时候调用bean的两个生命周期方法
 
 * init-method		-- 当bean被载入到容器的时候调用init-method属性指定的方法
 * destroy-method	-- 当bean从容器中删除的时候调用destroy-method属性指定的方法
@@ -245,7 +211,7 @@ public void run(){
 
 ----------
 
-## 依赖注入(DI)
+# 依赖注入(DI)
 
 **IOC和DI的概念**
 
@@ -267,7 +233,7 @@ public void run(){
 
 ----------
 
-### 属性注入
+## 属性注入
 
  对于类成员变量,常用的注入方式有两种
 
@@ -303,42 +269,42 @@ public void run(){
 
 3. 如果Java类的属性是另一个Java的类,那么需要怎么来注入值呢？
 	* <property name="name" rel="具体的Bean的ID或者name的值"/>
-	* 例如：
+	* 例如:
 		<bean id="person" class="com.itheima.demo4.Person">
 			<property name="pname" value="美美"/>
 			<property name="car2" ref="car2"/>
 		</bean>
 
-### p名称空间的注入(了解)
+## p名称空间的注入(了解)
 
 Spring的2.5版本中提供的一种注入方案
 
-步骤一：需要先引入 p 名称空间
+步骤一:需要先引入 p 名称空间
 
-在schema的名称空间中加入该行：
+在schema的名称空间中加入该行:
 
 ```xml
 xmlns:p="http://www.springframework.org/schema/p"
 ````
 
-步骤二：使用p名称空间的语法
+步骤二:使用p名称空间的语法
 
 ```
 p:属性名 = ""
 p:属性名-ref = ""
 ```
 
-步骤三：测试
+步骤三:测试
 
 ```
 <bean id="person" class="com.itheima.demo4.Person" p:pname="老王" p:car2-ref="car2"/>
 ```
 
-### SpEL注入方式(了解)
+## SpEL注入方式(了解)
 
 Spring的3.0提供了一种的一种注入方案
 
-1. SpEL：Spring Expression Language是Spring的表达式语言,有一些自己的语法
+1. SpEL:Spring Expression Language是Spring的表达式语言,有一些自己的语法
 
 2. 语法
 
@@ -366,7 +332,7 @@ public class CarInfo {
 }
 ```
 
-### 数组,集合(List,Set,Map),Properties等的注入
+## 数组,集合(List,Set,Map),Properties等的注入
 
 1. 如果是数组或者List集合,注入配置文件的方式是一样的
 
@@ -381,7 +347,7 @@ public class CarInfo {
 </bean>
 ```
 
-2. 如果是Set集合,注入的配置文件方式如下：
+2. 如果是Set集合,注入的配置文件方式如下:
 
 ```xml
 <property name="sets">
@@ -392,7 +358,7 @@ public class CarInfo {
 </property>
 ```
 
-3. 如果是Map集合,注入的配置方式如下：
+3. 如果是Map集合,注入的配置方式如下:
 
 ```xml
 <property name="map">
@@ -404,7 +370,7 @@ public class CarInfo {
 </property>
 ```
 
-4. 如果是properties属性文件的方式,注入的配置如下：
+4. 如果是properties属性文件的方式,注入的配置如下:
 
 ```xml
 <property name="pro">
@@ -415,7 +381,7 @@ public class CarInfo {
 </property>
 ```
 
-## 配置文件分开管理(了解)
+# 配置文件分开管理(了解)
 
 在src的目录下又多创建了一个配置文件,现在是两个核心的配置文件,那么加载这两个配置文件的方式有两种:
 
@@ -431,36 +397,43 @@ public class CarInfo {
 ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml","applicationContext2.xml");
 ```
 
-## Spring框架整合WEB
+# Spring框架整合WEB
 
-1. 创建JavaWEB项目,引入Spring的开发包。编写具体的类和方法。
-	* 环境搭建好后,启动服务器来测试项目,发送每访问一次都会加载一次配置文件,这样效率会非常非常慢！！
+创建JavaWEB项目,引入Spring的开发包.编写具体的类和方法.
+环境搭建好后,启动服务器来测试项目,发送每访问一次都会加载一次配置文件,这样效率会非常非常慢！！
 
-2. 解决上面的问题
-	* 将工厂创建好了以后放入到ServletContext域中.使用工厂的时候,从ServletContext中获得.
-		* ServletContextListener:用来监听ServletContext对象的创建和销毁的监听器.
-		* 当ServletContext对象创建的时候:创建工厂 , 将工厂存入到ServletContext
+解决上面的问题:
+将工厂创建好了以后放入到ServletContext域中.使用工厂的时候,从ServletContext中获得.
 
-3. Spring整合Web项目
-	* 引入spring-web-4.2.4.RELEASE.jar包
-	* 配置监听器
-			<!-- 配置Spring的核心监听器: -->
-			<listener>
-			<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-			</listener>
-			<context-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:applicationContext.xml</param-value>
-			</context-param>
+`ServletContextListener`:用来监听ServletContext对象的创建和销毁的监听器.
 
-4. 修改servlet的代码
-	* 从ServletContext中获得工厂
-	* 具体代码如下
-		ServletContext servletContext = ServletActionContext.getServletContext();
-		// 需要使用WEB的工厂的方式
-		WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(servletContext);
-		CustomerService cs = (CustomerService) context.getBean("customerService");
-		cs.save();
+* 当ServletContext对象创建的时候:创建工厂, 将工厂存入到ServletContext
+
+
+实现上述需求需要引入`spring-web-4.2.4.RELEASE.jar`包
+
+配置监听器:
+
+```xml
+<!-- 配置Spring的核心监听器: -->
+<listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+<!-- 加载方式:默认只能加载WEB-INF目录下的配置文件，提供配置方式，加载src目录下 -->
+<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>classpath:applicationContext.xml</param-value>
+</context-param>
+```
+
+从ServletContext中获得工厂:
+```java
+ServletContext servletContext = ServletActionContext.getServletContext();
+// 需要使用WEB的工厂的方式
+WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+CustomerService cs = (CustomerService) context.getBean("customerService");
+cs.save();
+```
 
 
 

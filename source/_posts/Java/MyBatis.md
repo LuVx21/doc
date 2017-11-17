@@ -28,23 +28,23 @@ tags:
 
 # jdbc开发
 
-1. 优点：简单易学,上手快,非常灵活构建SQL,效率高
-2. 缺点：代码繁琐,难以写出高质量的代码(例如：资源的释放,SQL注入安全性等)
+1. 优点:简单易学,上手快,非常灵活构建SQL,效率高
+2. 缺点:代码繁琐,难以写出高质量的代码(例如:资源的释放,SQL注入安全性等)
     开发者既要写业务逻辑,又要写对象的创建和销毁,必须管底层具体数据库的语法
-    (例如：分页)。
+    (例如:分页).
 3. 适合于超大批量数据的操作,速度快
 
 # 回顾hibernate单表开发
 
-1. 优点：不用写SQL,完全以面向对象的方式设计和访问,不用管底层具体数据库的语法,(例如：分页)便于理解。
-2. 缺点：处理复杂业务时,灵活度差, 复杂的HQL难写难理解,例如多表查询的HQL语句
+1. 优点:不用写SQL,完全以面向对象的方式设计和访问,不用管底层具体数据库的语法,(例如:分页)便于理解.
+2. 缺点:处理复杂业务时,灵活度差, 复杂的HQL难写难理解,例如多表查询的HQL语句
 3. 适合于中小批量数据的操作,速度慢
 
 # 关于MyBatis
 
 1. 基于JDBC&hibernate二种支持,我们需要在中间找到一个平衡点呢？结合它们的优点,摒弃它们的缺点,
-2. MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code,并且改名为MyBatis 。2013年11月迁移到Github。
-3. iBATIS一词来源于“internet”和“abatis”的组合,是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects(DAO)
+2. MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code,并且改名为MyBatis .2013年11月迁移到Github.
+3. iBATIS一词来源于“internet”和“abatis”的组合,是一个基于Java的持久层框架.iBATIS提供的持久层框架包括SQL Maps和Data Access Objects(DAO)
 4. jdbc/dbutils/springdao,hibernate/springorm,mybaits同属于ORM解决方案之一
 
 # MyBatis-Demo
@@ -75,15 +75,15 @@ public class Student {
 
     <!--
          resultMap标签:映射实体与表
-         type属性：表示实体全路径名,下面使用了别名,对应配置文件<typeAliases></typeAliases>标签
-         id属性：为实体与表的映射取一个任意的唯一的名字
+         type属性:表示实体全路径名,下面使用了别名,对应配置文件<typeAliases></typeAliases>标签
+         id属性:为实体与表的映射取一个任意的唯一的名字
     -->
     <resultMap type="student" id="studentMap">
         <!--
              id标签:映射主键属性
-             result标签：映射非主键属性
+             result标签:映射非主键属性
              property属性:实体的属性名
-             column属性：表的字段名
+             column属性:表的字段名
         -->
         <id property="id" column="id"/>
         <result property="name" column="name"/>
@@ -91,8 +91,8 @@ public class Student {
     </resultMap>
 
     <!--
-        insert标签：要书写insert,sql语句,类似还有select,delete,update等
-        id属性：为insert,sql语句取一个任意唯一的名字
+        insert标签:要书写insert,sql语句,类似还有select,delete,update等
+        id属性:为insert,sql语句取一个任意唯一的名字
         parameterType:要执行的dao中的方法的参数,如查询时候,根据什么查询就是什么数据类型,如果是类的话,必须使用全路径类,下面的student对应配置文件中<typeAliases></typeAliases>标签.
         还有resultType属性,定义返回值的类型.
     -->

@@ -9,7 +9,7 @@ tag:
 <!-- TOC -->
 
 - [Struts2的第二天](#struts2的第二天)
-	- [案例一：使用Struts2作为WEB层完成客户的新增功能](#案例一使用struts2作为web层完成客户的新增功能)
+	- [案例一:使用Struts2作为WEB层完成客户的新增功能](#案例一使用struts2作为web层完成客户的新增功能)
 
 <!-- /TOC -->
 
@@ -17,7 +17,7 @@ tag:
 	
 ----------
 	
-**课程回顾：Struts2框架第一天**
+**课程回顾:Struts2框架第一天**
 	
 	1. Struts2框架的概述,前端控制器的模式,核心的过滤器
 	2. 入门,编写struts.xml配置文件
@@ -35,7 +35,7 @@ tag:
 	
 ----------
 	
-### 案例一：使用Struts2作为WEB层完成客户的新增功能 ###
+### 案例一:使用Struts2作为WEB层完成客户的新增功能 ###
 	
 ----------
 	
@@ -48,7 +48,7 @@ tag:
 **技术分析之在Struts2框架中使用Servlet的API**
 	
 	1. 在Action类中也可以获取到Servlet一些常用的API
-		* 需求：提供JSP的表单页面的数据,在Action中使用Servlet的API接收到,然后保存到三个域对象中,最后再显示到JSP的页面上。
+		* 需求:提供JSP的表单页面的数据,在Action中使用Servlet的API接收到,然后保存到三个域对象中,最后再显示到JSP的页面上.
 			* 提供JSP注册的页面,演示下面这三种方式
 				<h3>注册页面</h3>
 				<form action="${ pageContext.request.contextPath }/xxx.action" method="post">
@@ -62,9 +62,9 @@ tag:
 		* 一些常用的方法如下
 			* static ActionContext getContext()  										-- 获取ActionContext对象实例
 			* java.util.Map<java.lang.String,java.lang.Object> getParameters()  		-- 获取请求参数,相当于request.getParameterMap();
-			* java.util.Map<java.lang.String,java.lang.Object> getSession()  			-- 获取的代表session域的Map集合,就相当于操作session域。
+			* java.util.Map<java.lang.String,java.lang.Object> getSession()  			-- 获取的代表session域的Map集合,就相当于操作session域.
 			* java.util.Map<java.lang.String,java.lang.Object> getApplication() 		-- 获取代表application域的Map集合
-			* void put(java.lang.String key, java.lang.Object value)  					-- 注意：向request域中存入值。
+			* void put(java.lang.String key, java.lang.Object value)  					-- 注意:向request域中存入值.
     
 	3. 使用原生Servlet的API的方式
 		* Struts2框架提供了一个类,ServletActionContext,该类中提供了一些静态的方法
@@ -80,8 +80,8 @@ tag:
 	
 	1. 结果页面存在两种方式
 		* 全局结果页面
-			> 条件：如果<package>包中的一些action都返回success,并且返回的页面都是同一个JSP页面,这样就可以配置全局的结果页面。
-			> 全局结果页面针对的当前的包中的所有的Action,但是如果局部还有结果页面,会优先局部的。使用的标签是
+			> 条件:如果<package>包中的一些action都返回success,并且返回的页面都是同一个JSP页面,这样就可以配置全局的结果页面.
+			> 全局结果页面针对的当前的包中的所有的Action,但是如果局部还有结果页面,会优先局部的.使用的标签是
 				<global-results>
 					<result>/demo3/suc.jsp</result>
 				</global-results>
@@ -92,7 +92,7 @@ tag:
 	2. 结果页面的类型
 		* 结果页面使用<result>标签进行配置,包含两个属性
 			> name	-- 逻辑视图的名称
-			> type	-- 跳转的类型,值一些,需要掌握一些常用的类型。常见的结果类型去struts-default.xml中查找。
+			> type	-- 跳转的类型,值一些,需要掌握一些常用的类型.常见的结果类型去struts-default.xml中查找.
 				* dispatcher		-- 转发.type的默认值.Action--->JSP
 				* redirect			-- 重定向.	Action--->JSP
 				* chain				-- 多个action之间跳转.从一个Action转发到另一个Action.	Action---Action
@@ -111,28 +111,28 @@ tag:
 		* Struts2框架提供了很强大的数据封装的功能,不再需要使用Servlet的API完成手动封装了！！
 	
 	2. Struts2中提供了两类数据封装的方式？
-		* 第一种方式：属性驱动
-			> 提供对应属性的set方法进行数据的封装。
-				* 表单的哪些属性需要封装数据,那么在对应的Action类中提供该属性的set方法即可。
-				* 表单中的数据提交,最终找到Action类中的setXxx的方法,最后赋值给全局变量。
+		* 第一种方式:属性驱动
+			> 提供对应属性的set方法进行数据的封装.
+				* 表单的哪些属性需要封装数据,那么在对应的Action类中提供该属性的set方法即可.
+				* 表单中的数据提交,最终找到Action类中的setXxx的方法,最后赋值给全局变量.
 				
-				* 注意0：Struts2的框架采用的拦截器完成数据的封装。
-				* 注意1：这种方式不是特别好:因为属性特别多,提供特别多的set方法,而且还需要手动将数据存入到对象中.
-				* 注意2：这种情况下,Action类就相当于一个JavaBean,就没有体现出MVC的思想,Action类又封装数据,又接收请求处理,耦合性较高。
+				* 注意0:Struts2的框架采用的拦截器完成数据的封装.
+				* 注意1:这种方式不是特别好:因为属性特别多,提供特别多的set方法,而且还需要手动将数据存入到对象中.
+				* 注意2:这种情况下,Action类就相当于一个JavaBean,就没有体现出MVC的思想,Action类又封装数据,又接收请求处理,耦合性较高.
 			
-			> 在页面上,使用OGNL表达式进行数据封装。
-				* 在页面中使用OGNL表达式进行数据的封装,就可以直接把属性封装到某一个JavaBean的对象中。
-				* 在页面中定义一个JavaBean,并且提供set方法：例如：private User user;
-				* 页面中的编写发生了变化,需要使用OGNL的方式,表单中的写法：<input type="text" name="user.username">
+			> 在页面上,使用OGNL表达式进行数据封装.
+				* 在页面中使用OGNL表达式进行数据的封装,就可以直接把属性封装到某一个JavaBean的对象中.
+				* 在页面中定义一个JavaBean,并且提供set方法:例如:private User user;
+				* 页面中的编写发生了变化,需要使用OGNL的方式,表单中的写法:<input type="text" name="user.username">
 				
-				* 注意：只提供一个set方法还不够,必须还需要提供user属性的get和set方法！！！
+				* 注意:只提供一个set方法还不够,必须还需要提供user属性的get和set方法！！！
 					> 先调用get方法,判断一下是否有user对象的实例对象,如果没有,调用set方法把拦截器创建的对象注入进来,
 		
-		* 第二种方式：模型驱动
+		* 第二种方式:模型驱动
 			> 使用模型驱动的方式,也可以把表单中的数据直接封装到一个JavaBean的对象中,并且表单的写法和之前的写法没有区别！
 			> 编写的页面不需要任何变化,正常编写name属性的值
-			> 模型驱动的编写步骤：
-				* 手动实例化JavaBean,即：private User user = new User();
+			> 模型驱动的编写步骤:
+				* 手动实例化JavaBean,即:private User user = new User();
 				* 必须实现ModelDriven<T>接口,实现getModel()的方法,在getModel()方法中返回user即可！！
 
 ----------
@@ -140,11 +140,11 @@ tag:
 **技术分析之Struts2把数据封装到集合中**
 	
 	1. 封装复杂类型的参数(集合类型 Collection 、Map接口等)
-	2. 需求：页面中有可能想批量添加一些数据,那么现在就可以使用上述的技术了。把数据封装到集合中
+	2. 需求:页面中有可能想批量添加一些数据,那么现在就可以使用上述的技术了.把数据封装到集合中
 	3. 把数据封装到Collection中
-		* 因为Collection接口都会有下标值,所有页面的写法会有一些区别,注意：
+		* 因为Collection接口都会有下标值,所有页面的写法会有一些区别,注意:
 			> <input type="text" name="products[0].name" />
-		* 在Action中的写法,需要提供products的集合,并且提供get和set方法。
+		* 在Action中的写法,需要提供products的集合,并且提供get和set方法.
 	
 	4. 把数据封装到Map中
 		* Map集合是键值对的形式,页面的写法
@@ -153,7 +153,7 @@ tag:
 	
 ----------
 	
-**案例：添加客户**
+**案例:添加客户**
 	
 	1. 功能
 	
@@ -162,7 +162,7 @@ tag:
 **案例总结之Struts2的拦截器技术**
 	
 	1. 拦截器的概述
-		* 拦截器就是AOP(Aspect-Oriented Programming)的一种实现。(AOP是指用于在某个方法或字段被访问之前,进行拦截然后在之前或之后加入某些操作。)
+		* 拦截器就是AOP(Aspect-Oriented Programming)的一种实现.(AOP是指用于在某个方法或字段被访问之前,进行拦截然后在之前或之后加入某些操作.)
 		* 过滤器:过滤从客服端发送到服务器端请求的
 		
 		* 拦截器:拦截对目标Action中的某些方法进行拦截
@@ -206,7 +206,7 @@ tag:
 		</interceptors>
 		-->
 		
-		<!-- 第二种方式：定义拦截器栈 -->
+		<!-- 第二种方式:定义拦截器栈 -->
 		<interceptors>
 			<interceptor name="DemoInterceptor" class="com.itheima.interceptor.DemoInterceptor"/>
 			<!-- 定义拦截器栈 -->
@@ -228,4 +228,4 @@ tag:
 
 ----------
 	
-**案例二：使用拦截器判断用户是否已经登录**
+**案例二:使用拦截器判断用户是否已经登录**

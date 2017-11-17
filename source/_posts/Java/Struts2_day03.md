@@ -9,7 +9,7 @@ tag:
 <!-- TOC -->
 
 - [Struts2第三天](#struts2第三天)
-	- [案例一：使用Struts2框架查询所有的客户功能](#案例一使用struts2框架查询所有的客户功能)
+	- [案例一:使用Struts2框架查询所有的客户功能](#案例一使用struts2框架查询所有的客户功能)
 
 <!-- /TOC -->
 
@@ -17,7 +17,7 @@ tag:
 	
 ----------
 	
-**课程回顾：Struts2框架的第二天**
+**课程回顾:Struts2框架的第二天**
 	
 	1. Servlet的API
 		* ActionContext对象
@@ -43,7 +43,7 @@ tag:
 	
 ----------
 	
-### 案例一：使用Struts2框架查询所有的客户功能 ###
+### 案例一:使用Struts2框架查询所有的客户功能 ###
 	
 ----------
 	
@@ -57,7 +57,7 @@ tag:
 	
 	1. OGNL是Object Graphic Navigation Language(对象图导航语言)的缩写
 		* 所谓对象图,即以任意一个对象为根,通过OGNL可以访问与这个对象关联的其它对象
-		* 通过它简单一致的表达式语法,可以存取对象的任意属性,调用对象的方法,遍历整个对象的结构图,实现字段类型转化等功能。它使用相同的表达式去存取对象的属性
+		* 通过它简单一致的表达式语法,可以存取对象的任意属性,调用对象的方法,遍历整个对象的结构图,实现字段类型转化等功能.它使用相同的表达式去存取对象的属性
 	
 	2. Struts2框架使用OGNL作为默认的表达式语言
 		* OGNL是一种比EL强大很多倍的语言
@@ -122,10 +122,10 @@ tag:
 	
 **技术分析之值栈的概述**
 	
-	1. 问题一：什么是值栈？
-		* 值栈就相当于Struts2框架的数据的中转站,向值栈存入一些数据。从值栈中获取到数据。
+	1. 问题一:什么是值栈？
+		* 值栈就相当于Struts2框架的数据的中转站,向值栈存入一些数据.从值栈中获取到数据.
 		* ValueStack 是 struts2 提供一个接口,实现类 OgnlValueStack ---- 值栈对象 (OGNL是从值栈中获取数据的 )
-		* Action是多例的,有一起请求,创建Action实例,创建一个ActionContext对象,代表的是Action的上下文对象,还会创建一个ValueStack对象。
+		* Action是多例的,有一起请求,创建Action实例,创建一个ActionContext对象,代表的是Action的上下文对象,还会创建一个ValueStack对象.
 		* 每个Action实例都有一个ValueStack对象 (一个请求 对应 一个ValueStack对象 )
 		* 在其中保存当前Action 对象和其他相关对象
 		* Struts 框架把 ValueStack 对象保存在名为 “struts.valueStack” 的请求属性中,request中 (值栈对象 是 request一个属性)
@@ -135,13 +135,13 @@ tag:
 	
 **技术分析之值栈的内部结构**
 	
-	2. 问题二 ： 值栈的内部结构 ？
+	2. 问题二 : 值栈的内部结构 ？
 	    * 值栈由两部分组成
 			> root		-- Struts把动作和相关对象压入 ObjectStack 中--List
 			> context  	-- Struts把各种各样的映射关系(一些 Map 类型的对象) 压入 ContextMap 中
 		
 		* Struts会默认把下面这些映射压入ContextMap(context)中
-			* 注意：request代表的是Map集合的key值,value的值其实也是一个Map集合。
+			* 注意:request代表的是Map集合的key值,value的值其实也是一个Map集合.
 			
 			> parameters: 该 Map 中包含当前请求的请求参数  ?name=xxx&password=123
 			> request: 该 Map 中包含当前 request 对象中的所有属性
@@ -167,17 +167,17 @@ tag:
 	
 **技术分析之值栈的创建和ActionContext对象的关系**
 	
-	3. 问题三 ： 值栈对象的创建,ValueStack 和 ActionContext 是什么关系？
+	3. 问题三 : 值栈对象的创建,ValueStack 和 ActionContext 是什么关系？
 		* 值栈对象是请求时创建的
-		* ActionContext是绑定到当前的线程上,那么在每个拦截器或者Action中获取到的ActionContext是同一个。
-		* ActionContext中存在一个Map集合,该Map集合和ValueStack的context是同一个地址。
+		* ActionContext是绑定到当前的线程上,那么在每个拦截器或者Action中获取到的ActionContext是同一个.
+		* ActionContext中存在一个Map集合,该Map集合和ValueStack的context是同一个地址.
 		* ActionContext中可以获取到ValueStack的引用,以后再开发,使用ActionContext来获取到值栈对象
 	
 ----------
 	
 **技术分析之获取到值栈的对象**
 	
-	4. 问题四 ： 如何获得值栈对象
+	4. 问题四 : 如何获得值栈对象
 		* 获得值栈对象 有三种方法
 			* ValueStack vs1 = (ValueStack) ServletActionContext.getRequest().getAttribute("struts.valueStack");
 			* ValueStack vs2 = (ValueStack) ServletActionContext.getRequest().getAttribute(ServletActionContext.STRUTS_VALUESTACK_KEY);
@@ -187,12 +187,12 @@ tag:
 	
 **技术分析之向值栈中保存数据**
 	
-	5. 问题五： 向值栈保存数据 (主要针对root栈)
+	5. 问题五: 向值栈保存数据 (主要针对root栈)
 		> valueStack.push(Object obj);
 			* push方法的底层调用root对象的push方法(把元素添加到0位置)
 		
 		> valueStack.set(String key, Object obj);
-			* 源码获取map集合(map有可能是已经存在的,有可能是新创建的),把map集合push到栈顶,再把数据存入到map集合中。
+			* 源码获取map集合(map有可能是已经存在的,有可能是新创建的),把map集合push到栈顶,再把数据存入到map集合中.
 		
 		> 在jsp中 通过 <s:debug /> 查看值栈的内容
 	
@@ -200,12 +200,12 @@ tag:
 	
 **技术分析之从值栈中获取值**
 	
-	6. 问题六： 在JSP中获取值栈的数据
-		* 总结几个小问题：
+	6. 问题六: 在JSP中获取值栈的数据
+		* 总结几个小问题:
 		    > 访问root中数据 不需要#
 		    > 访问context其它对象数据 加 #
-		    > 如果向root中存入对象的话,优先使用push方法。
-		    > 如果向root中存入集合的话,优先要使用set方法。
+		    > 如果向root中存入对象的话,优先使用push方法.
+		    > 如果向root中存入集合的话,优先要使用set方法.
 		
 		* 在OgnlContext中获取数据
 			> 在Action中向域对象中存入值
@@ -316,7 +316,7 @@ tag:
 	
 **技术分析之EL表达式也会获取到值栈中的数据**
 	
-	7. 问题七：为什么EL也能访问值栈中的数据？
+	7. 问题七:为什么EL也能访问值栈中的数据？
 		* StrutsPreparedAndExecuteFilter的doFilter代码中 request = prepare.wrapRequest(request); 	
 			> 对Request对象进行了包装 ,StrutsRequestWrapper
 			> 增强了request的 getAttribute
@@ -341,20 +341,20 @@ tag:
 			> <s:property value="#parameters.name"/>
 		
 		* 构建一个map集合
-			* 例如：
+			* 例如:
 				* <s:radio name="sex" list="{'男','女'}"></s:radio>
 				* <s:radio name="sex" list="#{'0':'男','1':'女'}"></s:radio>
 	
 	2. % 符号的用法
-		* 强制字符串解析成OGNL表达式。
-			> 例如：在request域中存入值,然后在文本框(<s:textfield>)中取值,现在到value上。
+		* 强制字符串解析成OGNL表达式.
+			> 例如:在request域中存入值,然后在文本框(<s:textfield>)中取值,现在到value上.
 			> <s:textfield value="%{#request.msg}"/>
 		
 		* { }中值用''引起来,此时不再是ognl表达式,而是普通的字符串
-			> 例如：<s:property value="%{'#request.msg'}"/>
+			> 例如:<s:property value="%{'#request.msg'}"/>
 	
 	3. $ 符号的用法
-		* 在配置文件中可以使用OGNL表达式,例如：文件下载的配置文件。
+		* 在配置文件中可以使用OGNL表达式,例如:文件下载的配置文件.
 			<action name="download1" class="cn.itcast.demo2.DownloadAction">
 				<result name="success" type="stream">
 					<param name="contentType">${contentType}</param>

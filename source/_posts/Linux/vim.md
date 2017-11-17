@@ -43,7 +43,7 @@ imap <C-s> <Esc>:w!<CR>i
 * `.viminfo`:保存操作历史
 * `~/.vimrc`:个性化的设置
 
-~/.vimrc 中可以设置规则：
+~/.vimrc 中可以设置规则:
 * `set encoding=utf-8`:设置 vim 的内部编码规则为utf-8
 * `set fileencodings=utf-8,gb2312`:设置 vim 怎样理解文件的编码规则
 

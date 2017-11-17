@@ -15,8 +15,8 @@ http://www.cnblogs.com/hwStar/archive/2011/12/08/2280122.html
 
 在java项目的实际开发和应用中,常常需要用到将对象转为String这一基本功能.本文将对常用的转换方法进行一个总结.
 常用的方法有Object.toString(),(String)要转换的对象,String.valueOf(Object)等.下面对这些方法一一进行分析.
-## 方法1：采用 Object.toString()方法
-请看下面的例子：
+## 方法1:采用 Object.toString()方法
+请看下面的例子:
 ```
 Object object = getObject();
 System.out.println(object.toString());
@@ -26,10 +26,10 @@ System.out.println(object.toString());
 在这种使用方法中,因为java.lang.Object类里已有public方法.toString(),所以对任何严格意义上的java对象都可以调 用此方法.
 但在使用时要注意,必须保证object不是null值,否则将抛出NullPointerException异常.采用这种方法时,通常派生类会覆盖Object里的toString()方法.
 
-## 方法2：采用类型转换(String)object方法
+## 方法2:采用类型转换(String)object方法
 这是标准的类型转换,将object转成String类型的值.使用这种方法时,需要注意的是类型必须能转成String类型.
 因此最好用instanceof做个类型检查,以判断是否可以转换.否则容易抛出CalssCastException异常.
-此外,需特别小心的是因定义为Object 类型的对象在转成String时语法检查并不会报错,这将可能导致潜在的错误存在.这时要格外小心.如：
+此外,需特别小心的是因定义为Object 类型的对象在转成String时语法检查并不会报错,这将可能导致潜在的错误存在.这时要格外小心.如:
 ```
 Object obj = new Integer(100);
 String strVal = (String)obj;
@@ -42,10 +42,10 @@ String strVal = (String)obj;
 如上格式代码,将会报语法错误.
 此外,因null值可以强制转换为任何java类类型,(String)null也是合法的.
 
-## 方法3：采用String.valueOf(Object)
+## 方法3:采用String.valueOf(Object)
 String.valueOf(Object)的基础是Object.toString().但它与Objec.toString()又有所不同.
 在前面方法1的分析中提到,使用后者时需保证不为null.但采用第三种方法时,将不用担心object是否为null值这一问题.
-为了便于说明问题,我们来分析一下相关的源代码.Jdk里String.valueOf(Object)源码如下：
+为了便于说明问题,我们来分析一下相关的源代码.Jdk里String.valueOf(Object)源码如下:
 ```
 public static String valueOf(Object obj) {
        return (obj == null) ? "null" : obj.toString();
@@ -61,15 +61,15 @@ if(String.valueOf(object)== null){
 }
 ```
 这样的语句将可能会发生什么问题.
-再想一下,向控制台输出时,在视觉上如下语句在执行的结果上有什么不同：
+再想一下,向控制台输出时,在视觉上如下语句在执行的结果上有什么不同:
 ```
 System.out.println(String.valueOf((Object)null)); 注2
 System.out.println(null);
 ```
-我们看到的输出将是一模一样的东西：null,但它们意义相同吗？
-注1：光就System.out.println的使用来说,语句System.out.println(object.toString()); 换为System.out.println(object); 更好.
+我们看到的输出将是一模一样的东西:null,但它们意义相同吗？
+注1:光就System.out.println的使用来说,语句System.out.println(object.toString()); 换为System.out.println(object); 更好.
 此处如是用法主要是为了说明Object#toString()的用法.
-注2：推荐使用System.out.println(String.valueOf((Object)null)); 
+注2:推荐使用System.out.println(String.valueOf((Object)null)); 
 不推荐使用System.out.println(String.valueOf(null));
 
 在使用重载方法时,这样做是一个好的习惯.
@@ -82,7 +82,7 @@ Integer.valueof(String s)是将一个包装类是将一个实际值为数字的�
 而Integer.parseInt(String s)只是将是数字的字符串转成数字,注意他返回的是int型变量不具备方法和属性.
 
 1 字符串转换成数据
-字符串转换成整数：
+字符串转换成整数:
 ```
 String MyNumber ="1234";
 int MyInt = Integer.parseInt(MyNumber);
@@ -90,7 +90,7 @@ int MyInt = Integer.parseInt(MyNumber);
 字符串转换成byte, short, int, float, double, long等数据类型,可以分别参考Byte, Short, Integer, Float, Double, Long类的parseXXX方法.
 
 2 数据转换成字符串
-整数转换成字符串：
+整数转换成字符串:
 ```
 int MyInt = 1234;
 String MyString = "" + MyInt;
@@ -98,13 +98,13 @@ String MyString = "" + MyInt;
 其它数据类型可以利用同样的方法转换成字符串.
 
 3 十进制到其他进制的转换
-十进制整数转换成二进制整数,返回结果是一个字符串：
+十进制整数转换成二进制整数,返回结果是一个字符串:
 Integer.toBinaryString(int i);
 Integer和Long提供了toBinaryString, toHexString和toOctalString方法,可以方便的将数据转换成二进制、十六进制和八进制字符串.功能更加强大的是其toString(int/long i, int radix)方法,可以将一个十进制数转换成任意进制的字符串形式.
 byte, short, float和double等数据类型,可以利用Integer或者是Long的toBinaryString, toHexString, to OctalString和toString方法转换成其他进制的字符串形式.
 
 4 其它进制到十进制的转换
-五进制字符串14414转换成十进制整数,结果是1234：
+五进制字符串14414转换成十进制整数,结果是1234:
 
 System.out.println(Integer.valueOf("14414", 5);
 
@@ -166,13 +166,13 @@ public double toDouble(byte[] b){
 ```
 
 9 布尔类型转换成字符串
-第一种方法是：
+第一种方法是:
 
 boolean bool = true;
 String s = new Boolean(bool).toString();//将bool利用对象封装器转化为对象
 s.equals("true");
 
-第二种方法是：
+第二种方法是:
 
 boolean bool = true;
 String s = String.valueOf( bool );

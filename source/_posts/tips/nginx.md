@@ -31,7 +31,7 @@ Nginx是一款轻量级的Web服务器/反向代理服务器及电子邮件(IMAP
 
 * 负载均衡:
     原理就是数据流量分摊到多个服务器上执行,减轻每台服务器的压力,
-    多台服务器共同完成工作任务,从而提高了数据的吞吐量。
+    多台服务器共同完成工作任务,从而提高了数据的吞吐量.
 
 * 动静分离:
     将静态的资源放到反向服务器,节省用户的访问时间.
@@ -41,7 +41,7 @@ Nginx是一款轻量级的Web服务器/反向代理服务器及电子邮件(IMAP
 > 发送响应报文时,是边接收来自后端Web服务器的数据,边发送给客户端
 
 ## 模块
-内核模块和事件驱动模块,即：CoreModule和EventsModule；另外还有第三方模块 HTTP内核模块
+内核模块和事件驱动模块,即:CoreModule和EventsModule；另外还有第三方模块 HTTP内核模块
 
 
 ## 命令及配置
@@ -58,17 +58,17 @@ nginx [-?hvVtq] [-s signal] [-c filename] [-p prefix] [-g directives]
 |-t           |检测配置文件是否有语法错误,然后退出|
 |-q           |在检测配置文件期间屏蔽非错误信息|
 |-s signal    |给一个nginx主进程发送信号,reload,reopen,start,stop|
-|-p prefix    |设置前缀路径(默认是：/usr/local/Cellar/nginx/1.2.6/)|
-|-c filename  |设置配置文件(默认是：/usr/local/etc/nginx/nginx.conf)|
+|-p prefix    |设置前缀路径(默认是:/usr/local/Cellar/nginx/1.2.6/)|
+|-c filename  |设置配置文件(默认是:/usr/local/etc/nginx/nginx.conf)|
 |-g directives|设置配置文件外的全局指令|
 
 **配置及说明**
 ```
 ###########start#################
-#user administrator administrators;  #配置用户或者组,默认为nobody nobody。
+#user administrator administrators;  #配置用户或者组,默认为nobody nobody.
 #worker_processes 2;  #允许生成的进程数,默认为1
 #pid /nginx/pid/nginx.pid;   #指定nginx进程运行文件存放地址
-error_log log/error.log debug;  #制定日志路径,级别。这个设置可以放入全局块,http块,server块,级别以此为:debug|info|notice|warn|error|crit|alert|emerg
+error_log log/error.log debug;  #制定日志路径,级别.这个设置可以放入全局块,http块,server块,级别以此为:debug|info|notice|warn|error|crit|alert|emerg
 events {
     accept_mutex on;   #设置网路连接序列化,防止惊群现象发生,默认为on
     multi_accept on;  #设置一个进程是否同时接受多个网络连接,默认为off
@@ -81,9 +81,9 @@ http {
     #access_log off; #取消服务日志
     log_format myFormat '$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for'; #自定义格式
     access_log log/access.log myFormat;  #combined为日志格式的默认值
-    sendfile on;   #允许sendfile方式传输文件,可以在http块,server块,location块。
-    sendfile_max_chunk 100k;  #每个进程每次调用传输数量不能大于设定的值,默认为0,即不设上限。
-    keepalive_timeout 65;  #连接超时时间,可以在http,server,location块。
+    sendfile on;   #允许sendfile方式传输文件,可以在http块,server块,location块.
+    sendfile_max_chunk 100k;  #每个进程每次调用传输数量不能大于设定的值,默认为0,即不设上限.
+    keepalive_timeout 65;  #连接超时时间,可以在http,server,location块.
 
     upstream servers {
       server 127.0.0.1:8080;
@@ -93,10 +93,10 @@ http {
 
     error_page 404 https://www.baidu.com; #错误页
     server {
-        keepalive_requests 120; #单连接请求上限次数。
+        keepalive_requests 120; #单连接请求上限次数.
         listen       4545;   #监听端口
         server_name  127.0.0.1;   #监听地址
-        location  ~*^.+$ {       #请求的url过滤,正则匹配,~为区分大小写,~*为不区分大小写。
+        location  ~*^.+$ {       #请求的url过滤,正则匹配,~为区分大小写,~*为不区分大小写.
            #root path;  #根目录
            #index vv.txt;  #设置默认页
            proxy_pass  http://servers;  #请求转向servers定义的服务器列表
@@ -116,7 +116,7 @@ http {
 7. $http_referer :用来记录从那个页面链接访问过来的;
 8. $http_user_agent :记录客户端浏览器的相关信息;
 
-> 每个指令必须有分号结束。
+> 每个指令必须有分号结束.
 
 ## 搭建集群
 ### windows

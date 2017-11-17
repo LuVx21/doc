@@ -93,9 +93,9 @@ git rm --cached <filename>
 
 ### 常规查看(最常用)
 
---graph：图形化显示分支提交历史
---oneline：一个提交显示一行
---decorate：显示分支引用
+--graph:图形化显示分支提交历史
+--oneline:一个提交显示一行
+--decorate:显示分支引用
 
 ```
 git log --graph --oneline --decorate
@@ -103,13 +103,13 @@ git log --graph --oneline --decorate
 
 ### 格式化显示
 
-%h：Commit对象的简短哈希串
-%t：Tree对象的简短哈希串
-%p：父Commit对象的简短哈希串
-%an：作者名字
-%ae：作者邮件
-%ad：修订日期
-%s：Commit Message
+%h:Commit对象的简短哈希串
+%t:Tree对象的简短哈希串
+%p:父Commit对象的简短哈希串
+%an:作者名字
+%ae:作者邮件
+%ad:修订日期
+%s:Commit Message
 
 ```
 git log --pretty=format:"%h %t %p %an %s" --graph
@@ -118,12 +118,12 @@ git log --pretty=format:"%h %t %p %an %s" --graph
 
 ### 提交历史搜索
 
---grep：搜索提交说明
---author：匹配作者
---committer：匹配提交者
---after：时间起点
---before：时间终点
---：特定路径
+--grep:搜索提交说明
+--author:匹配作者
+--committer:匹配提交者
+--after:时间起点
+--before:时间终点
+--:特定路径
 
 ```
 git log --oneline --decorate --graph --grep=C --author=zhongmingmao --committer=xx \
