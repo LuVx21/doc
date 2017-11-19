@@ -8,6 +8,7 @@ tag:
 
 <!-- TOC -->
 
+- [环境准备(Eclipse)](#环境准备eclipse)
 - [关于Spring框架](#关于spring框架)
     - [什么是Spring框架](#什么是spring框架)
     - [Spring框架的特点](#spring框架的特点)
@@ -24,6 +25,16 @@ tag:
 - [Spring框架整合WEB](#spring框架整合web)
 
 <!-- /TOC -->
+
+# 环境准备(Eclipse)
+
+1. 统一工作空间的编码,选择UTF-8
+2. 把创建JSP页面的编码修改UTF-8
+3. 重新配置Tomcat服务器
+	* 先配置Tomcat服务器
+	* 选择服务器 --> open --> 选择发布项目的目录(webapps目录)
+
+4. SSH自己配置约束
 
 # 关于Spring框架
 
