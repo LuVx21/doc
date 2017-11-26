@@ -60,7 +60,7 @@ sheet.max_column
 ## new sheet
 
 ```python
-# 创建sheet可以指定位置,但默认以sheet名排序
+# 创建sheet可以指定位置, 但默认以sheet名排序
 sheet1 = workbook.create_sheet(0)
 sheet1.title = "sheetname"
 # 合并
@@ -79,9 +79,9 @@ sheet.sheet_properties.tabColor = "000000"
 # 行列均从1计数
 print(sheet.cell(row = 1 , column = 1).value)
 sheet['A1'] = '47'
-# 指定参数,大胆推测,可以传进字典
+# 指定参数, 大胆推测, 可以传进字典
 sheet.cell(row = 1 , column = 1, value = '47')
-# 另存为,自动创建新文件
+# 另存为, 自动创建新文件
 workbook.save(u"2.xlsx")
 ```
 

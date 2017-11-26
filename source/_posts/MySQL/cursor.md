@@ -15,7 +15,7 @@ tags:
 ## 创建
 
 ```sql
-declare cur cursor for select name,count from store where name = 'iphone';
+declare cur cursor for select name, count from store where name = 'iphone';
 ```
 
 
@@ -33,7 +33,7 @@ declare continue handler for not found set done = true;
 ```sql
 open cur;
 read_loop:loop
-    fetch cur into n,c;
+    fetch cur into n, c;
     if done then
         leave read_loop;    --跳出游标循环
     end if;
@@ -49,10 +49,10 @@ close cur;
 
 ```sql
 open cur;
-fetch cur into n,c;
+fetch cur into n, c;
 while(not done) do
         ......;
-        fetch cur into n,c;
+        fetch cur into n, c;
 end while;
 
 close cur;
@@ -66,7 +66,7 @@ close cur;
 ```sql
 open cur;
 repeat
-fetch cur into n,c;
+fetch cur into n, c;
 if not done then
     ......;
 end if;
@@ -81,6 +81,6 @@ set @sqlStr='select * from table where condition1 = ?';
 prepare s1 for @sqlStr;
 --如果有多个参数用逗号分隔
 execute s1 using @condition1;
---手工释放,或者是 connection 关闭时, server 自动回收
+--手工释放, 或者是 connection 关闭时, server 自动回收
 deallocate prepare s1;
 ```

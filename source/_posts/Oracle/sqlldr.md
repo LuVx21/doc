@@ -15,7 +15,7 @@ tags:
 使用sqlldr导入文本数据到oracle
 
 用法:
-	sqlldr keyword=value [,keyword=value,...]
+	sqlldr keyword=value [, keyword=value, ...]
 
 有效的关键字:
 
@@ -31,7 +31,7 @@ tags:
 * errors -- 允许的错误的数目 (默认 50)
 * rows -- 常规路径绑定数组中或直接路径保存数据间的行数(默认:常规路径 64, 所有直接路径)
 * bindsize -- 常规路径绑定数组的大小 (以字节计) (默认 256000)
-* silent -- 运行过程中隐藏消息 (标题,反馈,错误,废弃,分区)
+* silent -- 运行过程中隐藏消息 (标题, 反馈, 错误, 废弃, 分区)
 * direct -- 使用直接路径 (默认 FALSE)
 * parfile -- 参数文件: 包含参数说明的文件的名称
 * parallel -- 执行并行加载 (默认 FALSE)
@@ -59,9 +59,9 @@ NOTE: 命令行参数可以由位置或关键字指定
 
 位置指定参数的时间必须早于但不可迟于由关键字指定的参数.
 例如
-允许'sqlldr scott/tiger control=foo logfile=log',
+允许'sqlldr scott/tiger control=foo logfile=log', 
 但是
-不允许'sqlldr scott/tiger control=foo log',
+不允许'sqlldr scott/tiger control=foo log', 
 即使参数'log'的位置正确.
 
 # 例
@@ -71,18 +71,18 @@ sqlldr [userid=]user/pwd@dbname control=text.ctl direct=true rows=1000000 discar
 ```
 text.ctl:
 ```sql
-options(load=-1,skip=1,errors=1,rows=1000000)
+options(load=-1, skip=1, errors=1, rows=1000000)
 load data characterset utf8
 infile 'text.csv'
 badfile 'error.bad'
 truncate into table user.tablename
-fields terminated by "," 
+fields terminated by ", " 
 optionally enclosed by '"'
 trailing nullcols
 (
-"CHAR1"  NULLIF ("CHAR1"= 'null'),
-"CHAR2",
-"CHAR3",
+"CHAR1"  NULLIF ("CHAR1"= 'null'), 
+"CHAR2", 
+"CHAR3", 
 "CHAR4"
 )
 ```

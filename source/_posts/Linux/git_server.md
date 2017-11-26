@@ -28,7 +28,7 @@ tags:
 
 ## 安装依赖库和编译工具
 
-为了后续安装能正常进行,我们先来安装一些相关依赖库和编译工具
+为了后续安装能正常进行, 我们先来安装一些相关依赖库和编译工具
 ### 依赖库
 ```
 yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
@@ -40,7 +40,7 @@ yum install gcc perl-ExtUtils-MakeMaker
 ```
 ## 下载 git
 
-选一个目录,用来放下载下来的安装包,这里将安装包放在 /usr/local/src 目录里
+选一个目录, 用来放下载下来的安装包, 这里将安装包放在 /usr/local/src 目录里
 ```
 cd /usr/local/src
 ```
@@ -83,7 +83,7 @@ echo 'export PATH=$PATH:/usr/local/git/bin' >> /etc/bashrc
 ```
 source /etc/bashrc
 ```
-此时我们能查看 git 版本号,说明我们已经安装成功了.
+此时我们能查看 git 版本号, 说明我们已经安装成功了.
 
 ```
 git --version
@@ -103,7 +103,7 @@ useradd -m gituser
 passwd gituser
 ```
 
-控制台输入创建密码后,输入您自定义的密码,并二次确认.
+控制台输入创建密码后, 输入您自定义的密码, 并二次确认.
 
 ## 初始化 git 仓库并配置用户权限
 
@@ -114,7 +114,7 @@ passwd gituser
 ```
 mkdir -p /data/repositories
 ```
-创建好后,初始化这个仓库
+创建好后, 初始化这个仓库
 
 ```
 cd /data/repositories/ && git init --bare test.git
@@ -126,7 +126,7 @@ cd /data/repositories/ && git init --bare test.git
 chown -R gituser:gituser /data/repositories
 chmod 755 /data/repositories
 ```
-[查找 git-shell 所在目录] , 编辑 /etc/passwd 文件,将最后一行关于 gituser 的登录 shell 配置改为 git-shell 的目录[?]如下
+[查找 git-shell 所在目录] , 编辑 /etc/passwd 文件, 将最后一行关于 gituser 的登录 shell 配置改为 git-shell 的目录[?]如下
 
 示例代码:/etc/passwd
 ```

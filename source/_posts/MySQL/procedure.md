@@ -39,7 +39,7 @@ tags:
     # SINCE 0.5.0
     # RESTART REQUIRED
 
-    # 设置访问的端口,不要和别的端口有冲突
+    # 设置访问的端口, 不要和别的端口有冲突
     server.httpPort = 1000
 
     # Secure/SSL https port to serve. <= 0 disables this connector.
@@ -79,9 +79,9 @@ tags:
     @REM arch = x86, amd64, or ia32
     SET ARCH=x86
     SET CD=D:\Git\gitblit-1.7.1(你的实际目录)
-    # StartParams里的启动参数,给空
+    # StartParams里的启动参数, 给空
     ```
 
 4. 启动服务
-5. 设置防火墙规则,允许局域网访问
+5. 设置防火墙规则, 允许局域网访问
 6. 配置用户等

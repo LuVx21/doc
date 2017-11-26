@@ -19,7 +19,7 @@ tags:
 <!-- /TOC -->
 # 关于
 
-本身是一个管道命令,主要是以行为单位进行处理,可以将数据行进行替换,删除,新增,选取等特定工作
+本身是一个管道命令, 主要是以行为单位进行处理, 可以将数据行进行替换, 删除, 新增, 选取等特定工作
 
 __格式__
 
@@ -35,7 +35,7 @@ __参数__
 |-e|直接在指令列模式上进行 sed 的动作编辑;|
 |-f|直接将 sed 的动作写在一个档案内, -f filename 则可以执行 filename 内的sed 动作;|
 |-r|sed 的动作支援的是延伸型正规表示法的语法.(预设是基础正规表示法语法)|
-|-i|直接修改读取的档案内容,而不是由屏幕输出|
+|-i|直接修改读取的档案内容, 而不是由屏幕输出|
 
 
 # 使用例
@@ -44,12 +44,12 @@ __操作指令__
 
 |命令|说明|
 |:-|:-|
-|a|新增, a 的后面可以接字串,而这些字串会在新的一行出现(目前的下一行)|
-|c|替换,行|
+|a|新增, a 的后面可以接字串, 而这些字串会在新的一行出现(目前的下一行)|
+|c|替换, 行|
 |d|删除|
-|i|插入, i 的后面可以接字串,而这些字串会在新的一行出现(目前的上一行)|
-|p|列印,将某个选择的资料印出.通常 p 会与参数 sed -n 一起|
-|s|替换,字符|
+|i|插入, i 的后面可以接字串, 而这些字串会在新的一行出现(目前的上一行)|
+|p|列印, 将某个选择的资料印出.通常 p 会与参数 sed -n 一起|
+|s|替换, 字符|
 
 
 ## 新增
@@ -58,8 +58,8 @@ __操作指令__
 # 在第一行后加内容
 sed '1a this is added' <filename>
 # 在第1~3行后加内容
-sed '1,3a this is added' <filename>
-# '\n',添加多行
+sed '1, 3a this is added' <filename>
+# '\n', 添加多行
 sed '1a this is add' <filename>
 # 每行后添加空行
 sed 'G' <filename>
@@ -70,9 +70,9 @@ sed 'G' <filename>
 
 ```shell
 # 删除1~2行
-sed '1,2d' <filename>
+sed '1, 2d' <filename>
 # 删除2~最后一行
-sed '2,$d' <filename>
+sed '2, $d' <filename>
 # 删除空白行
 sed '/^$/d' <filename>
 ```
@@ -100,7 +100,7 @@ sed 's/text/replace_text/' <filename>
 __全局替换__
 
 ```shell
-# 默认替换后,输出替换后的内容,如果需要直接替换原文件,使用`-i`
+# 默认替换后, 输出替换后的内容, 如果需要直接替换原文件, 使用`-i`
 sed 's/text/replace_text/g' <filename>
 ```
 
@@ -136,7 +136,7 @@ echo renxxhaharen | sed "s/$var/HLLOE/"
 # 将第1行替换
 sed '1c this is replaced' <filename>
 # 将第1~3行替换
-sed '1,3c this is replaced' <filename>
+sed '1, 3c this is replaced' <filename>
 ```
 
 ## 插入

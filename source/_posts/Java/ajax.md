@@ -18,17 +18,17 @@ tags:
 # 关于
 
 需求:
-	当我们在注册页面上输入用户名之后,点击下一个地方,去数据库中查询有无该用户名,最后提示信息
+	当我们在注册页面上输入用户名之后, 点击下一个地方, 去数据库中查询有无该用户名, 最后提示信息
 技术分析:
 	ajax
 
 
 **ajax:**
 
-	异步JavaScript和XML,
+	异步JavaScript和XML, 
 	AJAX 是一种用于创建快速动态网页的技术.
-	通过在后台与服务器进行少量数据交换,AJAX 可以使网页实现异步更新.这意味着可以在不重新加载整个网页的情况下,对网页的某部分进行更新.
-	传统的网页(不使用 AJAX)如果需要更新内容,必须重载整个网页页面.
+	通过在后台与服务器进行少量数据交换, AJAX 可以使网页实现异步更新.这意味着可以在不重新加载整个网页的情况下, 对网页的某部分进行更新.
+	传统的网页(不使用 AJAX)如果需要更新内容, 必须重载整个网页页面.
 
 # 使用
 
@@ -53,34 +53,34 @@ ajax-api详解
 			}
 		responseText:响应回来的文本
 	常用方法:
-		open("请求方式","请求路径"[,"是否异步"]):设置请求的方式和请求的路径
+		open("请求方式", "请求路径"[, "是否异步"]):设置请求的方式和请求的路径
 		send(["参数"]):发送请求 参数是请求方式为post的时候的参数
-		setRequestHeader("content-type","form表单enctype属性"):设置post请求的参数的类型 必须放在send方法之前.
+		setRequestHeader("content-type", "form表单enctype属性"):设置post请求的参数的类型 必须放在send方法之前.
 /////////////////////////////
 步骤分析:
 	1.数据库和表
 		CREATE TABLE `user` (
-		  `id` INT(11) NOT NULL AUTO_INCREMENT,
-		  `username` VARCHAR(20) DEFAULT NULL,
-		  `password` VARCHAR(20) DEFAULT NULL,
-		  `email` VARCHAR(20) DEFAULT NULL,
-		  `name` VARCHAR(20) DEFAULT NULL,
-		  `sex` VARCHAR(10) DEFAULT NULL,
-		  `birthday` DATE DEFAULT NULL,
-		  `hobby` VARCHAR(50) DEFAULT NULL,
+		  `id` INT(11) NOT NULL AUTO_INCREMENT, 
+		  `username` VARCHAR(20) DEFAULT NULL, 
+		  `password` VARCHAR(20) DEFAULT NULL, 
+		  `email` VARCHAR(20) DEFAULT NULL, 
+		  `name` VARCHAR(20) DEFAULT NULL, 
+		  `sex` VARCHAR(10) DEFAULT NULL, 
+		  `birthday` DATE DEFAULT NULL, 
+		  `hobby` VARCHAR(50) DEFAULT NULL, 
 		  PRIMARY KEY (`id`)
 		) ENGINE=INNODB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 		INSERT
-		INTO `user`(`id`,`username`,`password`,`email`,`name`,`sex`,`birthday`,`hobby`)
+		INTO `user`(`id`, `username`, `password`, `email`, `name`, `sex`, `birthday`, `hobby`)
 		VALUES
-		(1,'bbb','123','123@163.com','张三','男','1992-01-02','篮球, 足球, 排球'),
-		(2,'ccc','123','ccc@itcast.cn','李四','女','1992-03-20','排球, 乒乓球'),
-		(3,'aaa','123','aaa@itcast.cn','王守义','男','1990-08-11','足球, 排球'),
-		(5,'tom','123','haha@qq.com','提莫','男',NULL,'篮球');
+		(1, 'bbb', '123', '123@163.com', '张三', '男', '1992-01-02', '篮球, 足球, 排球'), 
+		(2, 'ccc', '123', 'ccc@itcast.cn', '李四', '女', '1992-03-20', '排球, 乒乓球'), 
+		(3, 'aaa', '123', 'aaa@itcast.cn', '王守义', '男', '1990-08-11', '足球, 排球'), 
+		(5, 'tom', '123', 'haha@qq.com', '提莫', '男', NULL, '篮球');
 	2.新建项目
 		导入 jar包 工具类 配置文件
 	3.新建一个注册页面 表单 在用户名文本框上输入用户名 失去焦点
-		发送ajax请求,将输入的值发送到servlet
+		发送ajax请求, 将输入的值发送到servlet
 	4.checkUsername4Ajax
 		接受用户名
 		调用service完成查询操作 返回一个用户
@@ -88,26 +88,26 @@ ajax-api详解
 			若为空 :写1 代表可以使用
 			若不为空:写0
 	5.在表单接受响应的数据
-		判断一下,
-			若为0,则提示用户名已被占用 表单不可用提交 提交按钮禁用
+		判断一下, 
+			若为0, 则提示用户名已被占用 表单不可用提交 提交按钮禁用
 				document.getElementById("sub").disabled=true;
 
 ## jquery中的ajax
 
 四种:
-	了解:jquery对象.load(url,params,function(数据){});
-	★: $.get(url,params,function(数据){},type);
+	了解:jquery对象.load(url, params, function(数据){});
+	★: $.get(url, params, function(数据){}, type);
 		发送get请求的ajax
 			url:请求的路径
-			params:请求的参数 参数为key\value的形式 key=value  {"":"","":""}
+			params:请求的参数 参数为key\value的形式 key=value  {"":"", "":""}
 			fn:回调函数 参数就是服务器发送回来的数据
-			type:返回内容格式,xml, html, script, json, text, _default.    以后用"json"
+			type:返回内容格式, xml, html, script, json, text, _default.    以后用"json"
 
-	★: $.post(url,params,function(数据){},type);
+	★: $.post(url, params, function(数据){}, type);
 		发送post请求的ajax
 
 		若结果为json格式,  打印返回值的时候是一个对象
-			例如若json为 {"result":"success","msg":"成功"}
+			例如若json为 {"result":"success", "msg":"成功"}
 			获取msg 只需要	参数.msg
 	理解:
 		$.ajax([选项]);
@@ -121,13 +121,13 @@ ajax-api详解
 				async:设置是否是异步请求
 			例如:
 				$.ajax({
-					url:"/day15/demo1",
-					type:"post",
-					data:"username=tom",
+					url:"/day15/demo1", 
+					type:"post", 
+					data:"username=tom", 
 					success:function(d){
 						alert(d.msg);
-					},
-					error:function(){},
+					}, 
+					error:function(){}, 
 					dataType:"json"
 
 				});
@@ -138,11 +138,11 @@ ajax-api详解
 ////////////////////////////////
 案例3-模仿百度搜索
 需求:
-	在一个文本框中输入一段内容,keyup的时候发送一个ajax请求,去数据库中查找相应的内容,在页面上展示
+	在一个文本框中输入一段内容, keyup的时候发送一个ajax请求, 去数据库中查找相应的内容, 在页面上展示
 步骤分析:
 	1.表
 		create table keyword(
-			id int primary key auto_increment,
+			id int primary key auto_increment, 
 			kw varchar(20)
 		);
 	2.页面
@@ -151,11 +151,11 @@ ajax-api详解
 ///////////////////////////////////////
 案例4-省市联动
 需求:
-	先有一个省份的下拉选,根据选择省份,从而动态的市下拉选中加载所有的市.
+	先有一个省份的下拉选, 根据选择省份, 从而动态的市下拉选中加载所有的市.
 步骤分析:
 	1.表
 	2.页面上有两个下拉选 省份的下拉选一般是固定的 页面加载的时候读取所有的省份
-	3.当省份改变的时候,获取省份的信息,发送一个ajax请求,去市的表中查询相应省份的所有市,然后将他们加载到市下拉选上
+	3.当省份改变的时候, 获取省份的信息, 发送一个ajax请求, 去市的表中查询相应省份的所有市, 然后将他们加载到市下拉选上
 	4.selectProServlet selectCityServlet
 	//////////////////////
 技术分析:
@@ -163,10 +163,10 @@ ajax-api详解
 		JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式.它基于ECMAScript的一个子集.
 	json格式:
 		格式1:value可以为任意值
-			{"key":value,"key1":value1}
+			{"key":value, "key1":value1}
 		格式2:e可以为任意值
-			[e1,e2]
-	jsonlib工具类,可以使对象转换成json数据
+			[e1, e2]
+	jsonlib工具类, 可以使对象转换成json数据
 		1.导入jar包
 		2.使用api
 			JSONArray.fromObject(对象)  数组和list
@@ -184,17 +184,17 @@ ajax-api详解
 			}
 		}
 	3.open操作 设置访问的方式和路径
-		xmlhttp.open("get","url");
+		xmlhttp.open("get", "url");
 	4.send操作
 		xmlhttp.send("post的参数")
 		 若有参数需要设置一个头
-			xmlhttp.setRequestHeader("content-type","form表单enctype属性")
+			xmlhttp.setRequestHeader("content-type", "form表单enctype属性")
 ////////////////////////
 jquery中ajax
 	掌握的:
-		$.get(url,params,fn,type);
+		$.get(url, params, fn, type);
 			type:"json"
-		$.post(url,params,fn,type);
+		$.post(url, params, fn, type);
 
 	理解:
 		$.ajax(选项);
@@ -207,9 +207,9 @@ jquery中ajax
 				dataType:"json"
 json:轻量级的数据格式
 	格式1:
-		{"key":value,"key1":value}
+		{"key":value, "key1":value}
 	格式2:
-		[e1,e2]
+		[e1, e2]
 jsonlib:
 	1.导入jar包
 	2.使用api

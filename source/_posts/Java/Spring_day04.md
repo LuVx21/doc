@@ -25,15 +25,15 @@ tag:
 		* 开启自动代理
 	
 	2. JDBC模板技术
-		* Spring提供模板技术,数据库的操作
-		* 以后编写DAO层,都可以继承JdbcDaoSupport类(JDBC模板)
+		* Spring提供模板技术, 数据库的操作
+		* 以后编写DAO层, 都可以继承JdbcDaoSupport类(JDBC模板)
 		* Spring框架可以整合开源连接池
 	
 	3. Spring事务管理
 		* Spring框架事务管理需要接口和概述
-			* PlatformTransactionManager接口(平台事务管理器接口),不管使用哪种方式管理事务,这个类必须配置的！！
+			* PlatformTransactionManager接口(平台事务管理器接口), 不管使用哪种方式管理事务, 这个类必须配置的！！
 		* 手动编码(了解)
-		* 声明式事务管理方式(重点掌握),默认使用AOP的技术来增强
+		* 声明式事务管理方式(重点掌握), 默认使用AOP的技术来增强
 			* XML的方式
 			* 注解的方式
 	
@@ -95,7 +95,7 @@ tag:
 				<url-pattern>/*</url-pattern>
 			</filter-mapping>
 		
-		* 在src目录下创建struts.xml,用来配置Action
+		* 在src目录下创建struts.xml, 用来配置Action
 	
 	2. Hibernate框架
 		* 在src目录创建hibernate.cfg.xml配置文件
@@ -118,47 +118,47 @@ tag:
 	
 **技术分析之Spring框架整合Struts2框架**
 	
-	1. 导入CRM项目的UI页面,找到添加客户的页面,修改form表单,访问Action
-	2. 编写CustomerAction接收请求,在struts.xml中完成Action的配置
+	1. 导入CRM项目的UI页面, 找到添加客户的页面, 修改form表单, 访问Action
+	2. 编写CustomerAction接收请求, 在struts.xml中完成Action的配置
 		<package name="crm" extends="struts-default" namespace="/">
 			<action name="customer_*" class="com.itheima.web.action.CustomerAction" method="{1}">
 				
 			</action>
 		</package>
 	
-	3. 在Action中获取到service(开发不会使用,因为麻烦)
-		* 可以通过 WebApplicationContextUtils.getWebApplicationContext(ServletActionContext.getServletContext()); 来获取,但是这种方式编写代码太麻烦了！！
+	3. 在Action中获取到service(开发不会使用, 因为麻烦)
+		* 可以通过 WebApplicationContextUtils.getWebApplicationContext(ServletActionContext.getServletContext()); 来获取, 但是这种方式编写代码太麻烦了！！
 	
 	4. Spring整合Struts2框架的第一种方式(Action由Struts2框架来创建)
-		* 因为导入的struts2-spring-plugin-2.3.24.jar 包自带一个配置文件 struts-plugin.xml ,该配置文件中有如下代码
-			* <constant name="struts.objectFactory" value="spring" />	开启一个常量,如果该常量开启,那么下面的常量就可以使用
-			* struts.objectFactory.spring.autoWire = name,该常量是可以让Action的类来自动装配Bean对象！！
+		* 因为导入的struts2-spring-plugin-2.3.24.jar 包自带一个配置文件 struts-plugin.xml , 该配置文件中有如下代码
+			* <constant name="struts.objectFactory" value="spring" />	开启一个常量, 如果该常量开启, 那么下面的常量就可以使用
+			* struts.objectFactory.spring.autoWire = name, 该常量是可以让Action的类来自动装配Bean对象！！
 	
 	5. Spring整合Struts2框架的第二种方式(Action由Spring框架来创建)(推荐大家来使用的)
-		* 把具体的Action类配置文件applicatonContext.xml的配置文件中,但是注意:struts.xml需要做修改
+		* 把具体的Action类配置文件applicatonContext.xml的配置文件中, 但是注意:struts.xml需要做修改
 		* applicationContext.xml
 			* <bean id="customerAction" class="com.itheima.web.action.CustomerAction" scope="prototype">
 		
-		* struts.xml中的修改,把全路径修改成ID值
+		* struts.xml中的修改, 把全路径修改成ID值
 			* <action name="customer_*" class="customerAction" method="{1}">
 		
 		* 第二种方式需要有两个注意的地方
-			* Spring框架默认生成CustomerAction是单例的,而Struts2框架是多例的.所以需要配置 scope="prototype"
+			* Spring框架默认生成CustomerAction是单例的, 而Struts2框架是多例的.所以需要配置 scope="prototype"
 			* CustomerService现在必须自己手动注入了
 	
 ----------
 	
 **技术分析之Spring框架整合Hibernate框架(带有hibernate.cfg.xml的配置文件.强调:不能加绑定当前线程的配置)**
 
-	1. 编写CustomerDaoImpl的代码,加入配置并且在CustomerServiceImpl中完成注入
-	2. 编写映射的配置文件,并且在hibernate.cfg.xml的配置文件中引入映射的配置文件
+	1. 编写CustomerDaoImpl的代码, 加入配置并且在CustomerServiceImpl中完成注入
+	2. 编写映射的配置文件, 并且在hibernate.cfg.xml的配置文件中引入映射的配置文件
 	
-	3. 在applicationContext.xml的配置文件,配置加载hibernate.cfg.xml的配置
+	3. 在applicationContext.xml的配置文件, 配置加载hibernate.cfg.xml的配置
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 			<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
 		</bean>
 	
-	4. 在CustomerDaoImpl中想完成数据的添加,Spring框架提供了一个HibernateDaoSupport的工具类,以后DAO都可以继承该类！！
+	4. 在CustomerDaoImpl中想完成数据的添加, Spring框架提供了一个HibernateDaoSupport的工具类, 以后DAO都可以继承该类！！
 		public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
 			public void save(Customer c) {
 				System.out.println("持久层...");
@@ -171,7 +171,7 @@ tag:
 		</bean>
 	
 	5. 开启事务的配置
-		* 先配置事务管理器,注意现在使用的是Hibernate框架,所以需要使用Hibernate框架的事务管理器
+		* 先配置事务管理器, 注意现在使用的是Hibernate框架, 所以需要使用Hibernate框架的事务管理器
 			<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 				<property name="sessionFactory" ref="sessionFactory"/>
 			</bean>
@@ -201,12 +201,12 @@ tag:
 				<property name="password" value="root"/>
 			</bean>
 		
-		* 修改 LocalSessionFactoryBean 的属性配置,因为已经没有了hibernate.cfg.xml的配置文件,所以需要修改该配置,注入连接池
+		* 修改 LocalSessionFactoryBean 的属性配置, 因为已经没有了hibernate.cfg.xml的配置文件, 所以需要修改该配置, 注入连接池
 			<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 				<property name="dataSource" ref="dataSource"/>
 			</bean>
 		
-		* 继续在 LocalSessionFactoryBean 中配置,使用hibernateProperties属性继续来配置其他的属性,注意值是properties属性文件
+		* 继续在 LocalSessionFactoryBean 中配置, 使用hibernateProperties属性继续来配置其他的属性, 注意值是properties属性文件
 			<!-- 配置其他的属性 -->
 			<property name="hibernateProperties">
 				<props>
@@ -237,22 +237,22 @@ tag:
 	
 	2. 查询的操作:
 		* 查询一条记录:
-			* Object get(Class c,Serializable id);
-			* Object load(Class c,Serializable id);
+			* Object get(Class c, Serializable id);
+			* Object load(Class c, Serializable id);
 	
 	3. 查询多条记录:
-		* List find(String hql,Object... args);
+		* List find(String hql, Object... args);
 	
 ----------
 	
 **技术分析之延迟加载问题**
 	
-	1. 使用延迟加载的时候,再WEB层查询对象的时候程序会抛出异常！
-		* 原因是延迟加载还没有发生SQL语句,在业务层session对象就已经销毁了,所以查询到的JavaBean对象已经变成了托管态对象！
+	1. 使用延迟加载的时候, 再WEB层查询对象的时候程序会抛出异常！
+		* 原因是延迟加载还没有发生SQL语句, 在业务层session对象就已经销毁了, 所以查询到的JavaBean对象已经变成了托管态对象！
 		
 		* 注意:一定要先删除javassist-3.11.0.GA.jar包(jar包冲突了)
 	
-	2. 解决办法非常简单,Spring框架提供了一个过滤器,让session对象在WEB层就创建,在WEB层销毁.只需要配置该过滤器即可
+	2. 解决办法非常简单, Spring框架提供了一个过滤器, 让session对象在WEB层就创建, 在WEB层销毁.只需要配置该过滤器即可
 		* 但是:要注意需要在struts2的核心过滤器之前进行配置
 			<filter>
 				<filter-name>OpenSessionInViewFilter</filter-name>

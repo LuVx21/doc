@@ -47,7 +47,7 @@ tags:
 
 # module install
 
-解压,进入
+解压, 进入
 ```
 # 可以指定安装目录
 python setup.py install [--prefix=path]

@@ -16,7 +16,7 @@ tag:
 - [AOP功能](#aop功能)
     - [AOP的概述](#aop的概述)
     - [AOP底层实现](#aop底层实现)
-    - [JDK的动态代理(代码了解,理解原理)](#jdk的动态代理代码了解理解原理)
+    - [JDK的动态代理(代码了解, 理解原理)](#jdk的动态代理代码了解理解原理)
     - [CGLIB的代理技术(代码了解)](#cglib的代理技术代码了解)
 - [基于AspectJ的AOP的开发](#基于aspectj的aop的开发)
     - [AOP的相关术语](#aop的相关术语)
@@ -33,12 +33,12 @@ tag:
 * IOC容器必须的6个jar包(4个核心包+2个日志包)
 * AOP的jar包(1个)
 
-步骤二:创建对应的包结构,编写Java的类
+步骤二:创建对应的包结构, 编写Java的类
 
 * UserService.java:接口
 * UserServiceImpl.java:具体的实现类
 
-步骤三:现在想使用注解的方式,那么就需要引入context的约束,具体的约束如下
+步骤三:现在想使用注解的方式, 那么就需要引入context的约束, 具体的约束如下
 
 applicationContext.xml:
 
@@ -87,7 +87,7 @@ public class SpringDemo1 {
 
 1.`@Component`
 
-作用在类上,避免了配置`web.xml`文件
+作用在类上, 避免了配置`web.xml`文件
 
 2.Spring中提供@Component的三个衍生注解:(功能目前来讲是一致的)
 
@@ -95,11 +95,11 @@ public class SpringDemo1 {
 * @Service:作用在业务层
 * @Repository:作用在持久层
 
-> 说明:这三个注解是为了让标注类本身的用途清晰,Spring在后续版本会对其增强
+> 说明:这三个注解是为了让标注类本身的用途清晰, Spring在后续版本会对其增强
 
 3.可实现属性注入的注解
 
-使用注解实现注入的方式,可以不用提供set方法
+使用注解实现注入的方式, 可以不用提供set方法
 
 注入的普通类型:
 
@@ -110,7 +110,7 @@ public class SpringDemo1 {
 * @Autowired:默认按类型进行自动装配(不建议单独使用)
 * @Qualifier:如果想按id注入
 
-> `@Autowired`,`@Qualifier`一起使用
+> `@Autowired`, `@Qualifier`一起使用
 
 JDK提供的一种注解(Spring支持):
 
@@ -118,17 +118,17 @@ JDK提供的一种注解(Spring支持):
 
 相当于@Autowired和@Qualifier一起使用
 
-> 和`@Autowired`,`@Qualifier`不同的是,属性使用`name`而不是`value`
+> 和`@Autowired`, `@Qualifier`不同的是, 属性使用`name`而不是`value`
 
 ----------
 
 ## 配置作用范围的注解
 
-`@Scope(value="prototype")`,作用在类上.
+`@Scope(value="prototype")`, 作用在类上.
 
 属性值:
 
-* singleton:单例,默认值
+* singleton:单例, 默认值
 * prototype:多例
 
 ## 配置生命周期的注解
@@ -163,31 +163,31 @@ public class SpringDemo1 {
 
 ## AOP的概述
 
-AOP:Aspect Oriented Programming,面向切面编程.(一种变成思想,目的是解决OOP遇到一些问题)
+AOP:Aspect Oriented Programming, 面向切面编程.(一种变成思想, 目的是解决OOP遇到一些问题)
 
-AOP采取横向抽取机制,取代了传统纵向继承体系重复性代码(性能监视、事务管理、安全检查、缓存)
+AOP采取横向抽取机制, 取代了传统纵向继承体系重复性代码(性能监视、事务管理、安全检查、缓存)
 
-* AOP是一种编程范式,隶属于软工范畴,指导开发者如何组织程序结构
+* AOP是一种编程范式, 隶属于软工范畴, 指导开发者如何组织程序结构
 * 通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术
-* AOP是OOP的延续,是软件开发中的一个热点,也是Spring框架中的一个重要内容,是函数式编程的一种衍生范型
-* 可以对业务逻辑的各个部分进行隔离,从而使得业务逻辑各部分之间的耦合度降低,提高程序的可重用性,同时提高了开发的效率
-* 可以在不修改源代码的前提下,对程序功能进行增强
+* AOP是OOP的延续, 是软件开发中的一个热点, 也是Spring框架中的一个重要内容, 是函数式编程的一种衍生范型
+* 可以对业务逻辑的各个部分进行隔离, 从而使得业务逻辑各部分之间的耦合度降低, 提高程序的可重用性, 同时提高了开发的效率
+* 可以在不修改源代码的前提下, 对程序功能进行增强
 
 ## AOP底层实现
 
-1. Srping框架的AOP技术底层也是采用的代理技术,代理的方式提供了两种
+1. Srping框架的AOP技术底层也是采用的代理技术, 代理的方式提供了两种
 	1. 基于JDK的动态代理
-		* 必须是面向接口的,只有实现了具体接口的类才能生成代理对象
+		* 必须是面向接口的, 只有实现了具体接口的类才能生成代理对象
 
 	2. 基于CGLIB动态代理
-		* 对于没有实现了接口的类,也可以产生代理,产生这个类的子类的方式
+		* 对于没有实现了接口的类, 也可以产生代理, 产生这个类的子类的方式
 
-2. Spring的传统AOP中根据类是否实现接口,来采用不同的代理方式
-	1. 如果实现类接口,使用JDK动态代理完成AOP
-	2. 如果没有实现接口,采用CGLIB动态代理完成AOP
+2. Spring的传统AOP中根据类是否实现接口, 来采用不同的代理方式
+	1. 如果实现类接口, 使用JDK动态代理完成AOP
+	2. 如果没有实现接口, 采用CGLIB动态代理完成AOP
 
 
-## JDK的动态代理(代码了解,理解原理)
+## JDK的动态代理(代码了解, 理解原理)
 
 使用Proxy类来生成代理对象:
 
@@ -199,10 +199,10 @@ AOP采取横向抽取机制,取代了传统纵向继承体系重复性代码(性
 public class MyProxyUtils {
 	public static UserDao getProxy(final UserDao dao) {
 		// 使用Proxy类生成代理对象
-		UserDao proxy = (UserDao) Proxy.newProxyInstance(dao.getClass().getClassLoader(),
+		UserDao proxy = (UserDao) Proxy.newProxyInstance(dao.getClass().getClassLoader(), 
 				dao.getClass().getInterfaces(), new InvocationHandler() {
 
-					// 代理对象方法一直线,invoke方法就会执行一次
+					// 代理对象方法一直线, invoke方法就会执行一次
 					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 						if("save".equals(method.getName())){
 							System.out.println("记录日志...");
@@ -222,7 +222,7 @@ public class MyProxyUtils {
 ## CGLIB的代理技术(代码了解)
 
 1. 引入CBLIB的开发包
-	* 如果想使用CGLIB的技术来生成代理对象,那么需要引入CGLIB的开发的jar包,在Spring框架核心包中已经引入了CGLIB的开发包了.所以直接引入Spring核心开发包即可！
+	* 如果想使用CGLIB的技术来生成代理对象, 那么需要引入CGLIB的开发的jar包, 在Spring框架核心包中已经引入了CGLIB的开发包了.所以直接引入Spring核心开发包即可！
 
 2. 编写相关的代码
 
@@ -235,7 +235,7 @@ public static OrderDaoImpl getProxy(){
 	// 设置回调函数
 	enhancer.setCallback(new MethodInterceptor() {
 		@Override
-		public Object intercept(Object obj, Method method, Object[] args,
+		public Object intercept(Object obj, Method method, Object[] args, 
 				MethodProxy methodProxy) throws Throwable {
 			if("save".equals(method.getName())){
 				// 记录日志
@@ -256,18 +256,18 @@ public static OrderDaoImpl getProxy(){
 
 |术语|说明|
 |:--|:--|
-|Joinpoint(连接点)|所谓连接点是指那些被拦截到的点.在spring中,这些点指的是方法,因为spring只支持方法类型的连接点|
+|Joinpoint(连接点)|所谓连接点是指那些被拦截到的点.在spring中, 这些点指的是方法, 因为spring只支持方法类型的连接点|
 |Pointcut(切入点)|所谓切入点是指我们要对哪些Joinpoint进行拦截的定义|
-|Advice(通知/增强)|所谓通知是指拦截到Joinpoint之后所要做的事情就是通知.通知分为前置通知,后置通知,异常通知,最终通知,环绕通知(切面要完成的功能)|
+|Advice(通知/增强)|所谓通知是指拦截到Joinpoint之后所要做的事情就是通知.通知分为前置通知, 后置通知, 异常通知, 最终通知, 环绕通知(切面要完成的功能)|
 |Introduction(引介)|引介是一种特殊的通知在不修改类代码的前提下, Introduction可以在运行期为类动态地添加一些方法或Field|
 |Target(目标对象)|代理的目标对象|
 |Weaving(织入)|是指把增强应用到目标对象来创建新的代理对象的过程|
-|Proxy(代理)|一个类被AOP织入增强后,就产生一个结果代理类|
-|Aspect(切面)|是切入点和通知的结合,以后咱们自己来编写和配置的|
+|Proxy(代理)|一个类被AOP织入增强后, 就产生一个结果代理类|
+|Aspect(切面)|是切入点和通知的结合, 以后咱们自己来编写和配置的|
 
 ## 完成AOP的开发(AspectJ的XML方式)
 
-1. 步骤一:创建JavaWEB项目,引入具体的开发的jar包
+1. 步骤一:创建JavaWEB项目, 引入具体的开发的jar包
 
 * 引入Spring框架开发的基本开发包(6个)
 * 引入Spring框架的AOP的开发包(4个)
@@ -279,9 +279,9 @@ public static OrderDaoImpl getProxy(){
 		* `com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar`
 		* `spring-aspects-4.2.4.RELEASE.jar`
 
-> 为测试需要,会需要导入测试用包,参见`Spring整合junit`
+> 为测试需要, 会需要导入测试用包, 参见`Spring整合junit`
 
-2. 步骤二:创建Spring的配置文件,引入具体的AOP的schema约束
+2. 步骤二:创建Spring的配置文件, 引入具体的AOP的schema约束
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -293,7 +293,7 @@ public static OrderDaoImpl getProxy(){
 </beans>
 ```
 
-3. 步骤三:创建包结构,编写具体的接口和实现类
+3. 步骤三:创建包结构, 编写具体的接口和实现类
 
 	* me.ren.demo2
 		* CustomerDao			-- 接口
@@ -350,7 +350,7 @@ public class Demo3 {
 
 2. 最终通知
 
-* 在目标类的方法执行之后执行,如果程序出现了异常,最终通知也会执行.
+* 在目标类的方法执行之后执行, 如果程序出现了异常, 最终通知也会执行.
 * 配置:`<aop:after method="after" pointcut-ref="myPointcut3"/>`
 * 应用:例如像释放资源
 
@@ -371,7 +371,7 @@ public class Demo3 {
 * 方法的执行前后执行.
 * 配置:`<aop:around method="around" pointcut-ref="myPointcut2"/>`
 
-> 此类型下,目标的方法默认不执行,需要使用`ProceedingJoinPoint的proceed()`让目标对象的方法执行.
+> 此类型下, 目标的方法默认不执行, 需要使用`ProceedingJoinPoint的proceed()`让目标对象的方法执行.
 
 ## 切入点的表达式
 
@@ -383,11 +383,11 @@ execution(public void me.ren.Test.save())
 ```
 
 * 修饰符可以省略
-* 返回值类型是必需的,可使用`*`代表任何返回类型.
+* 返回值类型是必需的, 可使用`*`代表任何返回类型.
 * 包名例如:me.ren.demo3.BookDaoImpl
-	* 首先com是不能省略不写的,但是可以使用`*`代替
+	* 首先com是不能省略不写的, 但是可以使用`*`代替
 	* 中间的包名可以使用`*`号代替
 	* 如果想省略中间的包名可以使用`*..*`
 
-* 类名,方法都可以使用`*`号代替,但实际中不推荐直接使用,同时是用`*`代替名字的一部分,如`*daoimpl`
-* 参数如果是一个参数可以使用`*`号代替,如果想代表任意数量参数使用 `..`
+* 类名, 方法都可以使用`*`号代替, 但实际中不推荐直接使用, 同时是用`*`代替名字的一部分, 如`*daoimpl`
+* 参数如果是一个参数可以使用`*`号代替, 如果想代表任意数量参数使用 `..`

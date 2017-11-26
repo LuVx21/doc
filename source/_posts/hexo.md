@@ -60,7 +60,7 @@ hexo version
 
 ## draft
 
-这种布局在建立时会被保存到 `source/_drafts` 文件夹,您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹
+这种布局在建立时会被保存到 `source/_drafts` 文件夹, 您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹
 ```
 hexo publish [layout] filename
 ```

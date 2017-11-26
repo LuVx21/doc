@@ -52,8 +52,8 @@ listener:
 
 ## 监听三个对象的创建和销毁
 	ServletContextListener
-		创建:服务器启动的时候,会为每一个项目都创建一个servletContext
-		销毁:服务器关闭的时候,或者项目被移除的时候
+		创建:服务器启动的时候, 会为每一个项目都创建一个servletContext
+		销毁:服务器关闭的时候, 或者项目被移除的时候
 		以后用来加载配置文件
 	ServletRequestListener
 		创建:请求来的时候
