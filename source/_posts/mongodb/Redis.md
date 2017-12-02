@@ -9,13 +9,15 @@ tags:
 
 - [关于](#关于)
 - [配置](#配置)
+- [使用](#使用)
 - [数据类型](#数据类型)
     - [String](#string)
-    - [list:基于双向循环链表实现, 栈](#list基于双向循环链表实现栈)
+    - [list:基于双向循环链表实现, 栈](#list基于双向循环链表实现-栈)
     - [Hash](#hash)
     - [set](#set)
     - [zset](#zset)
 - [共有命令](#共有命令)
+- [调用Redis](#调用redis)
 - [持久化](#持久化)
 - [主从复制](#主从复制)
 
@@ -33,6 +35,11 @@ tags:
 
 # 配置
 
+config命令
+```
+config get settingname
+config set settingname value
+```
 
 配置后台运行
 redis.conf
@@ -41,22 +48,32 @@ redis.conf
 daemonize yes
 ```
 
-启动
+# 使用
+
+启动服务
 
 ```
 redis-server redis.conf
 ```
 
-关闭
+关闭服务
 ```
 redis-cli shutdown
 ```
 
+进入命令行
+```
+redis-cli -h host -p port -a password
+```
+
+> 默认监听`6379`端口
+
 # 数据类型
 
-> 不能存储中文, 存储unicode可以实现
+> 不能存储中文, 存储unicode可以实现间接存储中文
 
 ## String
+
 set
 get
 del
@@ -70,6 +87,7 @@ decrby:
 nil:空
 
 ## list:基于双向循环链表实现, 栈
+
 lpush:入栈
 rpush:入栈
 lpop:
@@ -78,6 +96,7 @@ lrange obj 0 -1:出栈, 全部取出
 llen
 
 ## Hash
+
 hset
 hget
 
@@ -112,21 +131,16 @@ zrem
 zscore
 zrevrange
 
-
 参数:
 withscores
-
 
 # 共有命令
 
 rename
 type
+keys
 
-
-
-
-
-#
+# 调用Redis
 
 ```java
 // 方式1
