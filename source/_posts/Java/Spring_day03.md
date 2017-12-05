@@ -55,14 +55,14 @@ Spring配置文件:
 
 创建包结构
 
-* com.itheima.demo1
+* me.ren.demo1
 	* CustomerDao			-- 接口
 	* CustomerDaoImpl		-- 实现类
 
 配置文件中配置目标类:
 
 ```xml
-<bean id="customerDao" class="com.itheima.demo1.CustomerDaoImpl"/>
+<bean id="customerDao" class="me.ren.demo1.CustomerDaoImpl"/>
 ```
 
 定义切面类:
@@ -76,7 +76,7 @@ Spring配置文件:
 ```java
 @Aspect
 public class MyAspectAnno {
-	@Before(value="execution(public void com.itheima.demo1.CustomerDaoImpl.save())")
+	@Before(value="execution(public void me.ren.demo1.CustomerDaoImpl.save())")
 	public void log(){
 		System.out.println("记录日志...");
 	}
@@ -85,7 +85,7 @@ public class MyAspectAnno {
 配置文件中配置切面类:
 
 ```xml
-<bean id="myAspectAnno" class="com.itheima.demo1.MyAspectAnno"/>
+<bean id="myAspectAnno" class="me.ren.demo1.MyAspectAnno"/>
 ```
 
 在配置文件中开启自动代理:
@@ -137,7 +137,7 @@ public class MyAspectAnno {
 	public void log(){
 		System.out.println("记录日志...");
 	}
-	@Pointcut(value="execution(public void com.itheima.demo1.CustomerDaoImpl.save())")
+	@Pointcut(value="execution(public void me.ren.demo1.CustomerDaoImpl.save())")
 	public void fn(){}
 }
 ```
@@ -422,7 +422,7 @@ class BeanMapper implements RowMapper<Account>{
 
 3. 步骤三:创建对应的包结构和类
 
-* com.itheima.demo1
+* me.ren.demo1
 	* AccountService
 	* AccountServlceImpl
 	* AccountDao
@@ -432,11 +432,11 @@ class BeanMapper implements RowMapper<Account>{
 5. 步骤五:在业务层注入DAO , 在DAO中注入JDBC模板
 
 ```xml
-<bean id="accountService" class="com.itheima.demo1.AccountServiceImpl">
+<bean id="accountService" class="me.ren.demo1.AccountServiceImpl">
 	<property name="accountDao" ref="accountDao"/>
 </bean>
 
-<bean id="accountDao" class="com.itheima.demo1.AccountDaoImpl">
+<bean id="accountDao" class="me.ren.demo1.AccountDaoImpl">
 	<property name="dataSource" ref="dataSource"/>
 </bean>
 ```
@@ -519,7 +519,7 @@ public class Demo1 {
 3. 步骤三:在需要进行事务管理的类中, 注入事务管理的模板.
 
 ```xml
-<bean id="accountService" class="com.itheima.demo1.AccountServiceImpl">
+<bean id="accountService" class="me.ren.demo1.AccountServiceImpl">
 	<property name="accountDao" ref="accountDao"/>
 	<property name="transactionTemplate" ref="transactionTemplate"/>
 </bean>
@@ -593,7 +593,7 @@ public void pay(final String out, final String in, final double money) {
 
 <!-- 配置AOP切面产生代理 -->
 <aop:config>
-	<aop:advisor advice-ref="myAdvice" pointcut="execution(* com.itheima.demo2.AccountServiceImpl.pay(..))"/>
+	<aop:advisor advice-ref="myAdvice" pointcut="execution(* me.ren.demo2.AccountServiceImpl.pay(..))"/>
 </aop:config>
 ```
 

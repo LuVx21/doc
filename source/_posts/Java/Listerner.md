@@ -91,10 +91,10 @@ listener:
 	<Context>
 		<!--
 			maxIdleSwap	:1分钟 如果session不使用就会序列化到硬盘.
-			directory	:itheima 序列化到硬盘的文件存放的位置.
+			directory	:ren 序列化到硬盘的文件存放的位置.
 		-->
 		<Manager className="org.apache.catalina.session.PersistentManager" maxIdleSwap="1">
-			<Store className="org.apache.catalina.session.FileStore" directory="itheima"/>
+			<Store className="org.apache.catalina.session.FileStore" directory="ren"/>
 		</Manager>
 	</Context>
 ```

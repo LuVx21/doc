@@ -20,7 +20,7 @@ tag:
     - [属性注入](#属性注入)
     - [p名称空间的注入(了解)](#p名称空间的注入了解)
     - [SpEL注入方式(了解)](#spel注入方式了解)
-    - [数组, 集合(List, Set, Map), Properties等的注入](#数组集合listsetmapproperties等的注入)
+    - [数组, 集合(List, Set, Map), Properties等的注入](#数组-集合list-set-map-properties等的注入)
 - [配置文件分开管理(了解)](#配置文件分开管理了解)
 - [Spring框架整合WEB](#spring框架整合web)
 
@@ -237,7 +237,7 @@ public void run(){
 具体的配置:
 
 ```xml
-<bean id="us" class="com.itheima.demo1.UserServiceImpl">
+<bean id="us" class="me.ren.demo1.UserServiceImpl">
 	<property name="uname" value="小风"/>
 </bean>
 ```
@@ -269,7 +269,7 @@ public void run(){
 		}
 
 	* 编写配置文件
-		<bean id="car" class="com.itheima.demo4.Car">
+		<bean id="car" class="me.ren.demo4.Car">
 			<constructor-arg name="name" value="大奔"/>
 			<constructor-arg name="money" value="100"/>
 		</bean>
@@ -281,7 +281,7 @@ public void run(){
 3. 如果Java类的属性是另一个Java的类, 那么需要怎么来注入值呢？
 	* <property name="name" rel="具体的Bean的ID或者name的值"/>
 	* 例如:
-		<bean id="person" class="com.itheima.demo4.Person">
+		<bean id="person" class="me.ren.demo4.Person">
 			<property name="pname" value="美美"/>
 			<property name="car2" ref="car2"/>
 		</bean>
@@ -308,7 +308,7 @@ p:属性名-ref = ""
 步骤三:测试
 
 ```
-<bean id="person" class="com.itheima.demo4.Person" p:pname="老王" p:car2-ref="car2"/>
+<bean id="person" class="me.ren.demo4.Person" p:pname="老王" p:car2-ref="car2"/>
 ```
 
 ## SpEL注入方式(了解)
@@ -325,7 +325,7 @@ Spring的3.0提供了一种的一种注入方案
 
 ```xml
 	<!-- SpEL的方式 -->
-	<bean id="person" class="com.itheima.demo4.Person">
+	<bean id="person" class="me.ren.demo4.Person">
 		<property name="pname" value="#{'小风'}"/>
 		<property name="car2" value="#{car2}"/>
 	</bean>
@@ -348,7 +348,7 @@ public class CarInfo {
 1. 如果是数组或者List集合, 注入配置文件的方式是一样的
 
 ```xml
-<bean id="collectionBean" class="com.itheima.demo5.CollectionBean">
+<bean id="collectionBean" class="me.ren.demo5.CollectionBean">
 	<property name="arrs">
 		<list>
 			<value>美美</value>
