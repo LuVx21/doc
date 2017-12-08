@@ -8,57 +8,57 @@ tags:
 <!-- TOC -->
 
 - [Linux 命令](#linux-命令)
-	- [Linux 命令](#linux-命令-1)
-	- [lsof](#lsof)
-	- [ps](#ps)
-	- [netstat](#netstat)
-	- [du](#du)
-	- [wc](#wc)
-	- [tail](#tail)
-	- [head](#head)
-	- [mkdir](#mkdir)
-	- [expr](#expr)
-	- [查看信息:ls](#查看信息ls)
-	- [sort](#sort)
-	- [uniq](#uniq)
-	- [join](#join)
-	- [cut](#cut)
-	- [paste](#paste)
-	- [split](#split)
-	- [tr](#tr)
-	- [>/>>](#)
-	- [分屏显示:more](#分屏显示more)
-	- [管道:|](#管道)
-	- [文本搜索:grep](#文本搜索grep)
-	- [切换目录:cd](#切换目录cd)
-	- [创建目录:mkdir](#创建目录mkdir)
-	- [删除目录:rmdir](#删除目录rmdir)
-	- [删除文件:rm](#删除文件rm)
-	- [链接文件:ln](#链接文件ln)
-	- [查找文件:find](#查找文件find)
-	- [拷贝文件:cp](#拷贝文件cp)
-	- [移动文件:mv](#移动文件mv)
-	- [归档管理:tar](#归档管理tar)
-	- [文件压缩:gzip](#文件压缩gzip)
-	- [文件压缩:bzip2](#文件压缩bzip2)
-	- [zip/unzip](#zipunzip)
-	- [用户, 权限管理](#用户权限管理)
-	- [查看当前用户:whoami](#查看当前用户whoami)
-	- [查看登录用户:who](#查看登录用户who)
-	- [退出登录账户:exit](#退出登录账户exit)
-	- [添加用户账号:useradd](#添加用户账号useradd)
-	- [设置用户密码:passwd](#设置用户密码passwd)
-	- [删除用户:userdel](#删除用户userdel)
-	- [切换用户:su](#切换用户su)
-	- [添加, 删除组账号:‘groupadd, groupdel’](#添加删除组账号groupaddgroupdel)
-	- [usermod](#usermod)
-	- [修改文件权限:chmod](#修改文件权限chmod)
-	- [修改文件所有者:chown](#修改文件所有者chown)
-	- [修改文件所属组:chgrp](#修改文件所属组chgrp)
-	- [Mac OS](#mac-os)
-		- [tmux](#tmux)
-		- [paste](#paste-1)
-		- [cut](#cut-1)
+    - [Linux 命令](#linux-命令-1)
+    - [lsof](#lsof)
+    - [ps](#ps)
+    - [netstat](#netstat)
+    - [du](#du)
+    - [wc](#wc)
+    - [tail](#tail)
+    - [head](#head)
+    - [mkdir](#mkdir)
+    - [expr](#expr)
+    - [查看信息:ls](#查看信息ls)
+    - [sort](#sort)
+    - [uniq](#uniq)
+    - [join](#join)
+    - [cut](#cut)
+    - [paste](#paste)
+    - [split](#split)
+    - [tr](#tr)
+    - [>/>>](#)
+    - [分屏显示:more](#分屏显示more)
+    - [管道:|](#管道)
+    - [文本搜索:grep](#文本搜索grep)
+    - [切换目录:cd](#切换目录cd)
+    - [创建目录:mkdir](#创建目录mkdir)
+    - [删除目录:rmdir](#删除目录rmdir)
+    - [删除文件:rm](#删除文件rm)
+    - [链接文件:ln](#链接文件ln)
+    - [查找文件:find](#查找文件find)
+    - [拷贝文件:cp](#拷贝文件cp)
+    - [移动文件:mv](#移动文件mv)
+    - [归档管理:tar](#归档管理tar)
+    - [文件压缩:gzip](#文件压缩gzip)
+    - [文件压缩:bzip2](#文件压缩bzip2)
+    - [zip/unzip](#zipunzip)
+    - [用户, 权限管理](#用户-权限管理)
+    - [查看当前用户:whoami](#查看当前用户whoami)
+    - [查看登录用户:who](#查看登录用户who)
+    - [退出登录账户:exit](#退出登录账户exit)
+    - [添加用户账号:useradd](#添加用户账号useradd)
+    - [设置用户密码:passwd](#设置用户密码passwd)
+    - [删除用户:userdel](#删除用户userdel)
+    - [切换用户:su](#切换用户su)
+    - [添加, 删除组账号](#添加-删除组账号)
+    - [usermod](#usermod)
+    - [修改文件权限:chmod](#修改文件权限chmod)
+    - [修改文件所有者:chown](#修改文件所有者chown)
+    - [修改文件所属组:chgrp](#修改文件所属组chgrp)
+    - [Mac OS](#mac-os)
+        - [tmux](#tmux)
+        - [paste](#paste-1)
+        - [cut](#cut-1)
 - [](#)
 
 <!-- /TOC -->
@@ -563,6 +563,7 @@ ln -s xxx.xx xxx.xx.ln
 * 软链接文件和源文件不在同一个目录, 源文件要使用绝对路径, 不能使用相对路径
 
 ## 查找文件:find
+
 通常用来在特定的目录下搜索符合条件的文件
 也可以用来搜索特定用户属主的文件
 
@@ -793,10 +794,7 @@ uder -r xxx # 删除用户同时删除对应主目录
 可以通过su命令切换用户, su后面可以加`-`.
 `su`和`su –`命令不同之处在于, `su –`切换到对应的用户时会将当前的工作目录自动转换到切换后的用户主目录
 
-
-
-
-## 添加, 删除组账号:‘groupadd, groupdel’
+## 添加, 删除组账号
 
 ```
 groupadd xxx # 新建组账号

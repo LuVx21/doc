@@ -6,7 +6,7 @@ tags:
 - SpringMVC
 - Struts
 - Spring
-- He
+- Hibernate
 - MyBatis
 ---
 

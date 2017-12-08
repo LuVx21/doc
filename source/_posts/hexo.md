@@ -3,7 +3,7 @@ title: hexo
 date: 2017/10/02 20:46:25
 tags:
 - hexo
-- node.js
+- nodejs
 ---
 <!-- TOC -->
 
