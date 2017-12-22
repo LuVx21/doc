@@ -15,6 +15,13 @@ tags:
 - [构建过程](#构建过程)
 - [pom.xml](#pomxml)
 - [依赖](#依赖)
+    - [依赖管理](#依赖管理)
+    - [依赖传递](#依赖传递)
+    - [依赖调节](#依赖调节)
+    - [依赖排除](#依赖排除)
+    - [依赖锁定](#依赖锁定)
+- [Tomcat插件使用](#tomcat插件使用)
+- [模块化构建](#模块化构建)
 
 <!-- /TOC -->
 
@@ -100,6 +107,12 @@ tomat:run
 
 # 依赖
 
+管理jar
+
+## 依赖管理
+
+依赖种类:
+
 * compile:默认依赖类型,会使用于编译,测试和运行,所以编译范围的依赖会被打包
 * provided:只有在当JDK或者一个容器已提供该依赖之后才使用, 在编译和测试时需要,在运行时不需要(容器提供),如:servlet被tomcat容器提供.
 * runtime:在测试和运行时需要,但在编译的时候不需要.如:jdbc的驱动包.
@@ -107,3 +120,137 @@ tomat:run
 * system:与provided类似,但是你必须显式的提供一个对于本地系统中JAR文件的路径,需要指定systemPath磁盘路径(**不推荐使用**)
 
 > 运行时需要的依赖都会被打包
+
+## 依赖传递
+
+||compile|provided|runtime|test|
+|:--|:--|:--|:--|:--|
+|compile|compile|-|runtime|-|
+|provided|provided|provided|provided|-|
+|runtime|runtime|-|runtime|-|
+|test|test|-|test|-|
+
+> 第一列:A对B的依赖类型
+> 第一行:B对C的依赖类型
+> 交叉:A实际对C的依赖
+
+## 依赖调节
+
+
+当依赖的组件很多时,同一个组件被多次依赖,可能或出现不同版本的冲突
+
+调节原则
+
+* 第一声明者优先原则:以先在pom.xml中先声明的版本为准
+* 路径近者优先原则:以依赖层级浅的版本为准
+
+## 依赖排除
+
+指排除某依赖下的特定间接依赖
+
+```xml
+  	<!-- struts2-spring-plugin依赖spirng-beans-3.0.5 -->
+  	<dependency>
+  		<groupId>org.apache.struts</groupId>
+  		<artifactId>struts2-spring-plugin</artifactId>
+  		<version>2.3.24</version>
+  		<!-- 排除 spring-beans-->
+  		<exclusions>
+  			<exclusion>
+  				<groupId>org.springframework</groupId>
+  				<artifactId>spring-beans</artifactId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency>
+```
+
+## 依赖锁定
+
+明确指定依赖的版本号
+
+```xml
+  <dependencyManagement>
+  	<dependencies>
+  		<!--这里锁定版本为4.2.4 -->
+  		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-beans</artifactId>
+  			<version>4.2.4.RELEASE</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+```
+上述内容只是指定版本,并没有引入该依赖,
+使用下述配置引入依赖而不用指定版本
+```xml
+<dependencies>
+    <!--这里是添加依赖 -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+    </dependency>
+</dependencies>
+```
+
+
+# Tomcat插件使用
+
+```xml
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>tomcat-maven-plugin</artifactId>
+    <version>1.1</version>
+    <configuration>
+        <path>/app</path>
+        <port>8080</port>
+        <uriEncoding>UTF-8</uriEncoding>
+        <url>http://localhost:8080/app/html</url>
+        <server>tomcat6</server>
+    </configuration>
+</plugin>
+```
+
+|命令|说明|
+|:--|:--|
+|tomcat:deploy|部署一个web war包|
+|tomcat:reload|重新加载web war包|
+|tomcat:start|启动tomcat|
+|tomcat:stop|停止tomcat|
+|tomcat:undeploy|停止一个war包|
+|tomcat:run|启动嵌入式tomcat ,并运行当前项目|
+
+> 存在`tomcat-maven-plugin`和`tomcat7-maven-plugin`两个插件
+> 后者命令则是使用`tomcat7`
+
+# 模块化构建
+
+继承
+
+将dao、service、web分开创建独立的工程,则每个工程的pom.xml文件中的内容存在重复,
+比如：设置编译版本、锁定spring的版本的等,可以将这些重复的配置提取出来在父工程的pom.xml中定义.
+
+聚合
+
+每个模块开发完成要运行整个工程需要将每个模块聚合在一起运行,
+如：dao、service、web三个工程最终会打一个独立的war运行.
+
+子工程中指定父工程
+```xml
+<parent>
+    <groupId>me.ren.maven</groupId>
+    <artifactId>maven-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</parent>
+```
+
+父工程中声明子工程
+```xml
+<modules>
+<!-- 在modules中配置相对路径，相对父工程pom.xml的路径找到子工程的pom.xml -->
+    <module>maven-web</module>
+    <module>maven-service</module>
+    <module>maven-dao</module>
+</modules>
+```
+
+运行时,可以在web层运行,也可以在父工程运行

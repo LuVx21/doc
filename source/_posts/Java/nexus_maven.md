@@ -5,15 +5,137 @@ tags:
 - Maven
 - Nexus
 ---
+<!-- TOC -->
 
+- [关于](#关于)
+- [仓库](#仓库)
+- [发布](#发布)
+- [从私服获取](#从私服获取)
 
+<!-- /TOC -->
+
+# 关于
+
+```shell
+# 安装
 nexus.bat install
+# 卸载
 nexus.bat uninstall
+# 启动
 nexus.bat start
+```
+配置文件
 
-1.	hosted，宿主仓库，部署自己的jar到这个类型的仓库，包括releases和snapshot两部分，Releases公司内部发布版本仓库、 Snapshots 公司内部测试版本仓库
+conf/nexus.properties
+```ini
+# Jetty section
+application-port=8081  	# nexus的访问端口配置
+application-host=0.0.0.0 	# nexus主机监听配置(不用修改)
+nexus-webapp=${bundleBasedir}/nexus 	# nexus工程目录
+nexus-webapp-context-path=/nexus	 # nexus的web访问路径
 
-2.	proxy，代理仓库，用于代理远程的公共仓库，如maven中央仓库，用户连接私服，私服自动去中央仓库下载jar包或者插件。 
+# Nexus section
+nexus-work=${bundleBasedir}/../sonatype-work/nexus   # nexus仓库目录
+runtime=${bundleBasedir}/nexus/WEB-INF  # nexus运行程序目录
+```
 
-3.	group，仓库组，用来合并多个hosted/proxy仓库，通常我们配置自己的maven连接仓库组。
-4.	virtual(虚拟)：兼容Maven1 版本的jar或者插件 
+内置账户admin/admin123
+
+# 仓库
+
+1. hosted，宿主仓库，部署自己的jar到这个类型的仓库，包括releases和snapshot两部分，Releases公司内部发布版本仓库、 Snapshots 公司内部测试版本仓库
+2. proxy，代理仓库，用于代理远程的公共仓库，如maven中央仓库，用户连接私服，私服自动去中央仓库下载jar包或者插件。
+3. group，仓库组，用来合并多个hosted/proxy仓库，通常我们配置自己的maven连接仓库组。
+4. virtual(虚拟)：兼容Maven1 版本的jar或者插件
+
+# 发布
+
+修改maven的settings.xml,配置链接私服的信息
+
+```xml
+<server>
+    <id>releases</id>
+    <username>admin</username>
+    <password>admin123</password>
+</server>
+<server>
+    <id>snapshots</id>
+    <username>admin</username>
+    <password>admin123</password>
+</server>
+```
+
+配置pom.xml
+
+```xml
+<distributionManagement>
+    <repository>
+        <id>releases</id>
+    <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+    <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+```
+
+# 从私服获取
+
+修改maven的settings.xml
+
+```xml
+<repositories>
+    <repository>
+        <!--是否下载releases构件-->
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <!--是否下载snapshots构件-->
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+        <!--仓库id，repositories可以配置多个仓库，保证id不重复-->
+        <id>public</id>
+        <name>Public Repositories</name>
+        <url>http://localhost:8081/nexus/content/groups/public/</url>
+    </repository>
+    <repository>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>central</id>
+        <name>Central Repository</name>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+</repositories>
+<pluginRepositories>
+    <!-- 插件仓库，maven的运行依赖插件，也需要从私服下载插件 -->
+    <pluginRepository>
+        <!-- 插件仓库的id不允许重复，如果重复后边配置会覆盖前边 -->
+        <id>public</id>
+        <name>Public Repositories</name>
+        <url>http://localhost:8081/nexus/content/groups/public/</url>
+    </pluginRepository>
+    <pluginRepository>
+        <releases>
+            <updatePolicy>never</updatePolicy>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>central</id>
+        <name>Central Repository</name>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </pluginRepository>
+</pluginRepositories>
+```
+激活
+
+```xml
+<activeProfiles>
+    <activeProfile>public</activeProfile>
+</activeProfiles>
+```
+
+maven会先从前边的仓库的找，如果找不到jar包再从下边的找，从而就实现了从私服下载jar包

@@ -9,20 +9,24 @@ tags:
 
 - [collection](#collection)
 - [Map](#map)
-    - [HashTable](#hashtable)
-        - [原理](#原理)
     - [HashMap](#hashmap)
+        - [原理](#原理)
+    - [HashTable](#hashtable)
         - [原理](#原理-1)
+    - [LinedHashMap](#linedhashmap)
     - [TreeMap](#treemap)
     - [CocurrentHashMap](#cocurrenthashmap)
 - [List](#list)
     - [ArrarList](#arrarlist)
+    - [LinkedList](#linkedlist)
+    - [Vector](#vector)
 - [Set](#set)
     - [HashSet](#hashset)
         - [原理](#原理-2)
     - [TreeSet](#treeset)
     - [LinkedHashSet](#linkedhashset)
 - [Queue](#queue)
+- [总结](#总结)
 
 <!-- /TOC -->
 
@@ -35,18 +39,6 @@ Collections:提供了操作集合的静态方法的类
 ![](./img/java-collection.jpeg)
 
 # Map
-
-## HashTable
-
-
-实现Map接口
-Hashtable不可以接受null键值和值,
-synchronized
-
-Java5以上推荐使用ConcurrentHashMap
-
-### 原理
-
 
 ## HashMap
 
@@ -92,8 +84,22 @@ HashMap的默认大小为16,即大小为16的数据,即使只存储一个元素.
 ```Java
 Map m = Collections.synchronizeMap(hashMap);
 ```
+## HashTable
 
 
+实现Map接口
+Hashtable不可以接受null键值和值
+synchronized
+
+Java5以上推荐使用ConcurrentHashMap
+
+### 原理
+
+
+## LinedHashMap
+
+* 保存了插入时的顺序
+* HashMap的子类
 
 ## TreeMap
 
@@ -113,6 +119,18 @@ Collection <-- List
 
 ## ArrarList
 
+* 数组
+* 自增空间0.5倍
+
+## LinkedList
+
+* 双向链表
+* 并实现了Queue接口
+
+## Vector
+
+* 同步
+* 自增空间1倍
 
 
 # Set
@@ -174,6 +192,16 @@ NavigableMap m = new TreeMap<>();
 
 有序
 
+访问快速-->HashSet
+排序-->TreeSet
+记录插入时顺序-->LinedHashSet。
+
 # Queue
 
 FCFS算法(First Come, First Serve)
+
+
+# 总结
+
+ArrarList 和 Vector 几乎相同
+HashMap 和 Hashtable 几乎相同
