@@ -126,7 +126,7 @@ Spring框架也需要引入日志相关的jar包
 
 ```xml
 <!-- Spring的快速入门 -->
-<bean id="userService" class="com.itcast.demo1.UserServiceImpl"/>
+<bean id="userService" class="org.luvx.demo1.UserServiceImpl"/>
 ```
 
 编写测试程序, 采用Spring框架的工厂方式来获取到UserService接口的具体实现类

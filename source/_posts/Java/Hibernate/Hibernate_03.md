@@ -64,7 +64,7 @@ public class Linkman {
 
 4. 编写客户和联系人的映射配置文件（注意一对多的配置编写）
 * 客户的映射配置文件如下
-<class name="com.itheima.domain.Customer" table="cst_customer">
+<class name="org.luvx.domain.Customer" table="cst_customer">
 	<id name="cust_id" column="cust_id">
 		<generator class="native"/>
 	</id>
@@ -80,12 +80,12 @@ public class Linkman {
 
 	<set name="linkmans">
 		<key column="lkm_cust_id"/>
-		<one-to-many class="com.itheima.domain.Linkman"/>
+		<one-to-many class="org.luvx.domain.Linkman"/>
 	</set>
 </class>
 
 * 联系人的映射配置文件如下
-<class name="com.itheima.domain.Linkman" table="cst_linkman">
+<class name="org.luvx.domain.Linkman" table="cst_linkman">
 	<id name="lkm_id" column="lkm_id">
 		<generator class="native"/>
 	</id>
@@ -98,14 +98,14 @@ public class Linkman {
 	<property name="lkm_position" column="lkm_position"/>
 	<property name="lkm_memo" column="lkm_memo"/>
 
-	<many-to-one name="customer" class="com.itheima.domain.Customer" column="lkm_cust_id"/>
+	<many-to-one name="customer" class="org.luvx.domain.Customer" column="lkm_cust_id"/>
 </class>
 
 
 # 级联保存
 
 1. 测试：如果现在代码只插入其中的一方的数据
-* 如果只保存其中的一方的数据，那么程序会抛出异常。
+* 如果只保存其中的一方的数据，那么程序会抛出异常.
 * 如果想完成只保存一方的数据，并且把相关联的数据都保存到数据库中，那么需要配置级联！！
 
 * 级联保存是方向性
@@ -137,16 +137,16 @@ public class Linkman {
 	* all-delete-orphan			-- 包含了delete-orphan的所有情况.（包含save-update delete delete-orphan）
 
 2. 孤儿删除（孤子删除），只有在一对多的环境下才有孤儿删除
-	* 在一对多的关系中,可以将一的一方认为是父方.将多的一方认为是子方.孤儿删除:在解除了父子关系的时候.将子方记录就直接删除。
+	* 在一对多的关系中,可以将一的一方认为是父方.将多的一方认为是子方.孤儿删除:在解除了父子关系的时候.将子方记录就直接删除.
 	* <many-to-one cascade="delete-orphan" />
 
 
 让某一方放弃外键的维护，为多对多做准备
 
-	1. 先测试双方都维护外键的时候，会产生多余的SQL语句。
-		* 想修改客户和联系人的关系，进行双向关联，双方都会维护外键，会产生多余的SQL语句。
+	1. 先测试双方都维护外键的时候，会产生多余的SQL语句.
+		* 想修改客户和联系人的关系，进行双向关联，双方都会维护外键，会产生多余的SQL语句.
 
-		* 产生的原因：session的一级缓存中的快照机制，会让双方都更新数据库，产生了多余的SQL语句。
+		* 产生的原因：session的一级缓存中的快照机制，会让双方都更新数据库，产生了多余的SQL语句.
 
 	2. 如果不想产生多余的SQL语句，那么需要一方来放弃外键的维护！
 		* 在<set>标签上配置一个inverse=”true”.true:放弃.false:不放弃.默认值是false
@@ -187,7 +187,7 @@ public class Linkman {
 
 	2. 用户和角色的映射配置文件如下
 		* 用户的映射配置文件如下
-			<class name="com.itheima.domain.User" table="sys_user">
+			<class name="org.luvx.domain.User" table="sys_user">
 				<id name="user_id" column="user_id">
 					<generator class="native"/>
 				</id>
@@ -198,12 +198,12 @@ public class Linkman {
 
 				<set name="roles" table="sys_user_role">
 					<key column="user_id"/>
-					<many-to-many class="com.itheima.domain.Role" column="role_id"/>
+					<many-to-many class="org.luvx.domain.Role" column="role_id"/>
 				</set>
 			</class>
 
 		* 角色的映射配置文件如下
-			<class name="com.itheima.domain.Role" table="sys_role">
+			<class name="org.luvx.domain.Role" table="sys_role">
 				<id name="role_id" column="role_id">
 					<generator class="native"/>
 				</id>
@@ -212,7 +212,7 @@ public class Linkman {
 
 				<set name="users" table="sys_user_role">
 					<key column="role_id"/>
-					<many-to-many class="com.itheima.domain.User" column="user_id"/>
+					<many-to-many class="org.luvx.domain.User" column="user_id"/>
 				</set>
 			</class>
 
@@ -228,3 +228,4 @@ public class Linkman {
 # 级联删除（在多对多中是很少使用的）
 
 	1. 级联删除
+
