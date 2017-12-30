@@ -33,10 +33,22 @@ tags:
 
 # collection
 
+![](./img/java-collection.jpeg)
+
 Collection:集合层次的顶层接口
 Collections:提供了操作集合的静态方法的类
 
-![](./img/java-collection.jpeg)
+
+![](./img/ext.jpg)
+
+实线边框的是实现类, 比如ArrayList, LinkedList, HashMap等, 折线边框的是抽象类, 比如AbstractCollection, AbstractList, AbstractMap等, 而点线边框的是接口, 比如Collection, Iterator, List等.
+
+上述所有的集合类, 都实现了Iterator接口, 这是一个用于遍历集合中元素的接口, 主要包含hasNext(), next(), remove()三种方法.
+它的一个子接口LinkedIterator在它的基础上又添加了三种方法, 分别是add(),previous(),hasPrevious().
+也就是说如果是实现Iterator接口, 那么在遍历集合中元素的时候, 只能往后遍历, 被遍历后的元素不会在遍历到, 
+通常无序集合实现的都是这个接口, 比如HashSet, HashMap；
+而那些元素有序的集合, 实现的一般都是LinkedIterator接口, 实现这个接口的集合可以双向遍历, 既可以通过next()访问下一个元素, 又可以通过previous()访问前一个元素, 比如ArrayList.
+
 
 # Map
 
@@ -49,16 +61,16 @@ Collections:提供了操作集合的静态方法的类
 
 
 @TODO
-HashMap的迭代器(Iterator)是fail-fast迭代器，而Hashtable的enumerator迭代器不是fail-fast的。
-所以当有其它线程改变了HashMap的结构（增加或者移除元素），将会抛出ConcurrentModificationException，
-但迭代器本身的remove()方法移除元素则不会抛出ConcurrentModificationException异常。
-但这并不是一个一定发生的行为，要看JVM。这条同样也是Enumeration和Iterator的区别
+HashMap的迭代器(Iterator)是fail-fast迭代器, 而Hashtable的enumerator迭代器不是fail-fast的.
+所以当有其它线程改变了HashMap的结构（增加或者移除元素）, 将会抛出ConcurrentModificationException, 
+但迭代器本身的remove()方法移除元素则不会抛出ConcurrentModificationException异常.
+但这并不是一个一定发生的行为, 要看JVM.这条同样也是Enumeration和Iterator的区别
 
 @TODO
-Fail-safe和iterator迭代器相关。
-如果某个集合对象创建了Iterator或者ListIterator，然后其它的线程试图删除或者插入一个元素，将会抛出ConcurrentModificationException异常。
-但其它线程通过set()方法更改集合对象是允许的，因为这并没有从“结构上”更改集合。
-但是假如已经从结构上进行了更改，再调用set()方法，将会抛出IllegalArgumentException异常
+Fail-safe和iterator迭代器相关.
+如果某个集合对象创建了Iterator或者ListIterator, 然后其它的线程试图删除或者插入一个元素, 将会抛出ConcurrentModificationException异常.
+但其它线程通过set()方法更改集合对象是允许的, 因为这并没有从“结构上”更改集合.
+但是假如已经从结构上进行了更改, 再调用set()方法, 将会抛出IllegalArgumentException异常
 
 
 ### 原理
@@ -77,7 +89,7 @@ HashMap的默认大小为16,即大小为16的数据,即使只存储一个元素.
 
 关于key的选择
 要计算hashCode(),就要防止键改变,存取时键的值不同,其hashcode会不同,这样是不能取出值的.
-其实使用不可变的、声明作final的对象,并且采用合适的equals()和hashCode()方法的话,将会减少碰撞的发生,提高效率。
+其实使用不可变的、声明作final的对象,并且采用合适的equals()和hashCode()方法的话,将会减少碰撞的发生,提高效率.
 不可变性使得能够缓存不同键的hashcode,这将提高整个获取对象的速度,使用String,Interger这样的wrapper类作为键是非常好的选择
 因为包装类的一个对象一经创建,其所代表的值将不再变化,也就是说不能通过某个指向(refer to)它的reference来改变它的值,直至它被垃圾回收器回收
 
@@ -194,7 +206,7 @@ NavigableMap m = new TreeMap<>();
 
 访问快速-->HashSet
 排序-->TreeSet
-记录插入时顺序-->LinedHashSet。
+记录插入时顺序-->LinedHashSet.
 
 # Queue
 
