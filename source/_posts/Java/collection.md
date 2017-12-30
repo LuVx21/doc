@@ -4,7 +4,6 @@ tags:
 - Java
 ---
 
-
 <!-- TOC -->
 
 - [collection](#collection)
@@ -27,11 +26,17 @@ tags:
     - [LinkedHashSet](#linkedhashset)
 - [Queue](#queue)
 - [总结](#总结)
+- [资料](#资料)
 
 <!-- /TOC -->
 
 
 # collection
+
+* Map系：HashMap, LinkedHashMap, TreeMap, WeakHashMap, EnumMap;
+* List系：ArrayList, LinkedList, Vector, Stack;
+* Set系：HashSet, LinkedHashSet, TreeSet;
+* 工具类：Collections,Arrays
 
 ![](./img/java-collection.jpeg)
 
@@ -217,3 +222,19 @@ FCFS算法(First Come, First Serve)
 
 ArrarList 和 Vector 几乎相同
 HashMap 和 Hashtable 几乎相同
+
+
+# 资料
+
+* [《Comparable与Comparator浅析 》](http://blog.csdn.net/u013256816/article/details/50899416)
+* [《Java引用类型》](http://blog.csdn.net/u013256816/article/details/50907595)
+* [《Java集合框架：HashMap》](http://blog.csdn.net/u013256816/article/details/50912762)
+* [《Java集合框架：LinkedHashMap》](http://blog.csdn.net/u013256816/article/details/50915668)
+* [《Java集合框架：TreeMap》](http://blog.csdn.net/u013256816/article/details/50916418)
+* [《Java集合框架：WeakHashMap》](http://blog.csdn.net/u013256816/article/details/50916504)
+* [《Java集合框架：EnumMap》](http://blog.csdn.net/u013256816/article/details/50916581)
+* [《Java集合框架：ArrayList》](http://blog.csdn.net/u013256816/article/details/50916648)
+* [《Java集合框架：LinkedList》](http://blog.csdn.net/u013256816/article/details/50916689)
+* [《Java集合框架：Set（HashSet,LinkedHashSet,TreeSet）》](http://blog.csdn.net/u013256816/article/details/50917379)
+* [《Java集合框架：Arrays工具类》](http://blog.csdn.net/u013256816/article/details/50924762)
+* [《Java集合框架：Collections工具类》](http://blog.csdn.net/u013256816/article/details/50924875)
