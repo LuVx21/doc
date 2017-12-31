@@ -8,7 +8,7 @@ tag:
 
 <!-- TOC -->
 
-- [Struts2框架的概述](#struts2框架的概述)
+- [关于](#关于)
 - [入门环境准备](#入门环境准备)
 - [编写Action类](#编写action类)
 - [编写Struts的配置文件](#编写struts的配置文件)
@@ -25,9 +25,7 @@ tag:
 
 <!-- /TOC -->
 
-# Struts2框架的概述
-
-1. 什么是Struts2的框架
+# 关于
 
 * 基于MVC设计模式的Web层框架
 * Struts2是Struts1的下一代产品, 是在 struts1和WebWork的技术基础上进行了合并的全新的Struts2框架.
