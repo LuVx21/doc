@@ -19,9 +19,11 @@ tags:
 - [SQL查询方式](#sql查询方式)
 - [多表查询](#多表查询)
 - [延迟加载](#延迟加载)
-- [Hibernate的查询策略](#hibernate的查询策略)
-- [在set标签上配置策略](#在set标签上配置策略)
-- [在man-to-one标签上配置策略](#在man-to-one标签上配置策略)
+    - [类级别](#类级别)
+    - [关联级别](#关联级别)
+- [查询策略](#查询策略)
+    - [在set标签上配置策略](#在set标签上配置策略)
+    - [在man-to-one标签上配置策略](#在man-to-one标签上配置策略)
 
 <!-- /TOC -->
 
@@ -59,8 +61,8 @@ session.createQuery("from Orders").setFirstResult(0).setMaxResults(5).list();
 
 // 带条件的查询
 // setParameter("占位符?号的位置, 默认从0开始","参数的值"); 不用考虑参数的具体类型
-// 按位置绑定参数的条件查询（指定下标值, 默认从0开始）
-// 按名称绑定参数的条件查询（HQL语句中的 ? 号换成 :名称 的方式）
+// 按位置绑定参数的条件查询(指定下标值, 默认从0开始）
+// 按名称绑定参数的条件查询(HQL语句中的 ? 号换成 :名称 的方式）
 Query query = session.createQuery("from Orders where name like ? order by lkm_id desc");
 query.setFirstResult(0).setMaxResults(3);
 query.setParameter(0, "%PC%");
@@ -115,7 +117,7 @@ criteria.setFirstResult(0);
 criteria.setMaxResults(3);
 List<Orders> list = criteria.list();
 
-// 条件查询（Criterion是查询条件的接口, Restrictions类是Hibernate提供的工具类, 使用该工具类来设置查询条件）
+// 条件查询(Criterion是查询条件的接口, Restrictions类是Hibernate提供的工具类, 使用该工具类来设置查询条件）
 // 条件查询使用Criteria接口的add方法, 用来传入条件.
 // 使用Restrictions的添加条件的方法, 来添加条件, 例如:
 // Restrictions.eq		: 相等
@@ -204,77 +206,72 @@ for (Customer customer : set) {
 }
 ```
 
-> 外连接查询同上述内连接相同,
+> 外连接查询同上述内连接
 
 # 延迟加载
 
-1. 延迟加载先获取到代理对象, 当真正使用到该对象中的属性的时候, 才会发送SQL语句, 是Hibernate提升性能的方式
-2. 类级别的延迟加载
-* Session对象的load方法默认就是延迟加载
-* Customer c = session.load(Customer.class, 1L);没有发送SQL语句, 当使用该对象的属性时, 才发送SQL语句
+指先获取到代理对象, 当真正使用到该对象中的属性的时候, 才会执行SQL语句, 是Hibernate提升性能的方式
 
-* 使类级别的延迟加载失效
-	* 在<class>标签上配置lazy=”false”
-	* Hibernate.initialize(Object proxy);
+## 类级别
 
-3. 关联级别的延迟加载（查询某个客户, 当查看该客户下的所有联系人是是否是延迟加载）
-* 默认是延迟加载
-	Session session = HibernateUtils.getCurrentSession();
-	Transaction tr = session.beginTransaction();
-	Customer c = session.get(Customer.class, 1L);
-	System.out.println("=============");
-	System.out.println(c.getLinkmans().size());
-	tr.commit();
+Session对象的load()方法默认就是延迟加载
 
+延迟加载是默认开启的,若想不启用,方法有以下:
+1. 在`<class>`标签上配置`lazy=”false”`
+2. 使用`Hibernate.initialize(Object proxy);`初始化实体对象
 
-# Hibernate的查询策略
+```Java
+// 没有执行SQL语句, 当使用该对象的属性时, 才执行SQL语句
+Customer c1 = session.load(User.class, 1L);
+Hibernate.initialize(c1);
+System.out.println(c.getUsername());
+```
 
-1. 查询策略:使用Hibernate查询一个对象的时候, 查询其关联对象.应该如何查询.是Hibernate的一种优化手段!!!
-2. Hibernate的检索策略解决的问题
+## 关联级别
+
+```Java
+Customer c = session.get(User.class, 1L);
+System.out.println("=============");
+System.out.println(c.getOrders().size());
+```
+
+# 查询策略
+
+查询策略:使用Hibernate查询一个对象的时候, 想要查询其关联对象.应该如何查询.
+
 * 查询的时机
-	Customer c1 = (Customer) session.get(Customer.class, 1);
-	System.out.println(c1.getLinkmans().size());
+* 查询的形式
 
-	* lazy属性解决查询的时机的问题, 需要配置是否采用延迟加载！！
+下面是一对多的场景下的配置介绍:
 
-* 查询的语句形式
-	List<Customer> list = session.createQuery("from Customer").list();
-	for(Customer c : list){
-		System.out.println(c.getLinkmans());
-	}
+## 在set标签上配置策略
 
-	* fetch属性就可以解决查询语句的形式的问题！！
+在`<set>`标签上使用`fetch`和`lazy`属性
 
+fetch:控制SQL语句形式
 
-# 在set标签上配置策略
+* `select`: 默认值.发送查询语句
+* `join`: 连接查询.发送的是一条迫切左外连接.此时会是lazy属性无效
+* `subselect`: 子查询.发送一条子查询查询其关联对象.(需要使用list()方法进行测试)
 
-1. 在<set>标签上使用fetch和lazy属性
-* fetch的取值				-- 控制SQL语句生成的格式
-	* select				-- 默认值.发送查询语句
-	* join					-- 连接查询.发送的是一条迫切左外连接!!!配置了join.lazy就失效了
-	* subselect				-- 子查询.发送一条子查询查询其关联对象.(需要使用list()方法进行测试)
+lazy:查找关联对象时是否启用延迟加载
 
-* lazy的取值				-- 查找关联对象的时候是否采用延迟!
-	* true					-- 默认.延迟
-	* false					-- 不延迟
-	* extra					-- 及其懒惰
+* `true`: 默认.延迟
+* `false`: 不延迟
+* `extra`: 懒惰
 
-2. set标签上的默认值是fetch="select"和lazy="true"
+## 在man-to-one标签上配置策略
 
-3. 总结:Hibernate都采用了默认值, 开发中基本上使用的都是默认值.特殊的情况.
+1. 在`<many-to-one>`标签上使用`fetch`和`lazy`属性
 
+fetch:控制SQL语句形式
 
-# 在man-to-one标签上配置策略
+* select		-- 默认.发送基本select语句查询
+* join			-- 发送迫切左外连接查询
 
-1. 在<many-to-one>标签上使用fetch和lazy属性
-* fetch的取值		-- 控制SQL的格式.
-	* select		-- 默认.发送基本select语句查询
-	* join			-- 发送迫切左外连接查询
+lazy:查找关联对象时是否启用延迟加载
 
-* lazy的取值		-- 控制加载关联对象是否采用延迟.
-	* false			-- 不采用延迟加载.
-	* proxy			-- 默认值.代理.现在是否采用延迟.
-		* 由另一端的<class>上的lazy确定.如果这端的class上的lazy=”true”.proxy的值就是true(延迟加载).
-		* 如果class上lazy=”false”.proxy的值就是false(不采用延迟.)
+* false			-- 不采用延迟加载.
+* proxy			-- 默认值.代理.有一对多的一方的`<class>`上的lazy确定
 
-2. 在<many-to-one>标签上的默认值是fetch="select"和proxy
+> 没有`true`值
