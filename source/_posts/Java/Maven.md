@@ -22,6 +22,7 @@ tags:
     - [依赖锁定](#依赖锁定)
 - [Tomcat插件使用](#tomcat插件使用)
 - [模块化构建](#模块化构建)
+- [maven命令 部署到tomcat](#maven命令-部署到tomcat)
 
 <!-- /TOC -->
 
@@ -254,3 +255,40 @@ tomat:run
 ```
 
 运行时,可以在web层运行,也可以在父工程运行
+
+# maven命令 部署到tomcat
+
+通过maven操作tomcat
+
+```xml
+<!-- 本地环境使用 -->
+<plugin>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat7-maven-plugin</artifactId>
+  <configuration>
+    <url>http://localhost:8080/manager/text</url>
+    <server>tomcat</server>
+    <username>admin</username>
+    <password>admin</password>
+ </configuration>
+</plugin>
+```
+
+
+conf/tomcat-user.xml
+```xml
+<role rolename="manager-gui" />
+<role rolename="manager-script" />
+<user username="admin" password="admin" roles="manager-gui, manager-script" />
+```
+
+maven的setting.xml
+```xml
+<server>
+  <id>tomcat</id>
+  <username>admin</username>
+  <password>admin</password>
+</server>
+```
+
+mvn tomcat7:deploy
