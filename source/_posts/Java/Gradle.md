@@ -8,6 +8,7 @@ tags:
 
 - [Gradle转Maven](#gradle转maven)
 - [Maven转Gradle](#maven转gradle)
+- [tomcat](#tomcat)
 
 <!-- /TOC -->
 
@@ -34,3 +35,8 @@ gradle install
 ```shell
 gradle init --type pom
 ```
+
+# tomcat
+
+gradle tomcatRun
+gradle tomcatRunWar
