@@ -140,7 +140,7 @@ Struts中提供了两类数据封装的方式
 
 # 拦截器
 
-拦截器是AOP(Aspect-Oriented Programming)变成思想的一种体现.
+拦截器是AOP(Aspect-Oriented Programming)编程思想的一种体现.
 
 拦截器:对目标Action中的某些方法进行拦截,因此不能拦截JSP
 过滤器:过滤从客户端发送到服务端的请求

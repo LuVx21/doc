@@ -51,8 +51,7 @@ url-pattern配置
 
 # 案例1:自动登录
 
-步骤分析:
-	1.数据库和表
+```sql
 		create database day16;
 		use day16;
 		create table user(
@@ -60,69 +59,201 @@ url-pattern配置
 			username varchar(20),
 			password varchar(20)
 		);
-		insert into user values(null, 'tom', '123');
-	2.web项目
-		jar包 工具类 配置文件
-	3.新建一个登录页面 表单
-	4.表单提交 loginservlet
-		接受用户名和密码
-		调用service完成登录操作, 返回值User
-		判断user是否为空
-			若不为空, 将user放入session中
-				判断是否勾选了自动登录
-					若勾选了:
-						需要将用户名和密码写回浏览器
-	5.下次访问网站的时候
-		过滤器拦截任意请求
-			判断有无指定的cookie
-				有cookie, 获取用户名和密码
-				调用service完成登录操作, 返回user
-				当user不为空的时候将user放入session中.
+```
+画面上有'记住用户名'和'自动登录'两个多选框
 
-当我们换用jack登录的时候发现登录不了
-	自动登录只需要登录一次:当session中没有用户的时候
-	访问有些资源是不需要自动登录的(和登录还有注册相关的资源)
+LoginServlet.Java
 
-	修改filter的逻辑:
-		首先判断session中是否有user
-			若没有 并且访问的路径不是和登录注册相关的时候
-				才去获取指定的cookie
+1. 接受用户名和密码
+2. 调用service完成登录操作, 返回值User
+3. 判断user是否为空
+4. 若不为空, 将user放入session中
+5. 判断是否勾选了自动登录
+6. 若勾选了:
+7. 需要将用户名和密码写回浏览器
+
+```Java
+public class LoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//0.设置编码
+		request.setCharacterEncoding("utf-8");
+
+		//1.获取用户名和密码
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+
+		//2.调用service'
+		User user = null;
+		try {
+			user = new UserService().login(username,password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		//3.判断user是否为空
+		if(user == null){
+			request.setAttribute("msg", "用户名和密码不匹配");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			return;
+		}else{
+			request.getSession().setAttribute("user", user);
+			//判断是否勾选了自动登录  若勾选了需要将用户名和密码放入cookie中, 写回浏览器
+			if("ok".equals(request.getParameter("autoLogin"))){
+				//创建cookie 注意中文
+				Cookie c=new Cookie("autologin", username+"-"+password);
+				c.setMaxAge(3600);
+				c.setPath(request.getContextPath()+"/");
+
+				response.addCookie(c);
+			}
+
+			//判断是否勾选了记住用户名 若勾选了需要将用户名放入cookie中 写回浏览器
+			if("ok".equals(request.getParameter("saveName"))){
+				//创建cookie
+				Cookie c=new Cookie("savename", URLEncoder.encode(username, "utf-8"));
+				c.setMaxAge(3600);
+				c.setPath(request.getContextPath()+"/");
+
+				response.addCookie(c);
+			}
+			//页面重定向
+			response.sendRedirect(request.getContextPath()+"/success.jsp");
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+}
+
+```
+
+AutoLoginFilter.Java
+
+1. 过滤器拦截任意请求
+2. 判断有无指定的cookie
+3. 有cookie, 获取用户名和密码
+4. 调用service完成登录操作, 返回user
+5. 当user不为空的时候将user放入session中
+
+```Java
+public class AutoLoginFilter implements Filter{
+	@Override
+	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
+			throws IOException, ServletException {
+		//1.强转
+		HttpServletRequest request =(HttpServletRequest) req;
+		HttpServletResponse response =(HttpServletResponse) resp;
+
+		//2.完成自动登录
+		//2.1 判断session中有无登录登录用户 没有的话继续自动登录
+		User user = (User) request.getSession().getAttribute("user");
+		if(user == null){
+			//没有用户  需要自动登录
+			//2.2 判断访问的资源是否和登录注册相关,若相关则不需要自动登录
+			String path = request.getRequestURI();
+			if(!path.contains("/login")){
+
+				//2.3获取指定的cookie
+				Cookie c = CookUtils.getCookieByName("autologin", request.getCookies());
+				//判断cookie是否为空
+				//若不为空 获取值(username和passowrd) 调用serivce完成登录  判断user是否为空 不为空 放入session
+				if(c != null){
+					String username=c.getValue().split("-")[0];
+					String password=c.getValue().split("-")[1];
+
+					//调用serivce完成登录
+					try {
+						user = new UserService().login(username, password);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+					if(user!=null){
+						//将user放入session中
+						request.getSession().setAttribute("user", user);
+					}
+				}
+			}
+		}
+		//3.放行
+		chain.doFilter(request, response);
+	}
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
+
+	@Override
+	public void destroy() {
+	}
+
+}
+```
+
 
 # 案例2:统一字符编码
 
-需求:
-	以前我们开发的时候若有参数, 第一步都是设置编码, 才不会出现乱码, 通过过滤器设置, 到servlet或者jsp上的时候已经没有乱码问题
-技术分析:
+分析:
 	filter 配置路径/* 过滤器的第一个位置
-	在filter中重写getParameter(加强)
-步骤分析:
-	我们只需要在filter中 对request进行加强(例如:只对request.getParameter()进行加强)
+	在filter中重写getParameter(加强:只对request.getParameter()进行加强)
 
-	方法加强:
-		1.继承(获取构造器)
-		2.装饰者模式(静态代理)
-		3.动态代理
+方法加强的方式:
 
-	装饰者书写步骤:
-		1.要求装饰者和被装饰者实现同一个接口或者继承同一个类
-		2.装饰者中要有被装饰者的引用
-		3.对需要加强方法进行加强
-		4.对不需要加强的方法调用原来的方法即可
+1. 继承(获取构造器)
+2. 装饰者模式(静态代理)
+3. 动态代理
 
-	加强request.getParameter(String key)
-		首先请求的方式不同, 处理的方式也不同
-			获取请求的方法
-			若是get请求
-				new String(value.getBytes("iso8859-1"), "utf-8");
-			若是post请求
-				只需要设置一句话
-				request.setCharacterEncoding("utf-8");
+装饰者书写步骤:
 
-	最后将包装过的request对象(MyRequest)传递给servlet即可
-///////////////////////////////////////////////////
-///////////////////////////////////////////////////
- 关于获取参数的方法
-	String getParameter(String name);// arr[0]
-	String[] getParameterValues(String name);// map.get(name)
-	Map<String, String[]> getParameterMap();
+1. 要求装饰者和被装饰者实现同一个接口或者继承同一个类
+2. 装饰者中要有被装饰者的引用
+3. 对需要加强方法进行加强
+4. 对不需要加强的方法调用原来的方法即可
 
+```Java
+public class EncodingFilter1 implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
+
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
+            throws IOException, ServletException {
+        //1.强转
+        final HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) resp;
+
+        //创建代理对象
+        HttpServletRequest requestProxy = (HttpServletRequest) Proxy.newProxyInstance(HttpServletRequest.class.getClassLoader(), request.getClass().getInterfaces(), new InvocationHandler() {
+
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                if ("getParameter".equals(method.getName())) {
+                    String m = request.getMethod();
+
+                    if ("get".equalsIgnoreCase(m)) {
+                        String s = (String) method.invoke(request, args);//相当于  request.getParameter(args);
+                        return new String(s.getBytes("iso8859-1"), "utf-8");
+                    } else if ("post".equalsIgnoreCase(m)) {
+                        request.setCharacterEncoding("utf-8");
+                        return method.invoke(request, args);
+                    }
+                }
+                return method.invoke(request, args);
+            }
+        });
+
+        //2.放行
+        chain.doFilter(requestProxy, response);
+    }
+
+    @Override
+    public void destroy() {
+    }
+
+}
+```
