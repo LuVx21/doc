@@ -20,56 +20,6 @@ tags:
 
 <!-- /TOC -->
 
-回顾:
-listener(了解)
-	监听器, 监听javaweb中三个域对象
-	监听对象的创建和销毁
-		ServletContextListener
-			在项目启动的时候加载配置文件
-		ServletRequestListener
-		HttpSessionListener
-	监听对象的属性的变化
-		ServletContextAttributeListener
-		ServletRequestAttributeListener
-		HttpSessionAttributeListener
-	监听javabean在session中状态
-		注意:让javabean自动感知在session中的状态, 不需要在配置文件配置
-		HttpSessionActivationListener(钝化和活化)
-		HttpSessionBindingListener(绑定和解绑)
-	编写:
-		1.编写监听器
-		2.编写配置文件
-			<listener>
-				<listener-class>
-			</listener>
-	///////////////////////////////////
-filter(★)
-	过滤器, 过滤请求和响应
-	filter编写步骤:
-		1.编写一个类
-			必须实现Filter接口
-			必须重写方法
-		2.编写配置文件
-			注册filter
-			绑定路径
-	filter生命周期方法:
-		doFilter(request, response, chain)
-			使用步骤:
-			 1.强转
-			 2.编写自己的业务
-			 3.放行
-	url-pattern的配置:
-		完全匹配
-		目录匹配
-		后缀名匹配
-	多个filter都匹配到的时候, 执行时机是根据在xml中的filter-mapping顺序决定
-
-	filter-mapping中的两个子标签
-		servlet-name:过滤指定的servlet
-		dispatcher:过滤那种方式过来的请求
-			REQUEST:只过滤从浏览器发送过来的请求 (默认) 一旦显式的写出来disparcher 默认的就不起作用了
-			FORWARD::只过滤请求转发过来的请求
-
 # 注解
 
 jdk5之后提供的一个特性, 和类,接口同级

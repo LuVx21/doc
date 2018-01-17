@@ -49,6 +49,25 @@ url-pattern配置
 
 ★一个资源有可能被多个过滤器匹配成功, 多个过滤器的执行顺序是按照web.xml中filter-mapping的顺序执行的
 
+web.xml中的配置
+```xml
+<filter>
+	<filter-name>AutoLoginFilter</filter-name>
+	<filter-class>org.luvx.filter.AutoLoginFilter</filter-class>
+</filter>
+<filter-mapping>
+	<filter-name>AutoLoginFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+	<dispatcher>FORWARD</dispatcher>
+	<dispatcher>REQUEST</dispatcher>
+</filter-mapping>
+```
+
+* filter-name:过滤指定的servlet
+* dispatcher:过滤哪种方式过来的请求
+* REQUEST:只过滤从浏览器发送过来的请求 (默认) 一旦显式的写出来disparcher 默认的就不起作用了
+* FORWARD::只过滤请求转发过来的请求
+
 # 案例1:自动登录
 
 ```sql
