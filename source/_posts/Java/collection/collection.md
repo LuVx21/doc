@@ -7,6 +7,9 @@ tags:
 <!-- TOC -->
 
 - [collection](#collection)
+- [List](#list)
+    - [LinkedList](#linkedlist)
+    - [Vector](#vector)
 - [Map](#map)
     - [HashMap](#hashmap)
         - [原理](#原理)
@@ -15,10 +18,6 @@ tags:
     - [LinedHashMap](#linedhashmap)
     - [TreeMap](#treemap)
     - [CocurrentHashMap](#cocurrenthashmap)
-- [List](#list)
-    - [ArrarList](#arrarlist)
-    - [LinkedList](#linkedlist)
-    - [Vector](#vector)
 - [Set](#set)
     - [HashSet](#hashset)
         - [原理](#原理-2)
@@ -33,10 +32,21 @@ tags:
 
 # collection
 
-* Map系：HashMap, LinkedHashMap, TreeMap, WeakHashMap, EnumMap;
 * List系：ArrayList, LinkedList, Vector, Stack;
+* Map系：HashMap, LinkedHashMap, TreeMap, WeakHashMap, EnumMap;
 * Set系：HashSet, LinkedHashSet, TreeSet;
 * 工具类：Collections,Arrays
+
+集合的关键点
+
+|点|ArrayList|LinkedList|||||
+|:--|:--|:--|:--|:--|:--|:--|
+|允许空|○|○|||||
+|允许重复|○|○|||||
+|有序|○|○|||||
+|线程安全|✘|✘|||||
+
+> 有序的意思是读取数据的顺序和存放数据的顺序是否一致
 
 ![](./img/java-collection.jpeg)
 
@@ -50,10 +60,26 @@ Collections:提供了操作集合的静态方法的类
 
 上述所有的集合类, 都实现了Iterator接口, 这是一个用于遍历集合中元素的接口, 主要包含hasNext(), next(), remove()三种方法.
 它的一个子接口LinkedIterator在它的基础上又添加了三种方法, 分别是add(),previous(),hasPrevious().
-也就是说如果是实现Iterator接口, 那么在遍历集合中元素的时候, 只能往后遍历, 被遍历后的元素不会在遍历到, 
+也就是说如果是实现Iterator接口, 那么在遍历集合中元素的时候, 只能往后遍历, 被遍历后的元素不会在遍历到,
 通常无序集合实现的都是这个接口, 比如HashSet, HashMap；
 而那些元素有序的集合, 实现的一般都是LinkedIterator接口, 实现这个接口的集合可以双向遍历, 既可以通过next()访问下一个元素, 又可以通过previous()访问前一个元素, 比如ArrayList.
 
+# List
+
+Collection <-- List
+
+* 元素有序
+* 可以重复
+
+## LinkedList
+
+* 双向链表
+* 并实现了Queue接口
+
+## Vector
+
+* 同步
+* 自增空间1倍
 
 # Map
 
@@ -67,7 +93,7 @@ Collections:提供了操作集合的静态方法的类
 
 @TODO
 HashMap的迭代器(Iterator)是fail-fast迭代器, 而Hashtable的enumerator迭代器不是fail-fast的.
-所以当有其它线程改变了HashMap的结构（增加或者移除元素）, 将会抛出ConcurrentModificationException, 
+所以当有其它线程改变了HashMap的结构（增加或者移除元素）, 将会抛出ConcurrentModificationException,
 但迭代器本身的remove()方法移除元素则不会抛出ConcurrentModificationException异常.
 但这并不是一个一定发生的行为, 要看JVM.这条同样也是Enumeration和Iterator的区别
 
@@ -126,29 +152,6 @@ Java5以上推荐使用ConcurrentHashMap
 ## CocurrentHashMap
 
 * HashTable的替代,比HashTable的扩展性更好
-
-# List
-
-Collection <-- List
-
-* 元素有序
-* 可以重复
-
-## ArrarList
-
-* 数组
-* 自增空间0.5倍
-
-## LinkedList
-
-* 双向链表
-* 并实现了Queue接口
-
-## Vector
-
-* 同步
-* 自增空间1倍
-
 
 # Set
 
