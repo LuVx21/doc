@@ -18,7 +18,7 @@ tags:
 
 <!-- /TOC -->
 
-#关于
+# 关于
 
 1. JDBC:Java Data Base Connectivity
 2. JDBC类所在的包:JDK中,主要由接口构成
@@ -26,7 +26,7 @@ tags:
 	* javax.sql.*;
 3. JDBC和数据库驱动的关系:抽象和实现的关系
 
-#JDBC编写步骤
+# JDBC编写步骤
 
 1. 注册数据库的驱动
 2. 获取与数据库的连接
@@ -63,7 +63,7 @@ stmt.close();
 conn.close();
 ```
 
-#常用接口或类详解
+# 常用接口或类详解
 
 ## DriveManager
 
@@ -83,16 +83,11 @@ JDBC的URL＝协议名＋子协议名＋(据源).
 * 数据源名也可能包含用户与口令等信息；这些信息也可(独提).
 
 几种常见的数据库连接:
--------------------------------oracle-------------------------------
-驱动:`oracle.jdbc.driver.OracleDriver`
-URL:`jdbc:oracle:thin:@machine_name:port:dbname`
-      port:默认1521
--------------------------------mysql-------------------------------
-驱动:`com.mysql.jdbc.Driver`
-URL:`jdbc:mysql://machine_name:port/dbname`
-      port:默认3306
 
-
+|驱动|URL|端口|
+|:--|:--|:--|
+|`oracle.jdbc.driver.OracleDriver`|URL:`jdbc:oracle:thin:@machine_name:port:dbname`|默认1521|
+|`com.mysql.jdbc.Driver`|URL:`jdbc:mysql://machine_name:port/dbname`|默认3306|
 
 ## Statement
 

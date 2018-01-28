@@ -55,6 +55,7 @@ date: 2017-11-06
 
 * 可以有属性,且被`public static final`修饰
 * 方法被`public abstract`修饰,即仅有抽象方法
+* Java8中支持默认方法
 
 区别
 
