@@ -22,7 +22,9 @@ tags:
     - [依赖锁定](#依赖锁定)
 - [Tomcat插件使用](#tomcat插件使用)
 - [模块化构建](#模块化构建)
-- [maven命令 部署到tomcat](#maven命令-部署到tomcat)
+- [maven命令](#maven命令)
+    - [部署到tomcat](#部署到tomcat)
+    - [依赖结构](#依赖结构)
 
 <!-- /TOC -->
 
@@ -256,7 +258,8 @@ tomat:run
 
 运行时,可以在web层运行,也可以在父工程运行
 
-# maven命令 部署到tomcat
+# maven命令
+## 部署到tomcat
 
 通过maven操作tomcat
 
@@ -292,3 +295,9 @@ maven的setting.xml
 ```
 
 mvn tomcat7:deploy
+
+## 依赖结构
+
+```shell
+mvn dependency:tree
+```
