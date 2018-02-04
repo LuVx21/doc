@@ -12,9 +12,9 @@ tags:
 - [线程通信](#线程通信)
 - [线程调度](#线程调度)
 - [常用方法](#常用方法)
-    - [Thread:](#thread)
-    - [Thread Instance:](#thread-instance)
-    - [Object:](#object)
+    - [Thread](#thread)
+    - [Thread Instance](#thread-instance)
+    - [Object](#object)
 - [比较](#比较)
     - [sleep()和wait()方法的区别](#sleep和wait方法的区别)
     - [run()和Start()](#run和start)
@@ -69,14 +69,16 @@ synchronized: 线程同步关键字
 
 # 常用方法
 
-## Thread:
+## Thread
 
+```Java
 public static Thread currentThread(): 返回当前线程对象
 public static void sleep(long millis): 使当前线程进入睡眠状态, 参数设定其等待时间, 不会释放锁
 public static void yield(): 使当前线程放弃执行, 切换到其它线程
+```
+## Thread Instance
 
-## Thread Instance:
-
+```Java
 public void start(): 启动线程, JVM将调用此线程的run方法, 结果是将同时运行两个线程, 当前线程和执行run方法的线程.
 public void run(): Thread的子类应该重写此方法, 内容应为该线程应执行的任务.
 public void stop(): 停止线程运行, 并退出可执行状态. 【已过时】
@@ -89,12 +91,14 @@ public void setPriority(int newPriority): 设置线程优先级.
 public void setDaemon(boolean on): 设置是否为后台线程.如果当前运行线程均为后台线程则JVM停止运行.该方法必须在start()方法之前使用.
 public final void checkAccess(): 判断当前线程是否有权力修改调用此方法的线程.
 public boolean isAlive(): 判断线程是否处于执行状态.返回值true表示处于运行状态, false表示已停止.
+```
+## Object
 
-## Object:
-
+```Java
 public void wait():  在其他线程调用此对象的 notify() 方法或 notifyAll() 方法前, 使当前线程进入等待状态, 会释放锁.
 public void notify():  唤醒在此对象监视器上等待的单个线程.
 public void notifyAll(): 唤醒在此对象监视器上等待的所有线程.
+```
 
 # 比较
 

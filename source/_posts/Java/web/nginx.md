@@ -7,30 +7,29 @@ tags:
 ---
 <!-- TOC -->
 
-- [nginx](#nginx)
-    - [关于](#关于)
-    - [模块](#模块)
-    - [命令及配置](#命令及配置)
-    - [搭建集群](#搭建集群)
-        - [windows](#windows)
-        - [Linux](#linux)
+- [关于](#关于)
+- [模块](#模块)
+- [处理请求](#处理请求)
+- [源码目录结构](#源码目录结构)
+- [命令](#命令)
+- [配置](#配置)
+- [负载均衡](#负载均衡)
+- [Nginx+Tomcat负载均衡集群](#nginxtomcat负载均衡集群)
+    - [windows](#windows)
+    - [Linux](#linux)
 
 <!-- /TOC -->
-# nginx
+# 关于
 
-@(Java)[nginx][server]
-
-[TOC]
-
-## 关于
-
-Nginx是一款轻量级的Web服务器/反向代理服务器及电子邮件(IMAP/POP3)代理服务器
+Nginx是一款轻量级的Web服务器/反向代理服务器及电子邮件(IMAP/POP3/SMTP)代理服务器
+解决了服务器的C10K(1秒内客户端连接数10K).
+不像传统服务器那样使用多线程处理并发请求,而是采取事件驱动机制(异步事件驱动).
 
 * 反向代理 :
     反向代理:代理服务器的, 用户不需要设置.
 
 * 负载均衡:
-    原理就是数据流量分摊到多个服务器上执行, 减轻每台服务器的压力, 
+    原理就是数据流量分摊到多个服务器上执行, 减轻每台服务器的压力,
     多台服务器共同完成工作任务, 从而提高了数据的吞吐量.
 
 * 动静分离:
@@ -40,11 +39,28 @@ Nginx是一款轻量级的Web服务器/反向代理服务器及电子邮件(IMAP
 > Nginx接收用户请求是异步的, 即先将用户请求全部接收下来, 再一次性发送到后端Web服务器, 极大减轻后端Web服务器的压力
 > 发送响应报文时, 是边接收来自后端Web服务器的数据, 边发送给客户端
 
-## 模块
-内核模块和事件驱动模块, 即:CoreModule和EventsModule；另外还有第三方模块 HTTP内核模块
+# 模块
 
+内核模块和事件驱动模块, 即:CoreModule和EventsModule;另外还有第三方模块,HttpCoreModule(HTTP内核模块)
 
-## 命令及配置
+* CoreModule:用于控制Nginx服务器的基本功能;
+* EventsModule:用于控制Nginx如何处理连接.该模块的指令的一些参数会对应用系统的性能产生重要的影响;
+* HttpCoreModule:提供HTTP访问Nginx服务器,该模块是不能缺少的.
+
+# 处理请求
+
+启动->解析配置文件,获得IP和端口->初始化scoket->创建子进程->接受客户端请求
+
+# 源码目录结构
+
+* Core
+* event
+* http
+* mail
+* misc
+* os
+
+# 命令
 
 ```
 nginx [-?hvVtq] [-s signal] [-c filename] [-p prefix] [-g directives]
@@ -62,9 +78,12 @@ nginx [-?hvVtq] [-s signal] [-c filename] [-p prefix] [-g directives]
 |-c filename  |设置配置文件(默认是:/usr/local/etc/nginx/nginx.conf)|
 |-g directives|设置配置文件外的全局指令|
 
-**配置及说明**
-```
-###########start#################
+# 配置
+
+nginx.conf
+
+```conf
+######start#########
 #user administrator administrators;  #配置用户或者组, 默认为nobody nobody.
 #worker_processes 2;  #允许生成的进程数, 默认为1
 #pid /nginx/pid/nginx.pid;   #指定nginx进程运行文件存放地址
@@ -87,14 +106,14 @@ http {
 
     upstream servers {
       server 127.0.0.1:8080;
-      server 192.168.10.121:3333 backup;  #热备
+      server 127.0.0.1:8090 backup;  #热备
       ip_hash; # 1个ip只能访问其中一台server, 解决session共享问题
     }
 
     error_page 404 https://www.baidu.com; #错误页
     server {
         keepalive_requests 120; #单连接请求上限次数.
-        listen       4545;   #监听端口
+        listen       8080;   #监听端口
         server_name  127.0.0.1;   #监听地址
         location  ~*^.+$ {       #请求的url过滤, 正则匹配, ~为区分大小写, ~*为不区分大小写.
            #root path;  #根目录
@@ -105,21 +124,33 @@ http {
         }
     }
 }
-###########end#################
+######end#########
 ```
+
 1. $remote_addr 与$http_x_forwarded_for 用以记录客户端的ip地址;
 2. $remote_user :用来记录客户端用户名称;
 3. $time_local : 用来记录访问时间与时区;
 4. $request : 用来记录请求的url与http协议;
-5. $status : 用来记录请求状态;成功是200, 
+5. $status : 用来记录请求状态;成功是200,
 6. $body_bytes_s ent :记录发送给客户端文件主体内容大小;
 7. $http_referer :用来记录从那个页面链接访问过来的;
 8. $http_user_agent :记录客户端浏览器的相关信息;
 
 > 每个指令必须有分号结束.
 
-## 搭建集群
-### windows
+# 负载均衡
+
+策略:
+
+* 轮询(默认)
+* 加权轮询(配置的upstream中服务器后加上weight=2等)
+* IP hash(服务器挂掉会自动换到其他机器)
+* url_hash(第三方策略,服务器挂掉不自动换到其他机器,返回503错误)
+* fair(第三方策略,依照服务器的响应时间分配,优先分给响应快的)
+
+# Nginx+Tomcat负载均衡集群
+
+## windows
 
 1. 在g盘新建两个目录 tomcat1 tomcat2
 2. 修改tomcat2的端口 在tomcat1的端口上+10
@@ -130,16 +161,21 @@ http {
     这是只是代理一台服务器
 4. 代理集群
     需要在http节点内添加一个
-    ```
-    upstream servers{
-        server 127.0.0.1:8080;
-        server 127.0.0.1:8090;
-    }
-    ```
-    修改location /下的反向代理
-    ```
-    proxy_pass http://servers
-    ```
+
+nginx.conf的http{}节点中
+
+```
+upstream servers{
+server 127.0.0.1:8080;
+server 127.0.0.1:8090;
+}
+```
+
+修改`location /{}`下的反向代理
+
+```
+proxy_pass http://servers
+```
 5. session共享问题
     解决方式1:只能在window下有效
         web服务器解决(广播机制)
@@ -159,7 +195,7 @@ http {
         在nginx的配置文件中
             upstream中添加`p_hash`;
 
-### Linux
+## Linux
 
 1. 编译nginx
     安装依赖包
