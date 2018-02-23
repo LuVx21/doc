@@ -17,6 +17,7 @@ tags:
 - [Nginx+Tomcat负载均衡集群](#nginxtomcat负载均衡集群)
     - [windows](#windows)
     - [Linux](#linux)
+    - [Session共享](#session共享)
 
 <!-- /TOC -->
 # 关于
@@ -228,3 +229,33 @@ proxy_pass http://servers
 
 5. 修改conf文件 和window下一样
     配置集群
+
+## Session共享
+
+[github](https://github.com/jcoleman/tomcat-redis-session-manager)
+
+需要下载源码编译生成Jar包,
+
+* tomcat-redis-session-1.0.1-SNAPSHOT.jar
+* jedis-2.7.2.jar
+* commons-pool2-2.0.jar
+
+之后将上述3个Jar包,放在Tomcat的lib目录下,如`/usr/local/tomcat/lib`.
+
+修改tomcat下conf/context.xml
+```xml
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+    <!-- tomcat-redis-session共享配置 -->
+    <Valve className="com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve" />
+    <Manager className="com.orangefunction.tomcat.redissessions.RedisSessionManager"
+        host="192.168.0.1"
+        port="6379"
+        database="0"
+        password="1121"
+        maxInactiveInterval="60" />
+
+</Context>
+```

@@ -6,19 +6,19 @@ tags:
 ---
 <!-- TOC -->
 
-- [branch](#branch)
-- [tag](#tag)
+- [分支](#分支)
+- [标签](#标签)
 
 <!-- /TOC -->
 
-# branch
+# 分支
 
 ```
 git push origin --delete <branchName>
+git pus origin :<branchName>
 ```
 
-
-# tag
+# 标签
 
 ```
 git tag <tagname> -m 'message'

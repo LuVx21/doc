@@ -10,33 +10,38 @@ tags:
 - [关于](#关于)
 - [配置](#配置)
 - [使用](#使用)
+- [命令](#命令)
+    - [共有命令](#共有命令)
 - [数据类型](#数据类型)
     - [String](#string)
-    - [list:基于双向循环链表实现, 栈](#list基于双向循环链表实现-栈)
-    - [Hash](#hash)
+    - [list](#list)
+    - [hash](#hash)
     - [set](#set)
     - [zset](#zset)
-- [共有命令](#共有命令)
 - [调用Redis](#调用redis)
 - [持久化](#持久化)
 - [主从复制](#主从复制)
 
 <!-- /TOC -->
 
-
-
 # 关于
+
+使用场景:
 
 * 分布式缓存
 * 分布式session
-* 数据量大, 高并发的场景下
+* 数据量大# 高并发的场景下
 
+特点:
 
+* key-value形式存储
+* 
 
 # 配置
 
 config命令
 ```
+#获取配置信息
 config get settingname
 config set settingname value
 ```
@@ -68,6 +73,49 @@ redis-cli -h host -p port -a password
 
 > 默认监听`6379`端口
 
+# 命令
+
+格式
+```shell
+
+```
+
+## 共有命令
+
+```shell
+# 取出所有key
+keys *
+# 支持正则表达式
+keys "foo*"
+# 查看数据类型
+type <key>
+# 重命名key
+rename <key>
+# 追加value
+append <key>
+# 判断存在
+exists <key>
+set: 插入键值, 存在则覆盖
+setnx: 插入键值, 存在不覆盖
+mset: 批量插入键值, 覆盖
+msetnx: 批量插入键值, 不覆盖
+getset <key>: 取值并设置新值
+
+incr <key>: 增1
+decr <key>: 减1
+incrby <key> <i>: 增i
+decrby <key> <i>: 减i
+```
+
+```shell
+# 键值对数量
+dbsize
+# 清空数据库
+flushdb
+# 服务信息
+info
+```
+
 # 数据类型
 
 > 不能存储中文, 存储unicode可以实现间接存储中文
@@ -86,7 +134,9 @@ decrby:
 
 nil:空
 
-## list:基于双向循环链表实现, 栈
+## list
+
+基于双向循环链表实现, 栈
 
 lpush:入栈
 rpush:入栈
@@ -95,7 +145,9 @@ rpop:
 lrange obj 0 -1:出栈, 全部取出
 llen
 
-## Hash
+## hash
+
+
 
 hset
 hget
@@ -134,11 +186,7 @@ zrevrange
 参数:
 withscores
 
-# 共有命令
 
-rename
-type
-keys
 
 # 调用Redis
 
