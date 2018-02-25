@@ -32,6 +32,9 @@ tags:
 |char|16||单一的Unicode字符,范围:\u0000~\uffff(0~65535)|
 |boolean|1|false|
 
+> BigInteger 支持任意精度的整数
+> BigDecimal 支持任何精度的浮点数
+
 # 类初始化
 
 Java类初始化顺序:

@@ -90,6 +90,11 @@ mvn install
 tomat:run
 ```
 
+跳过测试编译
+```
+mvn install -Dmaven.test.skip=true
+```
+
 # pom.xml
 
 ```xml
