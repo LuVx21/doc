@@ -3,6 +3,7 @@ title: Redis
 date: 2017-05-11
 tags:
 - Redis
+- NoSQL
 ---
 
 <!-- TOC -->
@@ -44,6 +45,12 @@ config命令
 #获取配置信息
 config get settingname
 config set settingname value
+```
+
+设置密码
+```
+config set requirepass 1121
+redis-cli -h 127.0.0.1 -p 6379 -a 1121
 ```
 
 配置后台运行
