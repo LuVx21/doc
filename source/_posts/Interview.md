@@ -66,6 +66,9 @@ java中有几种类型的流？JDK为每种类型的流提供了一些抽象类�
 
 ## 反射 内省
 
+[反射](./Java/reflect.md)
+[内省](./Java/内省.md)
+
 ## 异常
 
 * ClassCastException
