@@ -5,6 +5,9 @@ date: 2018-02-25
 <!-- TOC -->
 
 - [基础](#基础)
+    - [OO](#oo)
+    - [static](#static)
+    - [序列化](#序列化)
     - [泛型](#泛型)
         - [通配符](#通配符)
     - [I/O](#io)
@@ -15,9 +18,12 @@ date: 2018-02-25
 - [GC](#gc)
 - [并发编程](#并发编程)
 - [缓存](#缓存)
+- [分布式](#分布式)
 - [Framework](#framework)
-    - [Spring](#spring)
     - [SpringMVC](#springmvc)
+    - [Hibernate](#hibernate)
+    - [MyBatis](#mybatis)
+    - [Spring](#spring)
     - [Struts2](#struts2)
 - [设计模式](#设计模式)
 - [数据库](#数据库)
@@ -27,6 +33,40 @@ date: 2018-02-25
 <!-- /TOC -->
 
 # 基础
+
+* java中==和equals和hashCode的区别
+* int、char、long各占多少字节数
+* int与integer的区别
+* String、StringBuffer、StringBuilder区别
+* final，finally，finalize的区别
+* string 转换成 integer的方式及原理
+string->integer
+parseInt()
+integer->string
+
+* 什么是内部类？内部类的作用
+* 闭包和局部内部类的区别
+
+## OO
+
+* 对java多态的理解
+* 抽象类和接口区别
+* 抽象类的意义
+* 抽象类与接口的应用场景
+* 抽象类是否可以没有方法和属性？
+* 接口的意义
+
+## static
+
+* 父类的静态方法能否被子类重写
+* 静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？
+* 静态内部类的设计意图
+* 成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用
+
+## 序列化
+
+* Serializable 和Parcelable 的区别
+* 序列化的方式
 
 ## 泛型
 
@@ -39,6 +79,8 @@ date: 2018-02-25
 > 泛型类一般使用字母 T 作为泛型标志
 > 泛型集合通常使用T(Type),K(Key),V(Value),E(Element)等作为标志,如Map<K, V>
 > `<>`中类型存在父子关系,但泛型List<Number>和List<Integer>不具有
+
+* 泛型中extends和super的区别
 
 ### 通配符
 
@@ -114,24 +156,35 @@ volatile,内存屏障
 lock(),tryLock(),lockInterupttibly()的区别
 jdk线程池实现原理（ThreadPoolExecutor如何复用线程）
 
+* 进程和线程的区别
+
 # 缓存
 
 redis或mencached,
 redis有哪些数据结构（string, list, hash, zset, set）, redis对比mencached有什么优缺点（有数据类型, 原生支持集群）, 由于有数据类型所以会占用更多的空间
 
+# 分布式
+
+CAP: 是指Consistency一致性，Availability可用性，Partition Tolerance分区容忍性
+
 # Framework
 
-## Spring
-    Spring aop的实现原理, 了解cglib和jdk动态代理
-    Spring容器的生命周期
-    Spring bean的声明周期
-    Spring Ioc, 反射机制
 ## SpringMVC
 
     Servlet的生命周期
     生命周期,运行流程
     如何处理request
     各大组件的作用
+
+## Hibernate
+
+## MyBatis
+
+## Spring
+    Spring aop的实现原理, 了解cglib和jdk动态代理
+    Spring容器的生命周期
+    Spring bean的声明周期
+    Spring Ioc, 反射机制
 
 ## Struts2
 
