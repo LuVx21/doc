@@ -2,6 +2,10 @@
 
 
 
+<!-- TOC -->
+
+
+<!-- /TOC -->
 
 一个Thread中只有一个ThreadLocalMap,
 一个ThreadLocalMap中可以有多个ThreadLocal对象,
