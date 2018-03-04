@@ -33,27 +33,54 @@ date: 2018-02-25
 
 # 基础
 
-* java中==和equals和hashCode的区别
-* int、char、long各占多少字节数
-* int与integer的区别
-* String、StringBuffer、StringBuilder区别
-* final，finally，finalize的区别
-* string 转换成 integer的方式及原理
-string->integer
-parseInt()
-integer->string
+* `==`和`equals`和`hashCode`的区别
 
-* 什么是内部类？内部类的作用
+
+
+* int、char、long各占多少字节数
+
+分别是4,2,8个字节(byte),每个字节对应8位(bit)
+Java采用unicode编码,使用2个字节表示一个字符
+
+* int与integer的区别
+
+int是Java基本类型,integer是int类型对应的包装类(对象类型),
+基于OO编程思想,设计出包装类,方便处理对象类型和基本的转换等操作,如String和基本类型的转换,集合中存储包装类型
+类似于intValue()来转换为基本类型,反过来有自动拆装箱机制转换为包装类型
+
+* String、StringBuffer、StringBuilder区别
+
+* final,finally,finalize的区别
+
+  - final:声明类,变量,方法等,使其不可被继承,不可被修改,不可被重写
+  - finally:异常处理操作中,遇到异常后必须要处理的操作可放置在finally代码块中
+  - finalize:垃圾回收时使用,通常不需要开发者主动显示调用
+
+* string 转换成 integer的方式及原理
+
+string->integer
+
+```Java
+parseInt()
+```
+integer->string
+```Java
++""
+Integer.toString()
+```
+
+* 什么是内部类?内部类的作用
+
 * 闭包和局部内部类的区别
 
 ## OO
 
 * 对java多态的理解
-* 抽象类和接口区别
 * 抽象类的意义
-* 抽象类与接口的应用场景
-* 抽象类是否可以没有方法和属性？
 * 接口的意义
+* 抽象类和接口区别
+* 抽象类与接口的应用场景
+* 抽象类是否可以没有方法和属性?
 
 ## static
 
@@ -65,13 +92,19 @@ integer->string
 * 代码块: 
 
 * 父类的静态方法能否被子类重写
-* 静态属性和静态方法是否可以被继承？是否可以被重写？以及原因？
+
+不能.
+
+* 静态属性和静态方法是否可以被继承?是否可以被重写?以及原因?
+
 * 静态内部类的设计意图
-* 成员内部类、静态内部类、局部内部类和匿名内部类的理解，以及项目中的应用
+
+* 成员内部类、静态内部类、局部内部类和匿名内部类的理解,以及项目中的应用
 
 ## 序列化
 
 * Serializable 和Parcelable 的区别
+
 * 序列化的方式
 
 ## 泛型
@@ -80,9 +113,9 @@ integer->string
 
 ## I/O
 
-java中有几种类型的流？JDK为每种类型的流提供了一些抽象类以供继承, 请说出他们分别是哪些类？
+java中有几种类型的流?JDK为每种类型的流提供了一些抽象类以供继承, 请说出他们分别是哪些类?
 
-什么是java序列化, 如何实现java序列化？
+什么是java序列化, 如何实现java序列化?
 
 
 ## 反射 内省
@@ -100,8 +133,8 @@ java中有几种类型的流？JDK为每种类型的流提供了一些抽象类�
 1: HashMap和Hashtable的区别。
 2:Collection 和 Collections的区别。
 3: List, Set, Map是否继承自Collection接口?
-4:说出ArrayList,Vector, LinkedList的存储性能和特性？
-5:你所知道的集合类都有哪些？主要方法？
+4:说出ArrayList,Vector, LinkedList的存储性能和特性?
+5:你所知道的集合类都有哪些?主要方法?
 jdk集合框架
     ArrayList
     LinkedList
@@ -144,7 +177,7 @@ redis有哪些数据结构（string, list, hash, zset, set）, redis对比mencac
 
 # 分布式
 
-CAP: 是指Consistency一致性，Availability可用性，Partition Tolerance分区容忍性
+CAP: 是指Consistency(一致性),Availability(可用性),(Partition tolerance)分区容错性
 
 # Framework
 
@@ -209,7 +242,7 @@ CAP: 是指Consistency一致性，Availability可用性，Partition Tolerance分
 例如java文件编译成class文件, 由classloader载入->运行
 问一下classloader的双亲委派模型, 为什么要这样做（可以保证java的一些重要类如Object一定是rt.jar中的, 保证系统的稳定性）, 有哪些问题（模型本身决定的, 例如基础类要掉回用户代码）, 后来怎么解决了（线程上下文类加载器）
 问一下java的内存模型, 堆和栈这些
-gc怎么确定哪些是垃圾（可达性分析）, 哪些是根？
+gc怎么确定哪些是垃圾（可达性分析）, 哪些是根?
 问一下java的垃圾回收
 比如了解哪些算法啊, 最好可以说说每个算法的算法流程, 例如CMS的第一步是初始标记-并发标记-重新标记-并发清理-并发重置 每个算法的优缺点啊, 怎么简单的解决啊（简单回答就好了, 例如增加堆的大小, 增加后台线程, 提前开始并发周期等）, 也可以问一下有没有了解G1收集器这些, G1的流程, 相比CMS有哪些优势。
 
@@ -224,20 +257,20 @@ java 的对象分分配策略
 
 4. java多线程问题
 
-怎么创建一个线程, 怎么启动一个线程, 为什么要用多线程技术, 有什么优点（异步运行提高响应速度）缺点（线程上下文的切换）？
+怎么创建一个线程, 怎么启动一个线程, 为什么要用多线程技术, 有什么优点（异步运行提高响应速度）缺点（线程上下文的切换）?
 怎么确定线程数, 根据cpu密集型, 还是io密集型决定
-线程池问题, 在java中怎么创建一个线程池（Executors, 或者new ThreadPoolExecutor（））, 线程池可以解决什么问题（减少了线程创建销毁的时间）, 可以继续问一下一个线程被提交到线程池会做些什么判断（core线程池满？->等待队列满？->整个线程池满？->饱和策略）
-线程同步问题, 一般都会回答synchronized跟lock, 他们之间的区别（lock可中断, 可超时, 可尝试获取锁）, 性能问题谁的性能更好？
+线程池问题, 在java中怎么创建一个线程池（Executors, 或者new ThreadPoolExecutor（））, 线程池可以解决什么问题（减少了线程创建销毁的时间）, 可以继续问一下一个线程被提交到线程池会做些什么判断（core线程池满?->等待队列满?->整个线程池满?->饱和策略）
+线程同步问题, 一般都会回答synchronized跟lock, 他们之间的区别（lock可中断, 可超时, 可尝试获取锁）, 性能问题谁的性能更好?
 问一下volatile的并语义, 是不是线程安全, 适合哪些场景
-有没有看过lock的源码, lock的原理是什么？通过AQS（AbstractQueuedSynchronizer）来维护一个int, 是否了解Lock.Condition。
+有没有看过lock的源码, lock的原理是什么?通过AQS（AbstractQueuedSynchronizer）来维护一个int, 是否了解Lock.Condition。
 在java虚拟机层面上做了哪些锁优化（锁的种类）,偏向锁, 轻量级锁, 重量级锁
 有没有听说过悲观锁和乐观锁, 乐观锁CAS的原理是什么, 有什么缺点（ABA问题）, 怎么解决, 还有就是两个CAS在一起能否保证线程安全（不能）
 
 5. 是否了解计算机网络
 
 有没有听说过七层协议, ip跟tcp分别属于哪一层。
-有没有用过ping命令？ping命令用的是什么协议（icmp）, 有没有经过tcp层？除了判断可达性还有哪些实用（Traceroute）, 原理是什么
-有没有听过tcp三次握手, 过程是什么, 为什么要三次握手？那四次挥手呢？
+有没有用过ping命令?ping命令用的是什么协议（icmp）, 有没有经过tcp层?除了判断可达性还有哪些实用（Traceroute）, 原理是什么
+有没有听过tcp三次握手, 过程是什么, 为什么要三次握手?那四次挥手呢?
 6. 问一下有没有用过spring, springmvc
 
 spring可以为我们解决什么问题（业务解耦）, springMVC在一个请求过来是怎么找到相应的处理器（

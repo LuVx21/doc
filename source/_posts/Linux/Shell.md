@@ -4,10 +4,24 @@ tags:
 - Shell
 - Linux
 ---
+<!-- TOC -->
 
+- [Shell](#shell)
+- [](#)
+    - [terminal 快捷键](#terminal-快捷键)
+    - [字符串截取](#字符串截取)
+    - [字符串替换](#字符串替换)
+- [空值检测](#空值检测)
+    - [alias中使用shell函数](#alias中使用shell函数)
+    - [(()) 和 []](#-和-)
+    - [判断语句](#判断语句)
+- [数组](#数组)
+    - [TODO](#todo)
+
+<!-- /TOC -->
 # Shell
 
-## 
+##
 
 `$?`:前一命令的执行结果码
 
@@ -34,7 +48,7 @@ str="abbc,def,ghi,abcjkl"
 
 |例|说明|
 |:--|:--|
-|`echo ${str#a*c}    `|输出,def,ghi,abcjkl.(#)表示从左边截取掉最短的匹配 (这里把abbc字串去掉）|
+|`echo ${str#a*c}    `|输出`,def,ghi,abcjkl`.(#)表示从左边截取掉最短的匹配 (这里把abbc字串去掉）|
 |`echo ${str##a*c}   `|输出jkl,(##)表示从左边截取掉最长的匹配|
 |`echo ${str#"a*c"}  `|输出abbc,def,ghi,abcjkl 因为str中没有"a*c"子串|
 |`echo ${str##"a*c"} `|输出abbc,def,ghi,abcjkl 同理|
@@ -42,10 +56,20 @@ str="abbc,def,ghi,abcjkl"
 |`echo ${str##*a*c*} `|空|
 |`echo ${str#d*f)    `|输出abbc,def,ghi,abcjkl,|
 |`echo ${str#*d*f}   `|输出,ghi,abcjkl|
-|`echo ${str%a*l}    `|abbc,def,ghi  一个百分号(%)表示从右边截取最短的匹配|
-|`echo ${str%%b*l}   `|a.两个百分号表示(%%)表示从右边截取最长的匹配|
-|`echo ${str%a*c}    `|abbc,def,ghi,abcjkl|
+|`echo ${str%a*l}    `|`abbc,def,ghi,`一个百分号(%)表示从右边截取最短的匹配|
+|`echo ${str%%b*l}   `|`a`两个百分号表示(%%)表示从右边截取最长的匹配|
+|`echo ${str%a*c}    `|`abbc,def,ghi,abcjkl`|
 
+> `#`: 左边内容+查找位置
+> `%`: 右边内容+查找位置
+> 单一符号是最小匹配,两个符号是最大匹配
+
+|例|说明|
+|:--|:--|
+|`${str:0:5}`||
+|`${str:5:5}`||
+|`${#str}`||
+|`${str: -4}`||
 
 ## 字符串替换
 
@@ -58,6 +82,20 @@ str="apple, tree, apple tree"
 |`echo ${str/#apple/APPLE}`|如果字符串str以apple开头,则用APPLE替换它|
 |`echo ${str/%apple/APPLE}`|如果字符串str以apple结尾,则用APPLE替换它|
 
+# 空值检测
+
+file=/dir1/dir2/dir3/my.file.txt
+
+|例|说明|
+|:--|:--|
+|`echo ${file-my.file.txt}`|unset → my.file.txt 作传回值(空值及非空值时不作处理)|
+|`echo ${file:-my.file.txt}`|unset,null →my.file.txt(非空值时不作处理)|
+|`echo ${file+my.file.txt}`|null,non-null,均使用 my.file.txt 作传回值(没设定时不作处理)|
+|`echo ${file:+my.file.txt}`|non-null → my.file.txt 作传回值 (没设定及空值时不作处理)|
+|`echo ${file=my.file.txt}`|unset → my.file.txt 作传回值,同时将 $file 赋值为 my.file.txt  (空值及非空值时不作处理)|
+|`echo ${file:=my.file.txt}`|unset,null → my.file.txt 作传回值,同时将 $file 赋值为 my.file.txt  (非空值时不作处理)|
+|`echo ${file?my.file.txt}`|unset → my.file.txt 输出至 STDERR (空值及非空值时不作处理)|
+|`echo ${file:?my.file.txt}`|unset,null → my.file.txt 输出至 STDERR (非空值时不作处理)|
 
 ## alias中使用shell函数
 
@@ -70,7 +108,12 @@ alias jb='fun () { dir=$(dirname $1) && name=$(basename $1 .java) && cd $dir && 
 
 ## (()) 和 []
 
-用于整数计算
+() : 在子shell中执行
+(()): 用于整数计算
+$(): 括号内执行结果作为命令
+[]: test,多用于if语句
+[[]]: 同[],但有更高的容错性
+
 
 ## 判断语句
 
@@ -108,6 +151,43 @@ alias jb='fun () { dir=$(dirname $1) && name=$(basename $1 .java) && cd $dir && 
 |`-r`|`test -r file`|file が読み取り可能ならば真となる.|
 |`-w`|`test -w file`|file が書き込み可能ならば真となる.|
 |`-x`|`test -x file`|file が実行可能ならば真となる.|
+
+
+# 数组
+
+数组: declare -a arr 或 arr=(1 2 3)
+arr[n]=value
+
+
+关联数组: declare -A map
+
+
+切片:
+`${arr[@]:n:m}` n是offset而m是length
+`${map[@]}` 返回索引，相当于keys():
+
+```shell
+declare -a arr
+declare -A map
+arr+=(a b c)
+# map+=([a]=1)
+map[a]=1
+map[b]=2	
+
+echo ${arr[1]}
+echo ${map[a]}
+# 遍历数组
+echo "${arr[@]}"
+echo "${map[@]}"
+echo "${arr[@]:0:1}"
+# 数组长度
+echo ${#arr[@]}
+# echo "${!map[@]}"
+
+arr[4]=a
+echo ${arr[@]}
+echo ${arr[3]}
+```
 
 
 ## TODO
