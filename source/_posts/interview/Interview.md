@@ -35,7 +35,17 @@ date: 2018-02-25
 
 * `==`和`equals`和`hashCode`的区别
 
+`==`是运算符,比较两个对象的内存地址是否相同
+equals是Object类的方法,返回值为boolean型,内部调用的`==`,可以被子类重写
+hashCode是Object类的方法,返回值为int型,
+对象相同,则hashCode一定相同,反之不成立.
+equals方法返回true,则hashCode值也相同(这样符合规范,可以实现不同),
+返回false,hashCode也有可能相同,当然,尽可能不同能提高hash表的性能,这其实是减少了哈希碰撞的几率
 
+Set集合中,元素无序且不可重复,其不可重复的实现则是依靠hashCode和equals方法,
+首先使用hashCode计算出元素的存储位置,如该位置为空则直接插入,不空则继续使用equals方法比较.
+
+重写equals时总要重写hashCode,否则违反Object.hashCode的通用约定,导致该类无法结合基于散列的集合一起正常使用,如HashMap、HashSet和Hashtable等
 
 * int、char、long各占多少字节数
 
