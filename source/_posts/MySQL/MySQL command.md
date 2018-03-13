@@ -7,6 +7,9 @@ tags:
 <!-- TOC -->
 
 - [重置mysql密码](#重置mysql密码)
+- [备份](#备份)
+- [恢复](#恢复)
+- [记录](#记录)
 
 <!-- /TOC -->
 
@@ -56,11 +59,29 @@ alter table table_name change old_field_name new_field_name field_type;
 alter table table_name drop field_name;
 ```
 
+# 备份
 
 备份指定数据库
 
 ```shell
-mysqldump -h localhost -u root -p <dbname> <tablename> [--add-drop-table] > e:\mysql\mydb.sql
+# 备份指定数据库的指定表
+mysqldump -h localhost -u root -p <dbname> <table1> <table2> [-d|t] > dump.sql
 ```
+> -d:仅表结构
+> -t:仅数据
+> --ignore-table=database_name.table_name1:设置不备份的表
 
---add-drop-table:只备份表结构
+# 恢复
+
+
+# 记录
+
+实现与Oracle中的`spool`相似的功能
+
+```shell
+# 方式1
+mysql -u root -p --tee=/mysql/log.log
+# 方式2
+tee log.log
+notee
+```
