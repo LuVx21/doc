@@ -5,6 +5,15 @@ tags:
 - Oracle
 ---
 
+<!-- TOC -->
+
+- [系统表](#系统表)
+- [执行计划](#执行计划)
+- [参考](#参考)
+
+<!-- /TOC -->
+
+# 系统表
 
 ```sql
 select * from dba_objects
@@ -106,7 +115,23 @@ session_privs  会话的权限信息
 index_开头
 index_stats  索引的设置和存储信息
 
+# 执行计划
+
+```sql
+explain plan for <statement>;
+select * from table(dbms_xplan.display);
+```
+
+* TABLE ACCESS FULL（全表扫描）
+* TABLE ACCESS BY ROWID（通过ROWID的表存取）
+* TABLE ACCESS BY INDEX SCAN（索引扫描）
+  * INDEX UNIQUE SCAN（索引唯一扫描）
+  * INDEX RANGE SCAN（索引范围扫描）
+  * INDEX FULL SCAN（索引全扫描）
+  * INDEX FAST FULL SCAN（索引快速扫描）
+  * INDEX SKIP SCAN（索引跳跃扫描）
 
 # 参考
 
 [Blog](https://www.cnblogs.com/jiangxinnju/p/5840420.html)
+[](https://www.cnblogs.com/Dreamer-1/p/6076440.html)

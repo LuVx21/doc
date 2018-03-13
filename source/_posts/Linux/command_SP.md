@@ -1,6 +1,11 @@
 
+<!-- TOC -->
 
-# Mac OS
+- [tmux](#tmux)
+- [paste](#paste)
+- [cut](#cut)
+
+<!-- /TOC -->
 
 ## tmux
 
