@@ -82,7 +82,7 @@ Session机制采用的是在服务器端保持状态,但也会在客户端留下
 这3中情形下会删除Session
 
 |方法|说明|
-|:--|:--|
+|:---|:---|
 |void setAttribute(String attribute, Object value)|设置Session属性。value参数可以为任何Java Object。通常为Java Bean。value信息不宜过大|
 |String getAttribute(String attribute)|返回Session属性|
 |Enumeration getAttributeNames()|返回Session中存在的属性名|

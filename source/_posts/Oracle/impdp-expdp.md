@@ -42,7 +42,7 @@ expdp scott/tiger key=value
 ```
 
 |参数|说明|
-|:--|:--|
+|:---|:---|
 |userid=scott/tiger@XE||
 |schemas=scott||
 |tables=emp||
@@ -72,7 +72,7 @@ impdp scott/tiger key=value
 ```
 
 |参数|说明|
-|:--|:--|
+|:---|:---|
 |remap_schema||
 |table_exists_action||
 

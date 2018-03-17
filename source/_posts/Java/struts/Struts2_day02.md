@@ -36,7 +36,7 @@ Struts中提供了`ActionContext`类, 该类提供一些方法可以使用Servle
 常用的方法
 
 |方法|说明|
-|:--|:--|
+|:---|:---|
 |static ActionContext getContext()|获取ActionContext对象实例|
 |java.util.Map<java.lang.String, java.lang.Object> getParameters()|获取请求参数, 相当于request.getParameterMap();|
 |java.util.Map<java.lang.String, java.lang.Object> getSession()|获取的代表session域的Map集合, 就相当于操作session域.|

@@ -85,7 +85,7 @@ JDBC的URL＝协议名＋子协议名＋(据源).
 几种常见的数据库连接:
 
 |驱动|URL|端口|
-|:--|:--|:--|
+|:---|:---|:---|
 |`oracle.jdbc.driver.OracleDriver`|URL:`jdbc:oracle:thin:@machine_name:port:dbname`|默认1521|
 |`com.mysql.jdbc.Driver`|URL:`jdbc:mysql://machine_name:port/dbname`|默认3306|
 

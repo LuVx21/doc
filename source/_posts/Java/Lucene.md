@@ -46,7 +46,7 @@ tags:
 使用Lucene建立起来的全文检索系统,用于提供全文检索服务,提供包括但不限于建立索引,处理查询返回结果集,增加索引,优化索引结构等功能
 
 |package|功能|
-|:--|:--|
+|:---|:---|
 |org.apache.lucene.analysis|语言分析器，分词器<br/>,Lucene提供的分析器实现类在：lucene-analyzers-common-4.10.3.jar|
 |org.apache.lucene.document|索引存储时的文档结构管理，类似于关系型数据库的表结构|
 |org.apache.lucene.index|索引管理，包括索引建立、删除等|

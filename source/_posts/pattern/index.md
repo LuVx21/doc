@@ -15,7 +15,7 @@ tags:
 # [面向对象设计原则](Principle.md)
 
 |设计原则|定义|使用频率|
-|:--|:--|:--|
+|:---|:---|:---|
 |单一职责原则 (Single Responsibility Principle, SRP)|一个类只负责一个功能领域中的相应职责|★★★★☆|
 |开闭原则 (Open-Closed Principle, OCP)|软件实体应对扩展开放,而对修改关闭|★★★★★|
 |里氏代换原则 (Liskov Substitution Principle, LSP)|所有引用基类对象的地方能够透明地使用其子类的对象|★★★★★|
@@ -38,7 +38,7 @@ tags:
 
 
 |类型|模式名称|学习难度|使用频率|
-|:--|:--|:--|:--|
+|:---|:---|:---|:---|
 |创建型模式(Creational)|[单例模式(Singleton)](单例模式.md)|2|8|
 ||[简单工厂模式(Simple Factory)*](简单工厂模式.md)|4|6|
 ||[工厂方法模式(Factory Method)](工厂方法模式.md)|4|10|

@@ -68,7 +68,7 @@ nginx [-?hvVtq] [-s signal] [-c filename] [-p prefix] [-g directives]
 ```
 
 |参数|说明|
-|:--|:--|
+|:---|:---|
 |-?, -h        |打开帮助信息|
 |-v           |显示版本信息并退出|
 |-V           |显示版本和配置选项信息, 然后退出|

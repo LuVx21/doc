@@ -10,8 +10,6 @@ tags:
 - [Python&Pythonic](#pythonpythonic)
     - [Python](#python)
     - [Pythonic](#pythonic)
-- [开发环境](#开发环境)
-    - [IDE](#ide)
     - [第三方库](#第三方库)
 - [基本数据类型](#基本数据类型)
     - [字符串](#字符串)
@@ -91,20 +89,23 @@ tags:
 <!-- /TOC -->
 
 # Python&Pythonic
+
 ## Python
+
 * Python, 是一种面向对象、解释型计算机程序设计语言，由Guido van Rossum于1989年发明，第一个公开发行版发行于1991年。
 * Python是纯粹的自由软件， 源代码和解释器CPython遵循 GPL(GNU General Public License)协议 。
 * Python语法简洁清晰，特色之一是强制用空白符(white space)作为语句缩进。
 * Python具有丰富和强大的库。它常被昵称为胶水语言，能够把用其他语言制作的各种模块（尤其是C/C++）很轻松地联结在一起。常见的一种应用情形是，使用Python快速生成程序的原型（有时甚至是程序的最终界面），然后对其中有特别要求的部分，用更合适的语言改写，比如3D游戏中的图形渲染模块，性能要求特别高，就可以用C/C++重写，而后封装为Python可以调用的扩展类库。需要注意的是在您使用扩展类库时可能需要考虑平台问题，某些可能不提供跨平台的实现。
 ## Pythonic
+
 ythonic指的是按照Python推荐的规范，干净美观、可读性强的代码风格，比如多使用Python内置的数据结构，不要重复造轮子。简单来讲，你可以在Python解释环境里输入import this了解一下Python之禅。Python的代码风格上，如果团队有自己的风格则按照自己的风格，否则，比较推荐的是PEP8或Google Code Style。关于[PEP8规范](https://www.python.org/dev/peps/pep-0008/)
-# 开发环境
-## IDE
-Python常用的IDE（集成开发环境），推荐使用PyCharm.
-在Eclipse上安装PyDev插件也可
+
 ## 第三方库
+
 安装第三方库的话，推荐使用pip，在Ubuntu上，你可以通过apt-get install python-pip安装。
+
 # 基本数据类型
+
 Python中变量不需要声明,对变量赋值后,会自动为变量分配类型.
 Python中的数字有：整型、长整型、浮点型、布尔型、复数。
 * 整形：int，常见的整数（正数／负数／0），通过sys.maxint即可查看当前平台上最大的整型的值。
@@ -121,7 +122,9 @@ d = 3 + 2j
 e = 'test python'
 ```
 Python中的所有数据类型都是对象。你可以通过type()函数查看一个变量的类型。
+
 ## 字符串
+
 Python中字符串有4种表现形式：单引号、双引号、三引号：
 
 ```Python
@@ -141,10 +144,12 @@ print '''hello "world"'''
 ```
 
 如果在字符串的引号之前加上一个u，则表示这是一个unicode字符串，如果加上r，则表示这是一个原始字符串 值得注意的是，Python中没有C-Like语言中的字符类型。即python不支持单字符类型.单字符也是作为字符串类型.
-##格式化输出
+## 格式化输出
+
 ![Alt text](./img/1478269929934.png)
 
 # 运算符
+
 Python中没有类似于C/C++/Java的自增自减运算符，因为在Python中，数字是一种不可变类型（immutable），对数字的操作都会产生新的对象而不是修改原来的对象。但是i = i + 1一样可以写为i += 1。
 > 注意：Python2.5以后的除法为地板除，即5／2=2而不是5／2 ＝ 2.5。
 
@@ -154,7 +159,9 @@ Python常见的逻辑运算符为：
 * and：逻辑与，如果两边的值都为True则整个值为True，反之为* * False。1==1 and 2==2。
 * or：逻辑或，如果两边有一个值True则整个值为True，反之为* * False。1==2 or 2==2。
 * not：逻辑非，如果值为True，则结果为False。not 2=＝1。
+
 # 控制语句
+
 ## 条件语句
 Python中的条件语句只有if-elif-else，类似于其他语言中的else if,没有switch-case，但是有经验的开发者通常使用map这一结构来达到比switch-case更加优雅，更加Pythonic的实现。
 ```
@@ -165,7 +172,9 @@ elif a == b:
 else:
 	print b
 ```
+
 ## 循环语句
+
 while循环
 ```
 	while count < 5:
@@ -183,11 +192,17 @@ for i in fruits:
     print i
 ```
 > Python中没有C-Like语言里的for(int i=0; i<10; i++)的语法，不过可以使用xrange或者range函数实现同样的效果。前一个函数返回一个生成器，后一个函数返回list，一般推荐使用前一个.
-##break
+
+## break
+
 和C中相似，能够打破最小封闭for或while循环
-##continute
+
+## continute
+
 和break不同，continue语句跳出本次循环，当前循环中的剩余语句跳过执行，而break跳出整个循环。
+
 # 注释
+
 * 单行注释
 	使用#符号
 * 多行注释
@@ -195,59 +210,71 @@ for i in fruits:
 	"""  """ 即三个单引号或双引号，中间为注释代码
 * 中文处理
 	需要在文件开头加上中文注释，不声明则会默认使用ASKII码保存
-	#coding=utf-8或#--coding:UTF-8--
+	`coding=utf-8`或`--coding:UTF-8--`
+
 # 表达式
+
 幂运算：a**b  a的b次幂
 除且向下取整：a//b
 | 表达式|说明|类型|
-| :-------- | :--------| :------ |
+| :--- | :---| :--- |
 |not a|a的逻辑非|bool|
 |a and b|a和b的逻辑与|bool|
 |a or b|a和b的逻辑或|bool|
 |a is b|a和b是同一个对象|bool|
 |a is not b|a和b是不同对象|bool|
 > 不等符号：`!=` 和 `<>` ,python后废弃使用`<>`,只保留`!=`
+
 # 位运算：
+
 | 表达式|说明|
-| :-------- | :--------|
+| :--- | :---|
 |a << n|左移n位|
 |a >> n|右移n位|
 |a & b|位与|
 |a \| b|位或|
 |a ^ b|位异或|
+
 # 集合
+
 Python中的集合类型有:list,tuple,set,dict
 
-#list列表
+# list列表
+
 list表达的是一列数据的集合，列表中的元素可以增加、删除、查找等操作,可以简单地将列表理解为C中的数组,列表和元组都能够保存任意类型的python对象。
 * 列表元素用[]，元组元素使用()括起来。
 * 通过截取[] [:]能够得到子集。此操作同于字符串相关操作，基本样式[start：end：length]。
 
 以下即使list的定义:
-		
+
 	aList = ['a','b','b']
 	aList.append('c') # 增
 	aList.remove('c')  #删
 	del aList[2]  #删
 	aList.reverse()  #反转
 	aList.index('b') #查
-##列表的读取
+
+## 列表的读取
+
     >> str = ['a','b','c','d']
     >> str[2]   # 'c'
     >> str[-2]  # 'c'
     >> str[1:]   # ['b', 'c', 'd']
 
-##Python列表脚本操作符
+## Python列表脚本操作符
+
 列表对+和*操作符的支持与字符串类似。+用于拼接列表，*用于重复列表。
 | Python表达式 |     结果 |   描述   |
-| :-------- | --------:| :------: |
+| :--- | ---:| :---: |
 | len([1,2,3])|   3|  length|
 |['a']*2|['a','a']|重复列表|
 |for x in [1,2,3] print x|1 2 3|迭代|
+
 ## Python列表函数&方法
+
 **Python 包含以下函数：**
 | No.| 函数|   说明|
-| :--------: | :--------| :------: |
+| :---: | :---| :---: |
 | 1|   cmp(list1,list2)|  比较两个列表的元素|
 |2|len(list)|列表长度|
 |3|max(list)|列表最大值|
@@ -255,7 +282,7 @@ list表达的是一列数据的集合，列表中的元素可以增加、删除�
 |5|list(seq)|将元组转换为列表|
 **Python 包含以下方法：**
 | No.| 方法|   说明|
-| :--------: | :--------| :------ |
+| :---: | :---| :--- |
 |1|list.append(obj)|在末尾添加新的对象|
 |2|list.count(obj)|统计某元素出现的次数|
 |3|list.extend(seq)|在末尾一次性添加另一个序列的多个值（用新列表扩展原列表）|
@@ -265,18 +292,28 @@ list表达的是一列数据的集合，列表中的元素可以增加、删除�
 |7|list.remove(obj)|移除某个值的第一个匹配项|
 |8|list.reverse()|所有元素反向|
 |9|list.sort([func])|排序|
+
 #Tuple元组
+
 元组和列表类似，同样表示一组数据的集合，不同的就是元组的元素不能够新增,修改,也不能删除，也可以进行截取和拼接操作。
 
     aTuple = ('a','b','c')
+    
 ##访问元组
+
 	>> aTuple[2]
 	'c'
+
 ##元组运算符
+
 也可以使用+和*进行运算。
+
 ##元组索引&截取
+
 元组本质上也是一个序列，因此可以访问指定位置的元素，也可以截取其中一段元素。
+
 ##无关闭分割符
+
 任意无符号的对象，以逗号隔开，默认为元组。
 
 	>> print 'abc', -4.24e93, 18+6.6j, 'xyz'
@@ -284,7 +321,9 @@ list表达的是一列数据的集合，列表中的元素可以增加、删除�
 	>> x, y = 1, 2
 	>> print "Value of x , y : ", x,y
 	Value of x , y :  1 2
+
 #Set
+
 set表示一个不重复元素的集合，值得注意的是：set是无序的。
 
 ```python
@@ -295,6 +334,7 @@ aSet.remove('a') #删
 ```
 
 #字典
+
 dict表示一组数据的对应关系,键值对的形式，类似于关联数组或哈希表,key多为数字和字符串,value则可以为任意类型的python对象,与set一样，dict是无序的（你可以通过collections中的OrderDict来达到有序）。使用大括号{}包括,dict与set的声明方式容易混淆：
 ```python
 >> aDict = {'a': 'A', 'b': 'B'}  # 初始化
@@ -307,11 +347,15 @@ dict表示一组数据的对应关系,键值对的形式，类似于关联数组
 
 del可删除指定键值对,也可以删除整个字典
 dict.clear()则可以清空整个字典.
+
 ## 字典内置函数
+
 cmp(dict1,dict2) #比较2个字典元素
 len(dict) #字典元素的个数,即键的数目
 ![Alt text](./img/1474383533569.png)
+
 #函数
+
 在Python中声明函数的方式如下：
 
 ```
@@ -324,13 +368,15 @@ def add(num1, num2):
 ```
 def calc(n1, n2):
     return n1 + n2, n1 * n2
- 
+
 add, sub = calc(5, 1)
 print add, sub  # 6 4
 ```
 
 其实这里并不是真的返回了两个值，而是将返回值组装成一个tuple再返回。
+
 ## 值传递&引用传递
+
 引用传递:函数中修改了数据,那么这个原始数据也被改变了.
 ```
 def change(aList):
@@ -344,7 +390,9 @@ print aList
 >>> ['a', 'b', 'c', [1, 2, 3, 4]]
 >>> ['a', 'b', 'c', [1, 2, 3, 4]]
 ```
+
 ## 参数
+
 调用函数时可以使用的正式参数类型:
 * 必备参数
 * 命名参数
@@ -352,14 +400,21 @@ print aList
 * 不定长参数
 
 ## 必备参数
+
 必须以正确的顺序传入函数.调用时的数量必须和声明时的一样
+
 ## 命名参数
+
 命名参数和函数调用关系密切,调用方法参数的命名确定传入的参数值,可以跳过不传的参数.因为python能够用参数名匹配参数值
 
 	>>> println(name = 'test',str = 'string')
+
 ## 缺省参数
+
 函数调用时,缺省参数的值如果没有传入,则被认为是默认值.默认值通常在函数定义时被赋值.
+
 ## 不定长参数
+
 基本语法:
 ```
 def funcation([formal_args,] *avr_args_tuple):
@@ -376,7 +431,7 @@ def funcation(arg1, *vartuple):
 	print vartuple
 
 funcation(30,20,40,50)
->>> 
+>>>
 result:
 30
 -----
@@ -393,7 +448,7 @@ def funcation(arg1, **vartuple):
 	print vartuple
 
 funcation('aa',x=12,y=34)
->>> 
+>>>
 result:
 aa
 -----
@@ -402,7 +457,9 @@ aa
 ```
 这个代码中第二个参数以字典的形式存在.
 两种形式的函数的调用方式也有不同
+
 ## 匿名函数
+
 lambda关键词能创建小型匿名函数,省略了用def声明函数的标准步骤.
 Lambda函数能够接收任何数量的参数,但只能返回一个表达式的值,
 匿名函数不能直接调用print,因为lambda需要一个表达式.
@@ -427,9 +484,11 @@ sum(tuple)
 # 此时函数只有一个参数,是一个元组
 ```
 ## 闭包
+
 内部函数对外部函数作用域里变量的引用(非全局变量),则称内部函数为闭包.
 
 # 类
+
 类方法和普通函数的定义相似,但类方法必须以self作为第一个参数.类似于java中this关键字.可以在类外tongue对象名访问
 私有:`__private_attrs`在前面加两个下划线,不能再类外直接访问,内部使用`self.__private_attrs`,私有方法类似.
 构造方法:`__init__()`,支持重载,用户不定义则使用默认的.
@@ -481,7 +540,8 @@ __cmp__(self,x):对象比较,cmp(obj,x)
 
 ## 运算符重载
 
-#模块
+# 模块
+
 模块中能定义函数,类和变量,也包含可执行代码.通常一个`.py`文件就是一个模块.
 
 使用python代码,使用`import`关键字,导入顺序:当前目录-->pythonpath下的每个目录-->默认路径(linux下/usr/local/lib/python/).模块搜索路径存储在system模块的sys.path变量中,包含上面3个.
@@ -491,22 +551,24 @@ from modname import name1,name2...
 from modname import *
 ```
 ## PYTHONPATH变量
+
 由装在一个列表的许多目录组成
 windows:
-	
+
 
 ```
 set PYTHONPAYH=c:\python35\lib
 ```
 
 linux:
-	
+
 
 ```
 set PYTHONPAYH=/usr/local/lib/python
 ```
 
 ## dir()函数
+
 一个有序的字符串列表,存储一个模块里定义过的名字,返回的列表存储了一个模块里定义的所有模块,变量和函数.
 ```
 import math
@@ -514,11 +576,13 @@ print(dir(math))
 ```
 
 ## globals()&locals()函数
+
 返回全局和局部空间的名字,类型是字典,可以使用keys()获取.
 函数内部调用locals(),返回所有能在该函数里访问的名字.
 函数内部调用globals(),返回所有能在该函数里访问的全局名字.
 
 ##reload()函数
+
 当一个模块被导入到一个脚本，模块顶层部分的代码只会被执行一次。
 因此，如果你想重新执行模块里顶层部分的代码，可以用reload()函数。该函数会重新导入之前导入过的模块。语法如下：
 
@@ -527,6 +591,7 @@ reload(module_name)
 ```
 
 ## Python中包
+
 package
 
 ```
@@ -624,7 +689,7 @@ os.rmdir('dirname')
 [File 对象方法](http://www.runoob.com/python/file-methods.html)
 [OS 对象方法](http://www.runoob.com/python/os-file-methods.html)
 
-#异常
+# 异常
 ## 异常处理
 ## try....except...else
 ```python
@@ -662,7 +727,7 @@ Exception是异常的类型（例如NameError）参数是一个异常参数值�
 
 
 
-#总结
+# 总结
 
 * 可变对象
 	* 字典
@@ -702,7 +767,7 @@ Python虽然具有垃圾回收机制,但当对象引用了外部资源时,垃圾
 
 # 面向对象
 构造函数`__init()__`
-析构函数 `__del()__` 
+析构函数 `__del()__`
 ```
 ClassName.__doc__ 查看类的文档信息
 ```

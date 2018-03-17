@@ -255,7 +255,7 @@ public static OrderDaoImpl getProxy(){
 ## AOP的相关术语
 
 |术语|说明|
-|:--|:--|
+|:---|:---|
 |Joinpoint(连接点)|所谓连接点是指那些被拦截到的点.在spring中, 这些点指的是方法, 因为spring只支持方法类型的连接点|
 |Pointcut(切入点)|所谓切入点是指我们要对哪些Joinpoint进行拦截的定义|
 |Advice(通知/增强)|所谓通知是指拦截到Joinpoint之后所要做的事情就是通知.通知分为前置通知, 后置通知, 异常通知, 最终通知, 环绕通知(切面要完成的功能)|

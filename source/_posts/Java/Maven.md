@@ -132,7 +132,7 @@ mvn install -Dmaven.test.skip=true
 ## 依赖传递
 
 ||compile|provided|runtime|test|
-|:--|:--|:--|:--|:--|
+|:---|:---|:---|:---|:---|
 |compile|compile|-|runtime|-|
 |provided|provided|provided|provided|-|
 |runtime|runtime|-|runtime|-|
@@ -219,7 +219,7 @@ mvn install -Dmaven.test.skip=true
 ```
 
 |命令|说明|
-|:--|:--|
+|:---|:---|
 |tomcat:deploy|部署一个web war包|
 |tomcat:reload|重新加载web war包|
 |tomcat:start|启动tomcat|

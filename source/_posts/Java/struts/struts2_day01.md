@@ -147,7 +147,7 @@ public String sayHello(){
 通过源代码可以看到具体加载的配置文件和加载配置文件的顺序
 
 |方法|说明|
-|:--|:--|
+|:---|:---|
 |init_DefaultProperties();|加载org/apache/struts2/default.properties|
 |init_TraditionalXmlConfigurations();|加载struts-default.xml, struts-plugin.xml, struts.xml|
 |init_LegacyStrutsProperties();|加载自定义的struts.properties|
@@ -157,7 +157,7 @@ public String sayHello(){
 3. 重点了解的配置文件
 
 |配置文件|说明|
-|:--|:--|
+|:---|:---|
 |default.properties|在org/apache/struts2/目录下, 代表的是配置的是Struts2的常量的值|
 |struts-default.xml|在Struts2的核心包下, 代表的是Struts2核心功能的配置(Bean、拦截器、结果类型等)|
 |struts.xml|重点中的重点配置, 代表WEB应用的默认配置, 在工作中, 基本就配置它就可以了(可以配置常量)|

@@ -28,7 +28,7 @@ tags:
 ## terminal 快捷键
 
 |例|说明|
-|:--|:--|
+|:---|:---|
 |`ctrl-a`| 移动光标到行首.|
 |`ctrl-e`| 移动光标到行尾.|
 |`ctrl-w`| 剪切光标前一个单词（注意是剪切,不是彻底删除,可以通过ctrl-y粘贴.|
@@ -47,7 +47,7 @@ tags:
 str="abbc,def,ghi,abcjkl"
 
 |例|说明|
-|:--|:--|
+|:---|:---|
 |`echo ${str#a*c}    `|输出`,def,ghi,abcjkl`.(#)表示从左边截取掉最短的匹配 (这里把abbc字串去掉）|
 |`echo ${str##a*c}   `|输出jkl,(##)表示从左边截取掉最长的匹配|
 |`echo ${str#"a*c"}  `|输出abbc,def,ghi,abcjkl 因为str中没有"a*c"子串|
@@ -65,7 +65,7 @@ str="abbc,def,ghi,abcjkl"
 > 单一符号是最小匹配,两个符号是最大匹配
 
 |例|说明|
-|:--|:--|
+|:---|:---|
 |`${str:0:5}`||
 |`${str:5:5}`||
 |`${#str}`||
@@ -76,7 +76,7 @@ str="abbc,def,ghi,abcjkl"
 str="apple, tree, apple tree"
 
 |例|说明|
-|:--|:--|
+|:---|:---|
 |`echo ${str/apple/APPLE} `|替换第一次出现的apple|
 |`echo ${str//apple/APPLE}`|替换所有apple|
 |`echo ${str/#apple/APPLE}`|如果字符串str以apple开头,则用APPLE替换它|
@@ -87,7 +87,7 @@ str="apple, tree, apple tree"
 file=/dir1/dir2/dir3/my.file.txt
 
 |例|说明|
-|:--|:--|
+|:---|:---|
 |`echo ${file-my.file.txt}`|unset → my.file.txt 作传回值(空值及非空值时不作处理)|
 |`echo ${file:-my.file.txt}`|unset,null →my.file.txt(非空值时不作处理)|
 |`echo ${file+my.file.txt}`|null,non-null,均使用 my.file.txt 作传回值(没设定时不作处理)|
@@ -118,7 +118,7 @@ $(): 括号内执行结果作为命令
 ## 判断语句
 
 |运算符|说明|
-|:--|:--|
+|:---|:---|
 |`-lt`|(<)(less than)|
 |`-gt`|(>)(greater than)|
 |`-le`|(<=)(less than or equal),|
@@ -131,7 +131,7 @@ $(): 括号内执行结果作为命令
 > 判断符号两边要有空格
 
 |逻辑符|说明|
-|:--|:--|
+|:---|:---|
 |`-a`|and|
 |`-o`|or|
 |`&&`|and|
@@ -141,7 +141,7 @@ $(): 括号内执行结果作为命令
 判断字符串或文件属性的常用参数:
 
 |参数|例|说明|
-|:--|:--|:--|
+|:---|:---|:---|
 |`-z`|`test -z string`|string の文字列長が 0 ならば真となる.|
 |`-n`|`test -n string`|string の文字列長が 0 より大ならば真となる.|
 |`-d`|`test -d file`|file がディレクトリならば真となる.|

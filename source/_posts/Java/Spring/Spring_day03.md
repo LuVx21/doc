@@ -116,7 +116,7 @@ public class Demo1 {
 1. 通知类型
 
 |注解|说明|
-|:--|:--|
+|:---|:---|
 |`@Before`|前置通知|
 |`@AfterReturing`|后置通知|
 |`@Around`|环绕通知|
@@ -348,7 +348,7 @@ class BeanMapper implements RowMapper<Account>{
 ## 事务管理相关类和API
 
 |接口|说明|
-|:--|:--|
+|:---|:---|
 |PlatformTransactionManager|平台事务管理器.(真正管理事务的类).该接口有具体的实现类, 根据不同的持久层框架, 需要选择不同的实现类！|
 |TransactionDefinition|事务定义信息.(事务的隔离级别, 传播行为, 超时, 只读)|
 |TransactionStatus|事务的状态|
