@@ -40,7 +40,7 @@ tags:
 
 ## MongoDB 概念
 |名词|说明|
-|:-|:-|
+|:---|:---|
 |database|数据库, 名字必须小写|
 |collection|集合(表)|
 |document|文档(行, row, 一条记录)|
@@ -78,7 +78,7 @@ tags:
 > windows : `C:/data/db`
 
 |参数|说明|
-|:-|:-|
+|:---|:---|
 |--bind_ip|服务ip|
 |--logpath|log文件|
 |--logappend|log写入方式|
@@ -327,7 +327,7 @@ db.colName.ensureIndex({key:1}, {option:value})
 * 可以设置使用多个字段创建索引{key1:1, key2:-1}
 
 |参数|类型|说明|
-|:-|:-|:-|
+|:---|:---|:---|
 |background|Boolean|建索引过程会阻塞其它数据库操作, background可指定以后台方式创建索引, 即增加 "background" 可选参数. "background" 默认值为false.|
 |unique|Boolean|建立的索引是否唯一.指定为true创建唯一索引.默认值为false.|
 |name|string|索引的名称.如果未指定, MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称.|
