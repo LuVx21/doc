@@ -17,6 +17,7 @@ tags:
     - [直接内存](#直接内存)
 - [比较](#比较)
 - [内存溢出的地点](#内存溢出的地点)
+- [JVM调优工具](#jvm调优工具)
 - [参考](#参考)
 
 <!-- /TOC -->
@@ -138,6 +139,25 @@ Java虚拟机规范对这个区域的限制非常宽松, 除了和Java堆一样�
 `java.lang.OutOfMemoryError: unable to create new native thread`
 
 原因: 创建了太多的线程，而能创建的线程数是有限制的，导致了异常的发生
+
+# JVM调优工具
+
+1. jps:查询正在运行的JVM进程
+2. jstat:实时显示本地或远程JVM进程中类装载、内存、垃圾收集、JIT编译等数据
+3. jinfo:查询当前运行着的JVM属性和参数的值
+4. jmap:显示当前Java堆和永久代的详细信息
+5. jhat:分析使用jmap生成的dump文件
+6. jstack:生成当前JVM的所有线程快照，线程快照是虚拟机每一条线程正在执行的方法,目的是定位线程出现长时间停顿的原因。
+7. jconlose:jvm控制台,图像化显示堆栈等使用情况,可以手动进行GC,非常实用
+
+* `-Xmx`:最大堆内存
+* `-Xms`:最小堆内存, 通常设置成跟最大堆内存一样，减少GC
+* `-Xmn`:设置年轻代大小,官方推荐设置为堆的`3/8`
+* `-Xss`:指定线程的最大栈空间, 此参数决定了java函数调用的深度, 值越大调用深度越深, 若值太小则容易出栈溢出错误(StackOverflowError)
+* `-XX:PermSize`:指定方法区(永久区)的初始值,默认是物理内存的1/64， 在Java8永久区移除, 代之的是元数据区， 由-XX:MetaspaceSize指定
+* `-XX:MaxPermSize`:指定方法区的最大值, 默认是物理内存的1/4， 在java8中由-XX:MaxMetaspaceSize指定元数据区的大小
+* `-XX:NewRatio=n`:年老代与年轻代的比值，-XX:NewRatio=2, 表示年老代与年轻代的比值为2:1
+* `-XX:SurvivorRatio=n`:Eden区与Survivor区的大小比值，-XX:SurvivorRatio=8表示Eden区与Survivor区的大小比值是8:1:1，因为Survivor区有两个(from, to)
 
 # 参考
 
