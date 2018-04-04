@@ -306,3 +306,11 @@ mvn tomcat7:deploy
 ```shell
 mvn dependency:tree
 ```
+
+
+<mirror>
+    <id>alimaven</id>
+    <name>aliyun maven</name>
+    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    <mirrorOf>central</mirrorOf>
+</mirror>
