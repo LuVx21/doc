@@ -15,13 +15,12 @@ tags:
 # 关于
 
 POJO(PLain Old Java Object)
-VO(Value Object)
+VO(Value Object):值对象 
 DO(Data Object)
-JavaBean
-DAO
-DTO
-PO
-BOBO:POJO在业务层的体现
+DAO:data access object,数据访问对象
+DTO:Data Transform Object
+PO:persistant object,持久对象,对应数据库中的entity
+BO:business object,业务对象 ,POJO在业务层的体现
 EJB:一组JavaBean
 
 po的规范(Persistent Object 持久化对象)
