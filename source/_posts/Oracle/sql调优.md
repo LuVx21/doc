@@ -40,3 +40,7 @@ tags:
 23. 需要当心的WHERE子句
 24. 避免使用耗费资源的操作（带有DISTINCT,UNION,MINUS,INTERSECT,ORDER BY）
 
+
+
+explain plan for sql;
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY());
