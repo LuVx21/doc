@@ -67,23 +67,34 @@ Connection: keep-alive
 响应体
 ```
 > 首行内容:协议及其版本 + 状态码 + 原因短语
-> Connection: keep-alive和Http协议的无状态:HTTP是一个无状态的面向连接的协议，无状态不代表HTTP不能保持TCP连接，更不能代表HTTP使用的是UDP协议（无连接）
-> HTTP/1.1起，默认都开启了Keep-Alive，保持连接特性
+> Connection: keep-alive和Http协议的无状态:HTTP是一个无状态的面向连接的协议,无状态不代表HTTP不能保持TCP连接,更不能代表HTTP使用的是UDP协议（无连接）
+> HTTP/1.1起,默认都开启了Keep-Alive,保持连接特性
 
 响应码:
 * 1××:请求处理中,请求已被接受,正在处理
 * 2××:请求成功,请求被成功处理
+    * 200 OK,表示从客户端发来的请求在服务器端被正确处理
+    * 204 No content,表示请求成功,但响应报文不含实体的主体部分
+    * 206 Partial Content,进行范围请求
 * 3××:重定向,要完成请求必须进行进一步处理
+    * 301 moved permanently,永久性重定向,表示资源已被分配了新的 URL
+    * 302 found,临时性重定向,表示资源临时被分配了新的 URL
+    * 303 see other,表示资源存在着另一个 URL,应使用 GET 方法丁香获取资源
+    * 304 not modified,表示服务器允许访问资源,但已缓存不需要返回内容
+    * 307 temporary redirect,临时重定向,和302含义相同
 * 4××:客户端错误,请求不合法
+    * 400 bad request,客户端请求有语法错误,不能被服务器所理解
+    * 401 unauthorized,表示发送的请求需要有通过 HTTP 认证的认证信息
+    * 403 forbidden,表示对请求资源的访问被服务器拒绝
+    * 404 not found,表示在服务器上没有找到请求的资源
 * 5××:服务器端错误,服务器不能处理合法请求
+    * 500 internal sever error,表示服务器端在执行请求时发生了错误
+    * 503 service unavailable,表明服务器暂时处于超负载或正在停机维护,无法处理请求
 
-> 200:OK
-> 302:Found,重定向
-> 304:Not Modified 已缓存不需要返回内容
-> 400:Bad Request 客户端请求与语法错误,不能被服务器所理解
-> 403:Forbidden 服务器收到请求,但是拒绝提供服务
-> 500:Internal Server Error,服务器发生了不可预期的错误
-> 503:Server Unavailable,服务器当前不能处理客户端的请求，一段时间后可能恢复正常
+
+
+
+
 
 # 请求方式
 
