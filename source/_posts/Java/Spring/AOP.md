@@ -23,3 +23,8 @@ AOP代理主要分为:
 静态代理是编译阶段生成AOP代理类,也就是说生成的字节码就织入了增强后的AOP对象；
 动态代理则不会修改字节码,而是在内存中临时生成一个AOP对象,这个AOP对象包含了目标对象的全部方法,并且在特定的切点做了增强处理并回调原对象的方法。
 
+org.springframework.aop.Pointcut
+org.springframework.aop.JoinPoint
+MethodBeforeAdvice,AfterReturningAdvice,ThrowsAdvice， Advice
+MethodInterceptor
+Advisor

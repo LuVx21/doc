@@ -1,0 +1,15 @@
+
+
+
+
+XmlBeanFactory
+DefaultListableBeanFactory
+XmlBeanDefinitionReader
+
+
+
+
+AliasRegistry
+SimpleAliasRegistry
+BeanDefinitionRegistry
+SingletonBeanRegistry

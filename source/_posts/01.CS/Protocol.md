@@ -31,6 +31,11 @@ tags:
 
 ![PDU](./img/PDU封装实例.png)
 
+IP:不可靠协议,不会重复,使用ICMP协议通知失败
+ICMP:
+
+SNMP:简单网络管理协议
+
 # OSI七层结构
 
 开放系统互连基本参考模型OSI/RM (Open System Interconnection Reference Model)
