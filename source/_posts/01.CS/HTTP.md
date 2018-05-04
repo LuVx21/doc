@@ -34,15 +34,17 @@ URL的格式:
 ```xml
 GET <url> Http/1.1
 Referer:
-Accept: text/html
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Language: en-us
 Context-Type:
 User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; CIBA; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152;)
-Accept-Encoding: gzip, deflate
+Accept-Encoding: gzip,deflate
 Accept-Charset: utf-8
 Host: http://luvx.xyz
+Keep-Alive: 300
 Connection:keep-alive
 Content-Length: 80
+If-Modified-Since: Mon, 25 May 2016 03:19:18 GMT
 Cookie:
 
 请求体
@@ -58,10 +60,15 @@ Cookie:
 ```xml
 HTTP/1.1 200 OK
 Location: http://luvx.xyz
-Context-Type: text/html; charset=utf-8
+Content-Type: text/html; charset=utf-8
 Content-Length: 19847
 Content-Encoding：gzip
 Server: Microsoft-IIS/7.5
+Cache-Control: private, max-age=30
+Expires: Mon, 25 May 2016 03:20:33 GMT
+Last-Modified: Mon, 25 May 2016 03:20:03 GMT
+Vary: Accept-Encoding
+Date: Mon, 25 May 2016 03:20:02 GMT
 Connection: keep-alive
 
 响应体
@@ -90,11 +97,6 @@ Connection: keep-alive
 * 5××:服务器端错误,服务器不能处理合法请求
     * 500 internal sever error,表示服务器端在执行请求时发生了错误
     * 503 service unavailable,表明服务器暂时处于超负载或正在停机维护,无法处理请求
-
-
-
-
-
 
 # 请求方式
 
@@ -205,3 +207,4 @@ Session机制采用的是在服务器端保持状态,但也会在客户端留下
 
 [Cookie&Session](https://my.oschina.net/xianggao/blog/395675?fromerr=GC9KVenE)
 [图解 HTTP：Web开发相关的一些核心基础概念](https://blog.csdn.net/justloveyou_/article/details/72803200)
+[1](https://www.cnblogs.com/heluan/p/8620312.html)
