@@ -140,9 +140,9 @@ imap <C-s> <Esc>:w!<CR>i
 |`n`|下一个查找结果|
 |`N`|上一个查找结果|
 
-* ':set ic':忽略大小写命令, ic 为 ignore case 缩写
-* ':set is':边输入边显示匹配结果, is 是 incsearch 命令的缩写
-* ':set hls':高亮显示匹配结果, hls 为 highlight search 缩写
+* `:set ic`:忽略大小写命令, ic 为 ignore case 缩写
+* `:set is`:边输入边显示匹配结果, is 是 incsearch 命令的缩写
+* `:set hls`:高亮显示匹配结果, hls 为 highlight search 缩写
 > 取消上述设置在关键字前加`no`
 
 **多文件查找**
