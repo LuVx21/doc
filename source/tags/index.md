@@ -1,5 +1,5 @@
 ---
-title: 标签云
+title: 
 date:
-layout: tags
+type: tags
 ---
