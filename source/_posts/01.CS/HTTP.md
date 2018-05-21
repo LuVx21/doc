@@ -164,7 +164,7 @@ Cookie的产生就是为了解决无状态的不便
 
 这也是常用的自动登录功能的实现原理
 
-![](./img/Cookie.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/01.CS/img/Cookie.png)
 Cookie机制采用的是在客户端保持状态,即信息的保存在客户端.
 
 名字,值,过期时间,路径和域

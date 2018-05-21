@@ -13,7 +13,7 @@ tags:
 
 # 内存模型
 
-![](./img/cpu_cache.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/cpu_cache.png)
 
 高速缓存:即Cache,介于CPU与内存之间的高速存储器,通常由SRAM（Static Ram，静态存储器）构成,
 容量比内存小的多但是交换速度却比内存要快得多,但不如CPU快.

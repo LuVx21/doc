@@ -65,7 +65,7 @@ Java虚拟机规范对这个区域的限制非常宽松, 除了和Java堆一样�
 
 当方法区无法满足内存分配需求时, 将抛出OutOfMemoryError异常
 
-![](./img/jvm02.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/jvm02.png)
 
 ## 运行时常量池
 

@@ -48,13 +48,13 @@ tags:
 
 > 有序的意思是读取数据的顺序和存放数据的顺序是否一致
 
-![](./img/java-collection.jpeg)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/java-collection.jpeg)
 
 Collection:集合层次的顶层接口
 Collections:提供了操作集合的静态方法的类
 
 
-![](./img/ext.jpg)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/ext.jpg)
 
 实线边框的是实现类, 比如ArrayList, LinkedList, HashMap等, 折线边框的是抽象类, 比如AbstractCollection, AbstractList, AbstractMap等, 而点线边框的是接口, 比如Collection, Iterator, List等.
 

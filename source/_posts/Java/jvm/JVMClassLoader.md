@@ -17,7 +17,7 @@ tags:
 
 JVM 主要由 `ClassLoader` 和 `执行引擎` 两子系统组成.
 
-![](./img/jvmme.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/jvmme.png)
 
 任何一个Java类的main函数运行都会创建一个JVM实例, 当main函数结束时, JVM实例也就结束了.
 JVM实例启动时默认启动几个守护线程, 比如: 垃圾回收的线程, 而 main 方法的执行是在一个单独的非守护线程中执行的.只要母线程结束, 子线程就自动销毁, 只要非守护main 线程结束JVM实例就销毁了.
@@ -44,7 +44,7 @@ JVM实例启动时默认启动几个守护线程, 比如: 垃圾回收的线程,
 3. 通过`ClassLoader.loadClass()`方法动态加载
 
 类加载器结构
-![](./img/classloader2.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/classloader.png)
 
 只有当一个类要使用的时候,类加载器才会加载这个类并初始化
 
@@ -58,10 +58,10 @@ JVM实例启动时默认启动几个守护线程, 比如: 垃圾回收的线程,
 # JVM内存分配
 
 内存结构
-![](./img/classloader0.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/classloader0.png)
 
 类声明周期
-![](./img/classloader1.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/classload.png)
 
 
 2. java的运行机制

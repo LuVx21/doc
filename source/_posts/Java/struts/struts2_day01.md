@@ -109,7 +109,7 @@ public String sayHello(){
 
 # Struts2的执行流程
 
-![执行流程](./img2/02-执行流程.bmp)
+![执行流程](./img/02-执行流程.bmp)
 
 1. 执行的流程
 

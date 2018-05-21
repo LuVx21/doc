@@ -81,7 +81,7 @@ Spring目录结构:
 
 # IOC功能(xml方式)
 
-![](./img/spring-overview.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/spring-overview.png)
 
 * IoC(Inverse of Control):控制反转, 将对象的创建权反转给Spring
 * 使用IOC可以解决的程序耦合性高的问题(解耦)

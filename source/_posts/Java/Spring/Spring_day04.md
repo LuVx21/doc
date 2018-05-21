@@ -23,7 +23,7 @@ tag:
 
 # SSH整合
 
-![](./img2/01-SSH回顾.bmp)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/01-SSH回顾.bmp)
 
 # SSH整合用依赖
 

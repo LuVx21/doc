@@ -157,7 +157,7 @@ Struts中提供了两类数据封装的方式
 
 # 自定义拦截器
 
-![](./img2/01-拦截器.bmp)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/01-拦截器.bmp)
 
 **编写拦截器**
 

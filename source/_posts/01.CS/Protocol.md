@@ -40,7 +40,8 @@ SNMP:简单网络管理协议
 
 开放系统互连基本参考模型OSI/RM (Open System Interconnection Reference Model)
 
-![alt](./img/典型网络体系结构.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/01.CS/img/典型网络体系结构.png)
+
 
 # TCP/IP四层结构
 
