@@ -127,4 +127,4 @@ select * from t1
 )
 ```
 
-![SQLjoin](./img/sqljoin.jpeg)
+![SQLjoin](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Oracle/img/sqljoin.jpeg)

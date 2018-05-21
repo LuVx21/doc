@@ -45,7 +45,7 @@ tags:
 【箭头及指向】:带普通箭头的实心线，指向被拥有者
 ![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/tips/img/1472561925375.png)
 上图中，老师与学生是双向关联，老师有多名学生，学生也可能有多名老师。但学生与某课程间的关系为单向关联，一名学生可能要上多门课程，课程是个抽象的东西他不拥有学生。
-![自身关联](./img/1472562614096.png)
+![自身关联](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/tips/img/1472562614096.png)
 
 ## 聚合
 

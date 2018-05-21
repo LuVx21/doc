@@ -24,7 +24,7 @@ tags:
 
 # 内存结构
 
-![内存结构](./img/jvm01.png)
+![内存结构](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/jvm01.png)
 
 * 堆内存
     * 年轻代(8:1:1)

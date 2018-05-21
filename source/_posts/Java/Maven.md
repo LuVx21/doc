@@ -71,7 +71,7 @@ tags:
 
 # 构建过程
 
-![Maven构建过程](./img/maven_process.png)
+![Maven构建过程](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/maven_process.png)
 
 后面的阶段运行时会默认执行前面的阶段
 

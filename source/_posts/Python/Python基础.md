@@ -146,7 +146,7 @@ print '''hello "world"'''
 如果在字符串的引号之前加上一个u，则表示这是一个unicode字符串，如果加上r，则表示这是一个原始字符串 值得注意的是，Python中没有C-Like语言中的字符类型。即python不支持单字符类型.单字符也是作为字符串类型.
 ## 格式化输出
 
-![Alt text](./img/1478269929934.png)
+![Alt text](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Python/img/1478269929934.png)
 
 # 运算符
 
@@ -352,7 +352,7 @@ dict.clear()则可以清空整个字典.
 
 cmp(dict1,dict2) #比较2个字典元素
 len(dict) #字典元素的个数,即键的数目
-![Alt text](./img/1474383533569.png)
+![Alt text](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Python/img/1474383533569.png)
 
 #函数
 
@@ -599,21 +599,21 @@ setup.py
 from distutils.core import setup
 setup(name="xwp",version="1.0",description="xwp's module",author="renxie",py_modules=['dira.aa','dira.bb','dirb.cc','dirb.dd'])
 ```
-![Alt text](./img/1476716426923.png)
+![Alt text](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Python/img/1476716426923.png)
 ```
 python setup.py build # 构建
 python setup.py sdist # 打包
 ```
-![Alt text](./img/1476716659013.png)
+![Alt text](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Python/img/1476716659013.png)
 
 # 文件
 
 ```
 file object = open(file_name [, access_mode][, buffering])
 ```
-![Alt text](./img/1478399105441.png)
+![Alt text](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Python/img/1478399105441.png)
 ## File对象的属性
-![Alt text](./img/1478399220654.png)
+![Alt text](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Python/img/1478399220654.png)
 
 ## close()方法
 File 对象的 close（）方法刷新缓冲区里任何还没写入的信息，并关闭该文件，这之后便不能再进行写入
@@ -801,7 +801,7 @@ delattr(obj, name) : 删除属性。
 `__private_method`：两个下划线开头，声明该方法为私有方法，不能在类地外部调用。在类的内部调用 `self.__private_methods`
 
 以下方法可以重写:
-![Alt text](./img/1478403727990.png)
+![Alt text](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Python/img/1478403727990.png)
 
 
 

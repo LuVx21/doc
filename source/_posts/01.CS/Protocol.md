@@ -29,7 +29,7 @@ tags:
 
 数据在源站自上而下递交的过程实际上就是不断封装的过程，而到达目的地后自下而上递交的过程就是不断拆封的过程
 
-![PDU](./img/PDU封装实例.png)
+![](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/01.CS/img/PDU封装实例.png)
 
 IP:不可靠协议,不会重复,使用ICMP协议通知失败
 ICMP:

@@ -26,7 +26,7 @@ tags:
 <!-- /TOC -->
 # 关于
 
-![生命周期](./img/threadlife.png)
+![生命周期](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/threadlife.png)
 
 # 多线程的实现
 

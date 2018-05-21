@@ -109,7 +109,7 @@ public String sayHello(){
 
 # Struts2的执行流程
 
-![执行流程](./img/02-执行流程.bmp)
+![执行流程](https://raw.githubusercontent.com/LuVx21/hexo/master/source/_posts/Java/img/02-执行流程.bmp)
 
 1. 执行的流程
 
