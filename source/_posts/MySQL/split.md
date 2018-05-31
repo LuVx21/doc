@@ -1,0 +1,134 @@
+---
+title: 主从复制,读写分离的实现
+date:
+tags:
+- Docker
+- MySQL
+---
+<!-- TOC -->
+
+- [环境准备](#环境准备)
+- [配置MySQL](#配置mysql)
+    - [配置master](#配置master)
+    - [配置slave](#配置slave)
+- [读写分离](#读写分离)
+    - [应用层实现](#应用层实现)
+    - [中间件实现](#中间件实现)
+- [配合Redis缓存](#配合redis缓存)
+
+<!-- /TOC -->
+
+# 环境准备
+
+基于Docker创建两个MySQL环境
+```shell
+docker run --name master -p 127.0.0.1:3307:3306 -e MYSQL\_ROOT\_PASSWORD=1121 -d  mysql:5.6
+docker run --name slave01 -p 127.0.0.1:3308:3306 -e MYSQL\_ROOT\_PASSWORD=1121 -d --link master mysql:5.6
+# 获取IP
+docker exec -i master ifconfig
+docker exec -i slave01 ifconfig
+# 可以进入容器适应ping和env等确认是否可达master
+docker exec -it slave01 bash
+```
+
+获得各个容器的IP,如下:
+
+* 172.17.0.2 master
+* 172.17.0.3 slave01
+
+
+上面使用`--link`使得slave可以访问master的数据,
+容器互联的另一种方式:
+```shell
+docker network create -d bridge my-net
+docker run --name master -p 127.0.0.1:3307:3306 -e MYSQL\_ROOT\_PASSWORD=1121 -d --network my-net mysql:5.6
+docker run --name slave01 -p 127.0.0.1:3308:3306 -e MYSQL\_ROOT\_PASSWORD=1121 -d  --network my-net mysql:5.6
+```
+
+> 纯净的容器需要安装一些可能用到的软件:
+> apt-get install net-tools vim iputils-ping telnet
+
+# 配置MySQL
+
+## 配置master
+
+master服务器配置的主要内容：
+
+1. 开启二进制日志
+2. 配置唯一的server-id
+3. 创建一个用于slave和master通信的用户账号
+4. 获得master二进制日志文件名及位置
+
+`/etc/mysql/my.cnf`
+```conf
+[mysqld]
+# 二进制日志
+log-bin=mysql-bin
+server-id=1
+# 忽略同步的库
+binlog-ignore-db=mysql
+# 同步的库
+binlog-do-db=java
+```
+> 上述同步的库相关仅仅是说明,可以根据实际配置
+
+重启MySQL服务:
+`service mysql restart`
+
+
+创建slave用来同步数据的账户:
+```sql
+create user 'luvx'@'172.17.0.3' identified by '1121';
+grant replication slave on *.* to 'luvx'@'172.17.0.3' identified by '1121';
+flush privileges;
+show master status;
+```
+
+> 为了方便,账户创建时将MySQL的密码策略修改了:
+> set global validate_password_policy=0;
+> set global validate_password_length=1;
+
+## 配置slave
+
+slave服务器配置的主要内容：
+
+1. 配置唯一的server-id
+2. 使用master分配的用户账号读取master二进制日志
+3. 启用slave服务
+
+slave值配置server-id即可,方法和master的相同
+
+slave上登录mysql会话,配置后两项内容
+
+```sql
+change master to
+master_host='172.17.0.2',
+master_user='luvx',
+master_password='1121',
+master_log_file='mysql-bin.000002',
+master_log_pos=3579;
+-- 启用slave服务
+start slave;
+-- 查看slave配置及状态
+show slave status\G;
+```
+
+状态信息中`Slave_IO_Running`和`Slave_SQL_Running`都是yes即说明同步配置成功.
+
+# 读写分离
+
+## 应用层实现
+
+读写分离应用层实现
+itcast
+
+## 中间件实现
+
+mysql读写分离的配置:使用docker配置主从数据库
+
+
+# 配合Redis缓存
+
+读之前-先查缓存
+写之后-更新缓存
+

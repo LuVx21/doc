@@ -6,38 +6,14 @@ tags:
 ---
 <!-- TOC -->
 
-- [分支](#分支)
-- [储藏](#储藏)
-- [标签](#标签)
+- [标签:tag](#标签tag)
+- [分支:branch](#分支branch)
+- [储藏:stash](#储藏stash)
 - [分析](#分析)
 
 <!-- /TOC -->
 
-# 分支
-
-```shell
-git push origin --delete <branchName>
-git pus origin :<branchName>
-```
-# 储藏
-
-```shell
-git stash
-git stash list
-git stash apply [<stashid>]
-# 暂存区的仍然回到暂存区
-git stash apply --index
-git stash drop [<stashid>]
-git stash pop
-
-# 取消储藏
-git stash show -p [<stashid>] | git apply -R
-
-# alias
-git config --global alias.stash-unapply '!git stash show -p | git apply -R'
-```
-
-# 标签
+# 标签:tag
 
 ```shell
 # git tag -a <tagname> -m "message"
@@ -54,6 +30,36 @@ git push origin --delete tag <tagname>
 ```shell
 # git tag -l
 git tag
+```
+
+# 分支:branch
+
+```shell
+git push origin --delete <branchName>
+git push origin :<branchName>
+```
+# 储藏:stash
+
+```shell
+git stash
+# 查看stash
+git stash list
+# 应用stash
+git stash apply [<stashid>]
+# 暂存区的仍然回到暂存区
+git stash apply --index
+# 移除stash
+git stash drop [<stashid>]
+# 类似于apply,但会从stash栈中移除applied stash
+git stash pop
+
+# 取消储藏
+git stash show -p [<stashid>] | git apply -R
+
+# alias:git stash-unapply
+git config --global alias.stash-unapply '!git stash show -p | git apply -R'
+# 基于stash创建分支
+git stash branch <branch_name>
 ```
 
 # 分析

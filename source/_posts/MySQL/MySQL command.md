@@ -10,6 +10,7 @@ tags:
 - [备份](#备份)
 - [恢复](#恢复)
 - [记录](#记录)
+- [执行文件](#执行文件)
 
 <!-- /TOC -->
 
@@ -84,4 +85,15 @@ mysql -u root -p --tee=/mysql/log.log
 # 方式2
 tee log.log
 notee
+# 方式3
+\T log.log
+\t
+```
+
+# 执行文件
+
+```shell
+# mysql –u root –p123456 -Dtest</home/user/1.sql
+\. <path>
+source <path>
 ```

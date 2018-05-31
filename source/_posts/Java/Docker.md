@@ -9,6 +9,7 @@ tags:
 
 - [基本命令](#基本命令)
 - [使用MySQL](#使用mysql)
+- [容器互联](#容器互联)
 
 <!-- /TOC -->
 
@@ -33,9 +34,25 @@ docker exec -it <id|name> bash
 
 ```shell
 docker pull mysql:5.6
-docker run --name <name> -e MYSQL\_ROOT\_PASSWORD=<pwd> -d mysql:<tag>
+docker run --name <name> -v /opt/mysql:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=<pwd> -d mysql:<tag>
 docker run -it --rm mysql mysql -h<host> -u<user> -p
 # 例
-# docker run --name test-mysql -p 127.0.0.1:3307:3306 -e MYSQL\_ROOT\_PASSWORD=1121 -d mysql:5.6
+# docker run --name test-mysql -p 127.0.0.1:3307:3306 -e MYSQL_ROOT_PASSWORD=1121 -d mysql:5.6
 # mysql -h 127.0.0.1 -P3307 -u root -p
+```
+
+# 容器互联
+
+```shell
+# 从主机复制到容器
+docker cp <host_path> <containerID>:<container_path>
+# 从容器复制到主机
+docker cp <containerID>:<container_path> <host_path>
+```
+
+
+基于容器创建镜像:
+
+```shell
+docker commit -m "message" -a "author" <container_id> <image_name>
 ```
