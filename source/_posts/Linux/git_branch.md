@@ -9,6 +9,7 @@ tags:
 - [标签:tag](#标签tag)
 - [分支:branch](#分支branch)
 - [储藏:stash](#储藏stash)
+- [](#)
 - [分析](#分析)
 
 <!-- /TOC -->
@@ -61,6 +62,10 @@ git config --global alias.stash-unapply '!git stash show -p | git apply -R'
 # 基于stash创建分支
 git stash branch <branch_name>
 ```
+
+# 
+
+git blame -L 10,+2 request.js
 
 # 分析
 

@@ -11,6 +11,7 @@ tags:
 - [恢复](#恢复)
 - [记录](#记录)
 - [执行文件](#执行文件)
+- [字符集](#字符集)
 
 <!-- /TOC -->
 
@@ -96,4 +97,12 @@ notee
 # mysql –u root –p123456 -Dtest</home/user/1.sql
 \. <path>
 source <path>
+```
+
+# 字符集
+
+```sql
+alter database <database_name> character set utf8
+alter table <table_name> character set utf8
+alter table <table_name> change <field_name> <field_name> char(10) character set utf8;
 ```
