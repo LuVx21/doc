@@ -8,8 +8,12 @@ tags:
 <!-- TOC -->
 
 - [Linux 命令](#linux-命令)
-- [scp](#scp)
-- [sftp](#sftp)
+- [xargs](#xargs)
+    - [screen](#screen)
+    - [at](#at)
+    - [watch](#watch)
+    - [scp](#scp)
+    - [sftp](#sftp)
     - [iptables](#iptables)
     - [nohup](#nohup)
     - [lsof](#lsof)
@@ -86,7 +90,23 @@ man:Linux提供的一个手册, 包含绝大部分的命令, 函数使用说明.
 |h|查看所有功能键|
 |/word|搜索word字符串|
 
-# scp
+# xargs
+
+
+
+```shell
+# 删除回车(Windows下换行符变为linux下的)
+find test/  -name "*.*" | xargs sed -i 's/\r//g
+```
+
+## screen
+
+## at
+
+## watch
+
+
+## scp
 
 ```shell
 # 上传
@@ -95,7 +115,7 @@ scp 本地文件地址 云服务器登录名@云服务器公网IP/域名:云服�
 scp 云服务器登录名@云服务器公网IP/域名:云服务器文件地址 本地文件地址
 ```
 
-# sftp
+## sftp
 
 ```
 sftp root@192.168.0.1

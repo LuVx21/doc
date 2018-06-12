@@ -39,6 +39,15 @@ git tag
 git push origin --delete <branchName>
 git push origin :<branchName>
 ```
+
+
+创建空白分支
+```shell
+git checkout --orphan dev
+git rm -rf .
+gcam 'init branch'
+```
+
 # 储藏:stash
 
 ```shell

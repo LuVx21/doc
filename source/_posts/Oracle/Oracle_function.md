@@ -15,8 +15,8 @@ create or replace function aFun(
 )return number
 as
 begin
-    ccc := aaa+bbb+1;
-    return aaa+bbb;
+    ccc := aaa + bbb + 1;
+    return aaa + bbb;
 end;
 /
 ```
@@ -28,7 +28,7 @@ create or replace procedure aPro(
 )
 as
 begin
-    ccc := aaa+bbb;
+    ccc := aaa + bbb;
 end;
 /
 ```
@@ -42,11 +42,11 @@ declare
 begin
 
 aPro(1,2,result);
-dbms_output.put_line('OUT:'||result);
+dbms_output.put_line('OUT:' || result);
 
 returnvalue := aFun(1,2,result);
-dbms_output.put_line('OUT:'||result);
-dbms_output.put_line('RETURN:'||returnvalue);
+dbms_output.put_line('OUT:' || result);
+dbms_output.put_line('RETURN:' || returnvalue);
 
 end;
 /

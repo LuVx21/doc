@@ -247,3 +247,5 @@ begin
     end if;
 end ;
 ```
+
+merge into emp using () on when matched then xx when not matched then xx;
