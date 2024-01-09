@@ -1,0 +1,18 @@
+md<details>
+<summary>点击展开目录</summary>
+<!-- TOC -->
+
+
+<!-- /TOC -->
+</details>
+
+
+bit数组, 第 n 位标志第 n 个数字存在与否
+
+
+[BigMap](https://www.jianshu.com/p/bf9dbbc147ed)
+```Java
+BitMap bitMap = new BitMap();
+```
+
+
