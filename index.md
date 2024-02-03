@@ -1,3 +1,6 @@
+<details>
+<summary>点击展开目录</summary>
+
 - [🌐 媒体](#-媒体)
   - [📰 日报](#-日报)
   - [🌏 新闻](#-新闻)
@@ -52,6 +55,7 @@
   - [🐻‍ 动漫](#-动漫)
   - [✔️ 解析](#️-解析)
 
+</details>
 
 ## 🌐 媒体
 
@@ -89,11 +93,11 @@
 | 网址                                 | 说明                           |
 | :----------------------------------- | :----------------------------- |
 | [淘声](https://www.tosound.com/)     | 全球免费声音素材聚合平台       |
-| [音乐搜索器](http://www.xmsj.org/)   | 多站合一音乐搜索，音乐在线试听 |
+| [音乐搜索器](http://www.xmsj.org/)   | 多站合一音乐搜索, 音乐在线试听 |
 | [BGM猫](https://bgmcat.com/)         | 视频配乐、片头音乐             |
 | [音乐解锁](https://hali.life:82/)    | 解锁已购的加密音乐             |
-| [挖沙网](http://www.waasaa.com/)     | 挖沙，放肆幻听                 |
-| [私房歌](http://www.ningmeng.name/)  | 民谣，独立                     |
+| [挖沙网](http://www.waasaa.com/)     | 挖沙, 放肆幻听                 |
+| [私房歌](http://www.ningmeng.name/)  | 民谣, 独立                     |
 | [洛奇Town](https://ifish.fun/)       | 鱼声音乐精选                   |
 | [盐酸小姐](http://www.misshcl.com/)  | 没有人像我一样                 |
 | [九酷音乐](https://m.9ku.com/)       | 流行歌曲大全                   |
@@ -145,7 +149,7 @@
 | [豆瓣](https://m.douban.com/)      | 一个神奇的社区                     |
 | [wikiHow](https://zh.wikihow.com/) | 万事指南网站                       |
 | [买购网](https://m.maigoo.com/)    | 品牌榜、知识榜、买购排行榜         |
-| [内酷禅心](http://neikuw.com/)     | 内酷才是真酷，追求清静寂定的心境。 |
+| [内酷禅心](http://neikuw.com/)     | 内酷才是真酷, 追求清静寂定的心境.  |
 
 
 ### 🎲 娱乐
@@ -164,7 +168,7 @@
 
 | 网址                                    | 说明                                 |
 | :-------------------------------------- | :----------------------------------- |
-| [机核GCORES](https://www.gcores.com/)   | 分享游戏玩家生活，探讨游戏相关文化。 |
+| [机核GCORES](https://www.gcores.com/)   | 分享游戏玩家生活, 探讨游戏相关文化.  |
 | [触乐](http://www.chuapp.com/)          | 国内最优秀的游戏媒体之一             |
 | [游研社](https://www.yystv.cn/)         | 游戏新媒体                           |
 | [手游那点事](http://www.nadianshi.com/) | 关注手机游戏运营和手机游戏推广       |
@@ -175,7 +179,7 @@
 
 | 网址                                   | 说明                              |
 | :------------------------------------- | :-------------------------------- |
-| [电子期刊](http://qk.demo.lifves.com/) | 初见·杂志期刊，意林、读者、故事会 |
+| [电子期刊](http://qk.demo.lifves.com/) | 初见·杂志期刊, 意林、读者、故事会 |
 | [参考网](https://m.fx361.com/)         | 过期杂志阅读平台                  |
 | [多媒体数字报纸](http://www.53bk.com/) | 53BK数字报纸系统                  |
 
@@ -189,7 +193,7 @@
 | [译学馆](https://www.yxgapp.com/)     | 译制知识视频的平台                     |
 | [36氪](https://m.36kr.com/)           | 互联网创业资讯                         |
 | [数字尾巴](https://m.dgtle.com/)      | 丰富的数码资讯                         |
-| [黑客资讯](https://hackernews.cc/)    | 国际威胁情报、黑客动向及维基解密资讯。 |
+| [黑客资讯](https://hackernews.cc/)    | 国际威胁情报、黑客动向及维基解密资讯.  |
 
 
 ### ✏️ 设计
@@ -211,7 +215,7 @@
 | 网址                              | 说明                           |
 | :-------------------------------- | :----------------------------- |
 | [果壳](https://m.guokr.com/)      | 泛科技主题网站                 |
-| [品玩](https://www.pingwest.com/) | 有品好玩的科技，一切与你有关！ |
+| [品玩](https://www.pingwest.com/) | 有品好玩的科技, 一切与你有关！ |
 | [虎嗅](https://m.huxiu.com/)      | 商业科技资讯                   |
 | [少数派](https://sspai.com/)      | 高品质数字消费指南             |
 | [IT之家](https://m.ithome.com/)   | 前沿科技新闻网站               |
@@ -231,7 +235,7 @@
 | [更新笔记](https://flowus.cn/ycheng/share/923f5a35-6dcf-47d1-b8eb-b9c5ef3ed39b) | 一程｜书源、订阅、教程、一键导入  |
 | [大佬云集](http://yuedu.miaogongzi.net/gx.html)                                 | 喵公子｜书源、有声、漫画、净化……  |
 | [阅读论坛](https://legado.cn/)                                                  | 新阅读交流论坛                    |
-| [阅读手册](https://www.yuque.com/legado)                                        | 使用说明、源制作、官方公告。      |
+| [阅读手册](https://www.yuque.com/legado)                                        | 使用说明、源制作、官方公告.       |
 | [源仓库](http://www.yck2.com/)                                                  | 阅读书源仓库｜https://yckceo.vip/ |
 | [阅读下载](https://miaogongzi.lanzout.com/b01rgkhhe)                            | 喵公子｜阅读Beta版下载            |
 | [正则表达式](https://m.w3cschool.cn/regex_rmjc/regex_rmjc-n5a328cn.html)        | w3cschool编程狮                   |
@@ -259,9 +263,9 @@
 | [赤戟的书荒救济所](https://mp.weixin.qq.com/mp/homepage?__biz=MzI5NTA4NjgwNw==&hid=1&sn=0fcecdc85b8c23e596880f8c895b901d&scene=18&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=59&session_us=gh_2aa0f3c6dd8f&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1) | 最新热门分类                          |
 | [网文书单](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1319454340050157569&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                              | 每期三本-新书速递、养肥佳作、完本好书 |
 | [分类推书](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1319393737944170497&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                              | 分类大盘点                            |
-| [澎湃精选](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1319471313224040448&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                              | 超过50万字，连载或完本的优秀作品      |
+| [澎湃精选](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1319471313224040448&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                              | 超过50万字, 连载或完本的优秀作品      |
 | [优书数据](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1325500020388626432&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                              | 月度大数据推书                        |
-| [网文杂谈](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1333946780098330626&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                              | 一些吃瓜趣闻，网文闲谈                |
+| [网文杂谈](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1333946780098330626&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                              | 一些吃瓜趣闻, 网文闲谈                |
 | [年度盘点](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1526356920989712387&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                              | 年度盘点各分类中诞生的新书、完本书    |
 | [网文趣事弹](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI5NTA4NjgwNw==&action=getalbum&album_id=1319335766203662337&scene=126&devicetype=android-28&version=28000f3d&lang=zh_CN&nettype=WIFI&ascene=3&pass_ticket=B8GunWN7RjA2Q%2FaVYxT%2BSITrnCodRKKdEfgFLaYKNzv56Vgj9IUBy%2B6yzAlQVE4M&wx_header=1)                            | 各类和网文相关的趣事-每月一期         |
 
@@ -300,7 +304,7 @@
 | [百度阅读](https://yd.baidu.com/)       | 全网最全小说                     |
 | [QQ阅读](https://ubook.reader.qq.com/)  | QQ阅读官方网站                   |
 | [塔读文学](https://m.tadu.com/)         | 精品原创小说                     |
-| [话本小说](https://www.ihuaben.com/)    | 首创气泡对话小说，写小说原创社区 |
+| [话本小说](https://www.ihuaben.com/)    | 首创气泡对话小说, 写小说原创社区 |
 | [潇湘书院](https://m.xxsy.net/)         | 言情小说                         |
 | [长佩文学](https://m.gongzicp.com/)     | 女性向阅读交流平台               |
 | [红袖添香](https://m.hongxiu.com/)      | 阅文集团旗下网站                 |
@@ -323,7 +327,7 @@
 | [知轩藏书](https://zxcs.zip/)              | 藏尽网络精校好书                   |
 | [知轩精校](https://www.zxcs.info/map.html) | 精校小说                           |
 | [知轩藏书](https://zxcstxt.com/)           | 🔎登录｜精校小说                    |
-| [瓜盘](https://www.guapan.com/)            | 小说下载，需要关注公众号获取验证码 |
+| [瓜盘](https://www.guapan.com/)            | 小说下载, 需要关注公众号获取验证码 |
 | [下书网](https://www.xiashu8.com/)         | 多网站导航、电子书下载             |
 | [皇帝之家](https://m.huangdizhijia.com/)   | 精品小说                           |
 | [狗狗电子书](https://book.gouyg.com/)      | 小说下载                           |
@@ -331,7 +335,7 @@
 | [TXT下载](https://www.downtxts.com/)       | TXT小说                            |
 | [无名图书](https://www.book123.info/)      | 电子书下载                         |
 | [书荒部落](https://noveless.com/)          | 精校小说                           |
-| [贼吧网](https://m.zei8.vip/)              | （旧书）精校小说                   |
+| [贼吧网](https://m.zei8.vip/)              | (旧书)精校小说                   |
 
 
 ### 📥 文学
@@ -356,7 +360,7 @@
 | [个人学习网](http://www.pdfbook.cn/)                      | 个人学习资料                                |
 | [推书365](http://www.vzhuanba.com/)                       | 电子书推荐网站｜需关注微信公众号            |
 | [七彩英语](http://www.qcenglish.com/)                     | 英文电子书下载站                            |
-| [SaltTiger](https://salttiger.com/)                       | 每天一本编程书，每天进步一点点              |
+| [SaltTiger](https://salttiger.com/)                       | 每天一本编程书, 每天进步一点点              |
 | [E书联盟](https://www.book118.com/)                       | PDF下载                                     |
 | [看医学](http://3g.kanyixue.com/)                         | 医学书籍下载｜需关注微信公众号              |
 | [花卷妈](http://www.huajuanma.com/)                       | 育儿知识下载                                |
@@ -402,7 +406,7 @@
 | [诗词](https://sou-yun.cn/)             | 诗词大全                           |
 | [一言](https://hitokoto.cn/)            | 一句话                             |
 | [读典籍](https://web.dudianji.com/)     | 文白对照读典籍                     |
-| [我不是盐神](https://onehu.xyz/)        | 分享一些盐选文章，知乎免费阅读网站 |
+| [我不是盐神](https://onehu.xyz/)        | 分享一些盐选文章, 知乎免费阅读网站 |
 | [趣集](https://ifun.cool/)              | 知乎盐选                           |
 
 
@@ -478,7 +482,7 @@
 | :------------------------------------------------------ | :------------------------------- |
 | [道人家](http://m.daorenjia.com/)                       | 中华道藏                         |
 | [殆知阁](http://www.daizhige.org/)                      | 经典藏书                         |
-| [道道道](https://www.ifreesite.com/scriptures/book.htm) | 道神道，非人道。明不明，非常明。 |
+| [道道道](https://www.ifreesite.com/scriptures/book.htm) | 道神道, 非人道. 明不明, 非常明.  |
 | [一条路](https://www.1tiaolu.com/)                      | 武术秘籍、武术大全｜网站已经宕机 |
 | [内功网](https://m.neigong.cc/)                         | 内功门户网站                     |
 
@@ -504,7 +508,7 @@
 | [百度网盘](https://pan.baidu.com/)                                        | 好不好用谁知道                       |
 | [坚果云](https://www.jianguoyun.com/d/home#/home)                         | 免费个人网盘、网络存储盘             |
 | [蓝奏云](https://up.woozooo.com/account.php?action=login&ref=/mydisk.php) | 云存储、下载无限制                   |
-| [Meow云](https://pan.miaogongzi.net/)                                     | 在线下载应用，同步手机数据和查找手机 |
+| [Meow云](https://pan.miaogongzi.net/)                                     | 在线下载应用, 同步手机数据和查找手机 |
 | [fastsoso](https://m.fastsoso.cn/)                                        | 网盘搜索                             |
 
 
@@ -520,9 +524,9 @@
 | [F搜](https://fsoufsou.com/)                                       | 类似Google、必应、百度一样的搜索引擎 |
 | [必应搜索](https://cn.bing.com/)                                   | 必应可帮助你将理论付诸实践           |
 | [谷歌搜索](https://www.google.com.hk/webhp?hl=zh-CN&sourceid=cnhp) | 🚀VPN｜全球最大的搜索引擎             |
-| [DuckDuckGo](https://duckduckgo.com/)                              | 🚀VPN｜隐私保护，化繁为简。           |
+| [DuckDuckGo](https://duckduckgo.com/)                              | 🚀VPN｜隐私保护, 化繁为简.            |
 | [hao123导航](https://m.hao123.com/)                                | 全网优质网址及资源的中文上网导航     |
-| [360导航](http://h5.mse.360.cn/)                                   | 一个主页，整个世界                   |
+| [360导航](http://h5.mse.360.cn/)                                   | 一个主页, 整个世界                   |
 | [UC网址导航](http://hao.uc.cn/)                                    | UC网址导航是一个多功能的网站         |
 | [毒霸网址大全](http://m.duba.com/)                                 | 安全实用的上网导航                   |
 
@@ -561,7 +565,7 @@
 
 | 网址                                      | 说明                                 |
 | :---------------------------------------- | :----------------------------------- |
-| [吾爱破解](https://www.52pojie.cn/)       | LSG，安卓破解，病毒分析              |
+| [吾爱破解](https://www.52pojie.cn/)       | LSG, 安卓破解, 病毒分析              |
 | [乐享软件](https://www.lxapk.com/)        | 专注于手机应用分享网站               |
 | [夜雨聆风](https://www.yeyulingfeng.com/) | 专注于互联网资源分享                 |
 | [佛系软件](https://foxirj.com/)           | 精品Windows,macOS破解软件下载        |
@@ -570,7 +574,7 @@
 | [异星软件](https://www.yxssp.com/)        | 推荐精选好用实用的软件及资源         |
 | [蓝鲨](https://www.lan-sha.com/)          | 让您在互联网的海洋里自由的遨游       |
 | [果核剥壳](https://www.ghxi.com/)         | 还原软件的本质                       |
-| [杂铺软件](https://tmioe.com/)            | 发现美好，分享快乐                   |
+| [杂铺软件](https://tmioe.com/)            | 发现美好, 分享快乐                   |
 | [枫音应用](https://www.fy6b.com/)         | 免费、绿色、无毒无广的实用软件       |
 
 
@@ -651,7 +655,7 @@
 | :----------------------------------------------- | :--------------------------- |
 | [医学百科](https://www.yixue.com/wap/index.html) | 公益医学知识库               |
 | [家庭医生](https://m.familydoctor.com.cn/)       | 领先的医疗健康新媒体         |
-| [快速问医生](https://m.120ask.com/)              | 搜疾病，药品，偏方，问答     |
+| [快速问医生](https://m.120ask.com/)              | 搜疾病, 药品, 偏方, 问答     |
 | [寻医问药](http://3g.xywy.com/)                  | 药品库                       |
 | [药品通](http://wapypk.39.net/)                  | 专业全面的国内外药品查询网站 |
 
@@ -661,7 +665,7 @@
 | 网址                                   | 说明                               |
 | :------------------------------------- | :--------------------------------- |
 | [大众养生](https://m.cndzys.com/)      | 养生第一门户                       |
-| [百食阁](http://www.cf555.com/mm.html) | 食物功效与禁忌，食疗保健养生       |
+| [百食阁](http://www.cf555.com/mm.html) | 食物功效与禁忌, 食疗保健养生       |
 | [百姓健康](https://m.jiankang.com/)    | 权威的医疗健康门户                 |
 | [39健康网](http://m.39.net/)           | 优质医疗保健信息与在线健康服务平台 |
 | [彩牛养生](https://m.cnys.com/)        | 权威健康科普内容平台               |
@@ -673,10 +677,10 @@
 | :----------------------------------------- | :----------------------------------- |
 | [香哈](https://m.xiangha.com/)             | 菜谱大全-学做菜、秀美食！            |
 | [掌厨](http://h5.izhangchu.com/)           | 视频菜谱网站                         |
-| [美食杰](http://m.meishij.net/)            | 家常菜做法大全，收集天下美食菜谱图片 |
-| [隔离食用手册](https://cook.yunyoujun.cn/) | 好的，今天我们来做菜！               |
+| [美食杰](http://m.meishij.net/)            | 家常菜做法大全, 收集天下美食菜谱图片 |
+| [隔离食用手册](https://cook.yunyoujun.cn/) | 好的, 今天我们来做菜！               |
 | [豆果美食](https://m.douguo.com/)          | 美食菜谱社区                         |
-| [下厨房](https://m.xiachufang.com/)        | 厨师和美食爱好者记录、分享的平台。   |
+| [下厨房](https://m.xiachufang.com/)        | 厨师和美食爱好者记录、分享的平台.    |
 | [美食天下](https://m.meishichina.com/)     | 原创菜谱与美食生活社区               |
 | [心食谱](https://www.xinshipu.com/)        | 菜谱大全、家常菜谱                   |
 | [美食一生](http://www.meishi13.com/)       | 家常菜谱大全                         |
@@ -726,7 +730,7 @@
 | [无名小站](https://www.btnull.net/)    | fun,in,nu,org,to,si,com,net        |
 | [新版6V电影](https://www.66s6.net/)    | 6V电影网                           |
 | [APP影院](https://www.appmovie.cc/)    | 全网最全视频库                     |
-| [555电影](https://www.555dyy5.com/)    | 发布页地址：https://www.gtbyw.com/ |
+| [555电影](https://www.555dyy5.com/)    | 发布页地址: https://www.gtbyw.com/ |
 | [茶杯狐](https://cupfox.app/)          | 中国最大的影视资源聚合搜索引擎     |
 | [仁仁影视](http://rryss.com/)          | 仁是由爱好者成员成立的网站         |
 | [南柯电影](https://www.nkdyw.us/)      | 电影电视剧在线播放平台网站         |
@@ -760,14 +764,14 @@
 | [樱花动漫](http://m.yinghuavideo.com/) | 专注动漫的门户网站                   |
 | [MX动漫](http://www.mxdm9.com/)        | 专注在线动漫的樱花动漫备用网站       |
 | [风车动漫](https://dm530.org/)         | 拥有上万集高清晰画质的在线动漫       |
-| [妮可动漫](http://www.nicotv.club/)    | 追番补番的集中营，宅男腐女的秘密基地 |
+| [妮可动漫](http://www.nicotv.club/)    | 追番补番的集中营, 宅男腐女的秘密基地 |
 
 
 ### ✔️ 解析
 
 | 网址                                      | 说明                             |
 | :---------------------------------------- | :------------------------------- |
-| [鲨鱼解析](https://www.m4411.com/)        | 发布地址：https://www.ikan.club/ |
+| [鲨鱼解析](https://www.m4411.com/)        | 发布地址: https://www.ikan.club/ |
 | [夜雨聆风](https://vip.yeyulingfeng.com/) | 视频解析                         |
 | [超级解析](https://superparse.com/)       | 国内外知名视频、短视频网站解析   |
 | [熊猫解析](https://dlpanda.com/zh-CN)     | 抖音TikTok无水印下载             |
