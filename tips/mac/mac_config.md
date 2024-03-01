@@ -110,3 +110,6 @@ rm "/Users/$(whoami)/Library/Application Support/Beyond Compare/registry.dat"
 EOF
 chmod 755 BCompare
 ```
+
+
+[mac上用的cli/app/config](https://github.com/nikitavoloboev/config)
