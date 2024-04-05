@@ -1,0 +1,10 @@
+{
+  "accentColor": "",
+  "cssTheme": "Blue Topaz",
+  "enabledCssSnippets": [
+    "custom-admonitions.650ac9"
+  ],
+  "theme": "obsidian",
+  "baseFontSizeAction": true,
+  "nativeMenus": false
+}

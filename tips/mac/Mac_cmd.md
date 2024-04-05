@@ -5,17 +5,19 @@ tags:
 - Mac
 - Linux
 ---
-<!-- TOC -->
+<details>
+<summary>点击展开目录</summary>
 
 - [Mac命令](#mac命令)
-    - [dock](#dock)
-    - [Mission Control](#mission-control)
-    - [Launchpad](#launchpad)
-    - [tree](#tree)
+  - [.DS\_store](#ds_store)
+  - [dock](#dock)
+  - [Mission Control](#mission-control)
+  - [Launchpad](#launchpad)
+  - [tree](#tree)
 - [配置](#配置)
-    - [Mission Control](#mission-control-1)
+  - [Mission Control](#mission-control-1)
 
-<!-- /TOC -->
+</details>
 
 # Mac命令
 
@@ -26,6 +28,18 @@ defaults write com.apple.finder AppleShowAllFiles -bool true
 # 不显示
 defaults write com.apple.finder AppleShowAllFiles -bool false
 ```
+
+## .DS_store
+
+禁止.DS_store生成:
+
+```bash
+find . -name '.DS_Store' -type f -delete
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+# 恢复.DS_store生成
+defaults delete com.apple.desktopservices DSDontWriteNetworkStores
+```
+[来源](https://support.apple.com/zh-cn/102064)
 
 ## dock
 
@@ -57,6 +71,11 @@ killall Dock
 # 恢复
 defaults write com.apple.dock springboard-rows Default
 defaults write com.apple.dock springboard-columns Default
+killall Dock
+```
+
+```bash
+defaults write com.apple.dock ResetLaunchPad -bool TRUE;
 killall Dock
 ```
 

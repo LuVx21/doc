@@ -1,0 +1,11 @@
+{
+  "accentColor": "",
+  "cssTheme": "",
+  "enabledCssSnippets": [
+    "MCL Multi Column",
+    "luvx"
+  ],
+  "theme": "system",
+  "baseFontSizeAction": true,
+  "nativeMenus": false
+}
