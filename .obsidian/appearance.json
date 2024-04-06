@@ -7,5 +7,6 @@
   ],
   "theme": "system",
   "baseFontSizeAction": true,
-  "nativeMenus": false
+  "nativeMenus": false,
+  "translucency": true
 }

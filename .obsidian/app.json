@@ -1,5 +1,6 @@
 {
   "defaultViewMode": "preview",
   "strictLineBreaks": true,
-  "showLineNumber": true
+  "showLineNumber": true,
+  "promptDelete": false
 }

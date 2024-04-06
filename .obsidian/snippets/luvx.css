@@ -39,6 +39,11 @@
 
 /* ---------------------编辑器--------------------- */
 
+.markdown-rendered :is(p, td) code,
+.cm-s-obsidian span.cm-inline-code {
+  color: #EB5757
+}
+
 /* Active line background */
 .markdown-source-view.mod-cm6 .cm-line.cm-active {
   background-color: rgba(var(--mono-rgb-100), 0.05)
