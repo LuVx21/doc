@@ -1,23 +1,39 @@
+<details>
+<summary>点击展开目录</summary>
+
+- [私有仓库](#私有仓库)
+- [defer](#defer)
+
+</details>
 
 * [jupyter go 内核](https://github.com/gopherdata/gophernotes)
 * [代理](https://github.com/goproxy/goproxy.cn/)
 
 
+## 私有仓库
+
+```bash
+git config --global url."ssh://git@github.com/".insteadof "https://github.com/"
+go env -w GOPRIVATE=github.com
+go env -w GONOSUMDB=github.com/LuVx21/*
+```
+
+## defer
+
+
 ```go
-var x, y int
-var (  // 这种因式分解关键字的写法一般用于声明全局变量
-    a int
-    b bool
-)
+import "testing"
 
-var c, d int = 1, 2
-var e, f = 123, "hello"
+func around(t *testing.T, msg string) func(t *testing.T) {
+    t.Log(msg + ": 测试前")
+    return func(t *testing.T) {
+        t.Log(msg + ": 测试后")
+    }
+}
 
-//这种不带声明格式的只能在函数体中出现
-//g, h := 123, "hello"
+func Test_00(t *testing.T) {
+    defer around(t, "Test_00")(t)
 
-func main(){
-    g, h := 123, "hello"
-    println(x, y, a, b, c, d, e, f, g, h)
+    t.Log("执行...")
 }
 ```

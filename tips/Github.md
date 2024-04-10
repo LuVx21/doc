@@ -23,6 +23,9 @@
 | [dsq](https://github.com/multiprocessio/dsq)           | Golang | cli        | sql语句查询csv, json等                                                                                   |
 | [evans](https://github.com/ktr0731/evans)              | Golang | cli        | 终端grpc请求客户端, 类似还有grpcurl, ui版本的有grpcui                                                    |
 | [frogmouth](https://github.com/Textualize/frogmouth)   | Python | cli        | markdown阅读器                                                                                           |
+| [gomacro](https://github.com/cosmos72/gomacro)         | Golang | cli        | Golang REPL                                                                                              |
+| [hget](https://github.com/huydx/hget)                  | Golang | cli        |                                                                                                          |
+| [hurl](https://github.com/Orange-OpenSource/hurl)      | Rust   | cli        | http client                                                                                              |
 | [iredis](https://github.com/laixintao/iredis)          | Redis  | cli        | cli-客户端, 命令提示功能较好                                                                             |
 | [jclasslib](https://github.com/ingokegel/jclasslib)    | Kotlin | 字节码     | 字节码工具                                                                                               |
 | [KnowStreaming](https://github.com/didi/KnowStreaming) | Java   | 数据库     | 一站式云原生实时流数据平台, 通过0侵入、插件化构建企业级Kafka服务, 极大降低操作、存储和管理实时流数据门槛 |
@@ -30,6 +33,7 @@
 | [maven-mvnd](https://github.com/apache/maven-mvnd)     | Java   | 编译器     | maven 替换                                                                                               |
 | [mycli](https://github.com/dbcli/mycli)                | Python | MySQL      | MySQL cli客户端                                                                                          |
 | [octosql](https://github.com/cube2222/octosql)         | Golang | cli        | sql语句查询csv, json等                                                                                   |
+| [pget](https://github.com/Code-Hex/pget)               | Golang | cli        |                                                                                                          |
 | [slim](https://github.com/slimtoolkit/slim)            | Golang | Docker     | 压缩docker镜像                                                                                           |
 | [tiny-rdm](https://github.com/tiny-craft/tiny-rdm)     | Golang | Redis      | 客户端                                                                                                   |
 | [tiptop](https://github.com/nschloe/tiptop)            | Python | cli        | top命令替换                                                                                              |
