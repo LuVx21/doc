@@ -1,3 +1,7 @@
+body {
+  --file-line-width: 70%;
+}
+
 /* ---------------------callout--------------------- */
 .callout[data-callout="qa"] {
   --callout-color: 65, 183, 87;
@@ -8,7 +12,8 @@
 
 /* 表奇偶行背景色加深 */
 .markdown-rendered tbody tr:nth-child(odd) {
-  background-color: hsla(var(--interactive-accent-hsl), 0.1);
+  /* background-color: hsla(var(--interactive-accent-hsl), 0.1); */
+  background-color: rgba(115, 138, 182, 0.1);
 }
 
 /* 表头颜色加深 */
@@ -42,6 +47,11 @@
 .markdown-rendered :is(p, td) code,
 .cm-s-obsidian span.cm-inline-code {
   color: #EB5757
+}
+
+
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-content {
+  max-width: 100%;
 }
 
 /* Active line background */

@@ -8,5 +8,6 @@
   "theme": "system",
   "baseFontSizeAction": true,
   "nativeMenus": false,
-  "translucency": true
+  "translucency": true,
+  "textFontFamily": "LXGW WenKai Mono,LXGW WenKai Mono Lite"
 }

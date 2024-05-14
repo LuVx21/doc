@@ -1,0 +1,9 @@
+{
+  "githubToken": "",
+  "embedIssues": true,
+  "embedFiles": true,
+  "labelDisplay": "preview",
+  "autoOpenThreshold": 10,
+  "dateFormat": "YYYY-MM-DD",
+  "showTotalComments": true
+}
