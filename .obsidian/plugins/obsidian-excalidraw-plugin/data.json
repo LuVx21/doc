@@ -5,7 +5,9 @@
   "embedUseExcalidrawFolder": false,
   "templateFilePath": "99.图形/Excalidraw/Template.excalidraw",
   "scriptFolderPath": "99.图形/Excalidraw/Scripts",
-  "compress": false,
+  "compress": true,
+  "decompressForMDView": true,
+  "onceOffCompressFlagReset": true,
   "autosave": true,
   "autosaveInterval": 15000,
   "autosaveIntervalDesktop": 15000,
@@ -17,8 +19,10 @@
   "useExcalidrawExtension": true,
   "cropPrefix": "cropped_",
   "annotatePrefix": "annotated_",
+  "annotatePreserveSize": false,
   "previewImageType": "SVGIMG",
   "allowImageCache": true,
+  "allowImageCacheInScene": true,
   "displayExportedImageIfAvailable": false,
   "previewMatchObsidianTheme": false,
   "width": "400",
@@ -32,6 +36,8 @@
   "defaultMode": "normal",
   "defaultPenMode": "never",
   "penModeCrosshairVisible": false,
+  "renderImageInMarkdownReadingMode": false,
+  "renderImageInMarkdownToPDF": false,
   "allowPinchZoom": false,
   "allowWheelZoom": false,
   "zoomToFitOnOpen": true,
@@ -59,6 +65,7 @@
   "exportWithTheme": true,
   "exportWithBackground": true,
   "exportPaddingSVG": 10,
+  "exportEmbedScene": false,
   "keepInSync": false,
   "autoexportSVG": false,
   "autoexportPNG": false,
@@ -81,7 +88,7 @@
   "library2": {
     "type": "excalidrawlib",
     "version": 2,
-    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.1.1",
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.1.8",
     "libraryItems": []
   },
   "imageElementNotice": true,
@@ -735,5 +742,6 @@
   "slidingPanesSupport": false,
   "areaZoomLimit": 1,
   "longPressDesktop": 500,
-  "longPressMobile": 500
+  "longPressMobile": 500,
+  "isDebugMode": false
 }
