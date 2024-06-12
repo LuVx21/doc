@@ -9,7 +9,6 @@
   "decompressForMDView": true,
   "onceOffCompressFlagReset": true,
   "autosave": true,
-  "autosaveInterval": 15000,
   "autosaveIntervalDesktop": 15000,
   "autosaveIntervalMobile": 10000,
   "drawingFilenamePrefix": "Drawing ",
@@ -37,6 +36,7 @@
   "defaultPenMode": "never",
   "penModeCrosshairVisible": false,
   "renderImageInMarkdownReadingMode": false,
+  "renderImageInHoverPreviewForMDNotes": false,
   "renderImageInMarkdownToPDF": false,
   "allowPinchZoom": false,
   "allowWheelZoom": false,
@@ -81,6 +81,8 @@
   "fadeOutExcalidrawMarkup": false,
   "experimentalEnableFourthFont": false,
   "experimantalFourthFont": "Virgil",
+  "addDummyTextElement": false,
+  "zoteroCompatibility": false,
   "fieldSuggester": true,
   "compatibilityMode": false,
   "drawingOpenCount": 0,
@@ -88,7 +90,7 @@
   "library2": {
     "type": "excalidrawlib",
     "version": 2,
-    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.2.2",
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.2.6",
     "libraryItems": []
   },
   "imageElementNotice": true,
@@ -419,7 +421,7 @@
       }
     }
   ],
-  "numberOfCustomPens": 0,
+  "numberOfCustomPens": 7,
   "pdfScale": 4,
   "pdfBorderBox": true,
   "pdfGapSize": 20,
@@ -743,5 +745,6 @@
   "areaZoomLimit": 1,
   "longPressDesktop": 500,
   "longPressMobile": 500,
-  "isDebugMode": false
+  "isDebugMode": false,
+  "autosaveInterval": 15000
 }

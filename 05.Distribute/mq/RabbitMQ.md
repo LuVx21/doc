@@ -1,17 +1,17 @@
 ---
 title: 消息队列:RabbitMQ
-date: 
+date:
 tags:
 - RabbitMQ
 ---
 <!-- TOC -->
 
 - [关于](#关于)
-    - [组件](#组件)
+  - [组件](#组件)
 - [基本使用](#基本使用)
 - [API](#api)
-    - [Exchange](#exchange)
-    - [Binding](#binding)
+  - [Exchange](#exchange)
+  - [Binding](#binding)
 - [配置命名规范](#配置命名规范)
 - [参考](#参考)
 
@@ -75,7 +75,7 @@ Exchange Types:
 ```conf
 #命名规范:容器名称.[队列特点or路由特点].使用的平台名称.作用
 #@容器名称:queue,exchange
-#@队列特点:非持久化标记(undurable),延时队列(delay),优先级队列(priority)
+#@队列特点:非持久化标记(undurable),延迟队列(delay),优先级队列(priority)
 #@路由特点:direct,topic,fanout,headers
 #@使用的平台名称:luvx
 #@作用:干什么的

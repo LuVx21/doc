@@ -44,9 +44,9 @@ body {
 
 /* ---------------------编辑器--------------------- */
 
-.markdown-rendered :is(p, td) code,
+.markdown-rendered :is(p, td, div) code,
 .cm-s-obsidian span.cm-inline-code {
-  color: #EB5757
+  color: #3db3d3
 }
 
 
