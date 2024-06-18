@@ -47,12 +47,12 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 git diff origin/$branch...HEAD --name-only
 ```
 
-## git删除历史版本，保留当前状态
+## git删除历史版本, 保留当前状态
 
 ```bash
 git checkout --orphan latest_branch
 git add -A
-git commit -am "删除历史版本记录，初始化仓库"
+git commit -am "删除历史版本记录, 初始化仓库"
 git branch -D master
 git branch -m master
 git push -f origin master

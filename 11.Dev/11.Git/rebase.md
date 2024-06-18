@@ -21,8 +21,8 @@
 ```bash
 git rebase -i <targetCommit>~1
 git reset –mixed HEAD~1
-git add 
-git add 
+git add
+git add
 git rebase –continue
 ```
 
