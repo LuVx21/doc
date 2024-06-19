@@ -3,6 +3,8 @@
 <!-- TOC -->
 
 - [使用例子](#使用例子)
+- [git删除历史版本, 保留当前状态](#git删除历史版本-保留当前状态)
+- [瘦身](#瘦身)
 
 <!-- /TOC -->
 </details>
@@ -56,4 +58,17 @@ git commit -am "删除历史版本记录, 初始化仓库"
 git branch -D master
 git branch -m master
 git push -f origin master
+```
+
+## 瘦身
+
+```bash
+# 查看历史大文件
+git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')"
+# 从历史中删除 target/ 这个文件夹
+git filter-branch --force --index-filter 'git rm -r  --cached --ignore-unmatch target/' --prune-empty --tag-name-filter cat -- --all
+# 执行仓库压缩
+git gc --prune=now
+# 推送到远程仓库
+git push origin --force --all
 ```
