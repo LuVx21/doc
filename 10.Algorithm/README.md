@@ -4,3 +4,5 @@
 - [xxx](#xxx)
 
 </details>
+
+[OI Wiki-数据结构](https://oi-wiki.org/ds/)
