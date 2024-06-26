@@ -1,13 +1,11 @@
 <details>
 <summary>点击展开目录</summary>
-<!-- TOC -->
 
 - [BloomFilter](#bloomfilter)
 - [流程](#流程)
 - [使用](#使用)
 - [阅读](#阅读)
 
-<!-- /TOC -->
 </details>
 
 ## BloomFilter
@@ -100,4 +98,3 @@ Redis有`setbit`和`getbit`命令, 且内存性能优秀, 是作为布隆过滤�
 > 命令中的key就是过滤器的名称
 
 ## 阅读
-
