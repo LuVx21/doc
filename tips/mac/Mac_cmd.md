@@ -36,6 +36,7 @@ defaults write com.apple.finder AppleShowAllFiles -bool false
 ```bash
 find . -name '.DS_Store' -type f -delete
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+defaults read com.apple.desktopservices DSDontWriteNetworkStores
 # 恢复.DS_store生成
 defaults delete com.apple.desktopservices DSDontWriteNetworkStores
 ```
@@ -113,9 +114,12 @@ killall Finder
 
 预览时可选择文本
 
+```shell
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE; killall Finder
-
+```
 ## tree
+
+```
 中文解释: tree
 功能说明: 以树状图列出目录的内容.
 语　　法: tree [-aACdDfFgilnNpqstux][-I <范本样式>][-P <范本样式>][目录...]
@@ -141,7 +145,7 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE; killall Finder
   -t   用文件和目录的更改时间排序.
   -u   列出文件或目录的拥有者名称, 没有对应的名称时, 则显示用户识别码.
   -x   将范围局限在现行的文件系统中, 若指定目录下的某些子目录, 其存放于另一个文件系统上, 则将该子目录予以排除在寻找范围外.
-
+```
 
 tree -L 1 -d:显示当前目录下一级目录
 
@@ -164,20 +168,12 @@ defaults delete com.apple.dock expose-animation-duration
 killall Dock
 ```
 
-defaults write com.apple.dock autohide-time-modifier -float 0.12
-killall Dock
+`defaults write com.apple.dock autohide-time-modifier -float 0.12;killall Dock`
 
 同样的道理.
 如果想要改回系统默认的设置:
 
-defaults delete com.apple.dock expose-animation-duration
-killall Dock
-
-
-
-delete
-rm ~/Library/Application\ Support/Beyond\ Compare/registry.dat
-
+`defaults delete com.apple.dock expose-animation-duration;killall Dock`
 
 
 允许任何来源的应用:
@@ -185,8 +181,5 @@ rm ~/Library/Application\ Support/Beyond\ Compare/registry.dat
 sudo spctl --master-disable
 ```
 
-打开应用
-open -a Safari
-
-退出应用
-osascript -e 'quit app"Safari"'
+打开应用: `open -a Safari`
+退出应用: `osascript -e 'quit app"Safari"'`
