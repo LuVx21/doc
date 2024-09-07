@@ -16,6 +16,7 @@ tags:
   - [tree](#tree)
 - [配置](#配置)
   - [Mission Control](#mission-control-1)
+- [DNS](#dns)
 
 </details>
 
@@ -183,3 +184,10 @@ sudo spctl --master-disable
 
 打开应用: `open -a Safari`
 退出应用: `osascript -e 'quit app"Safari"'`
+
+
+# DNS
+
+清理DNS缓存
+
+`sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder`
