@@ -17,6 +17,7 @@ tags:
 - [配置](#配置)
   - [Mission Control](#mission-control-1)
 - [DNS](#dns)
+- [WIFI](#wifi)
 
 </details>
 
@@ -191,3 +192,14 @@ sudo spctl --master-disable
 清理DNS缓存
 
 `sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder`
+
+
+# WIFI
+
+```bash
+networksetup -listnetworkserviceorder
+networksetup -getairportpower en0
+networksetup -setairportpower en0 on
+
+networksetup -setairportnetwork en0 wifi_name wifi_pwd
+```
